@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第4章　决策树4.1　基本流程决策树(decision tree)是基于树结构进行决策的一种常见机器学习方法。  决策过程的最终结论对应了所希望的判定结果；决策过程中提出的每个判定问题都是对某个属性的”测试”；每个测试或是导出结论，或是导出进一步的判定问题，其考虑范围是在上次决策结果的限定范围之内。 一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶节点；叶结点对应于决策结果，其他每个结点">
+<meta name="keywords" content="机器学习,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note of Machine Learning 4">
+<meta property="og:url" content="http://einsturing.top/2019/03/21/ML4/index.html">
+<meta property="og:site_name" content="Einsturing">
+<meta property="og:description" content="第4章　决策树4.1　基本流程决策树(decision tree)是基于树结构进行决策的一种常见机器学习方法。  决策过程的最终结论对应了所希望的判定结果；决策过程中提出的每个判定问题都是对某个属性的”测试”；每个测试或是导出结论，或是导出进一步的判定问题，其考虑范围是在上次决策结果的限定范围之内。 一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶节点；叶结点对应于决策结果，其他每个结点">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/dt.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/dac.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/l4.1.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.4.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/l4.2.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.5.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.6.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.7.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/l4.3.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.8.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/l4.4.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.9.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/l4.5.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.10.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.11.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.12.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.13.png">
+<meta property="og:image" content="http://einsturing.top/2019/03/21/ML4/g4.14.png">
+<meta property="og:updated_time" content="2019-04-11T05:15:35.112Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Note of Machine Learning 4">
+<meta name="twitter:description" content="第4章　决策树4.1　基本流程决策树(decision tree)是基于树结构进行决策的一种常见机器学习方法。  决策过程的最终结论对应了所希望的判定结果；决策过程中提出的每个判定问题都是对某个属性的”测试”；每个测试或是导出结论，或是导出进一步的判定问题，其考虑范围是在上次决策结果的限定范围之内。 一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶节点；叶结点对应于决策结果，其他每个结点">
+<meta name="twitter:image" content="http://einsturing.top/2019/03/21/ML4/dt.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://einsturing.top/2019/03/21/ML4/">
+
+
+
+
+
+  <title>Note of Machine Learning 4 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Einsturing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仅余我与暮色平分此世界</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/21/ML4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Note of Machine Learning 4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T14:28:23+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T13:15:35+08:00">
+                2019-04-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/21/ML4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/21/ML4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第4章-决策树"><a href="#第4章-决策树" class="headerlink" title="第4章　决策树"></a><center>第4章　决策树</center></h1><h2 id="4-1-基本流程"><a href="#4-1-基本流程" class="headerlink" title="4.1　基本流程"></a><center>4.1　基本流程</center></h2><p>决策树(decision tree)是基于树结构进行决策的一种常见机器学习方法。</p>
+<p><img src="/2019/03/21/ML4/dt.png" alt></p>
+<p>决策过程的最终结论对应了所希望的判定结果；决策过程中提出的每个判定问题都是对某个属性的”测试”；每个测试或是导出结论，或是导出进一步的判定问题，其考虑范围是在上次决策结果的限定范围之内。</p>
+<p>一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶节点；叶结点对应于决策结果，其他每个结点对应于一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分到子结点中；根结点包含样本全集。从根结点到每个叶结点的路径对应了一个判定测试序列。决策树学习的目的是为了产生一棵泛化能力强的决策树，基本流程遵循”分治”(divide-and-conquer)策略。</p>
+<p><img src="/2019/03/21/ML4/dac.png" alt></p>
+<a id="more"></a>
+<h2 id="4-2-划分选择"><a href="#4-2-划分选择" class="headerlink" title="4.2　划分选择"></a><center>4.2　划分选择</center></h2><p>决策树的关键是如何选择最优划分属性。随着划分过程不断进行，我们希望决策树的分支结点所包含的样本尽可能属于同一类别，即结点的”纯度”(purity)越来越高</p>
+<h3 id="4-2-1-信息增益"><a href="#4-2-1-信息增益" class="headerlink" title="4.2.1　信息增益"></a>4.2.1　信息增益</h3><p>“信息熵”(information entropy)是度量样本集合纯度最常用的一种指标。假定当前样本集合D中第k类样本所占比例为$p_k(k=1,2,\dots,|y|)$，则D的信息熵定义为</p>
+<script type="math/tex; mode=display">
+Ent(D)=-\sum_{k=1}^{|y|}p_k\log_2p_k.　　　　　(4.1)</script><p>$Ent(D)​$的值越小，D的纯度越高。</p>
+<p>假定离散属性a有V个可能取值${a^1,a^2,\dots,a^V}$，若使用a来对样本集进行划分，则产生V个分支点，其中第v个分支点包含了D中所有在属性a上取值为$a^v$的样本，记为$D^v$。根据(4.1)计算出$D^v$的信息熵，再考虑到不同的分支结点所包含的样本数不同，于是可计算出用属性a对样本集D进行划分所获得的”信息增益”(information gain)</p>
+<script type="math/tex; mode=display">
+Gain(D,a)=Ent(D)-\sum_{v=1}^V\frac{|D^v|}{|D|}Ent(D^v).　　　　　(4.2)</script><p>信息增益越大，意味着使用属性a来进行划分所获得的”纯度提升越大”越大。因此可用信息增益来进行决策树的划分属性选择。即在图4.2算法第8行选择属性$a<em>*={\arg\max}</em>{a\in A}Gain(D,a)$。</p>
+<p>以表4.1西瓜数据集为例。数据集包含17个训练样例。$|y|=2$。决策树学习开始时，根结点包含D中所有样例，正例占$p_1=\frac{8}{17}$，反例占$p_2=\frac{9}{17}$。根据式(4.1)算出根结点的信息熵</p>
+<script type="math/tex; mode=display">
+Ent(D)=-\sum_{k=1}^2p_k\log_2p_k=-(\frac{8}{17}\log_2\frac{8}{17}+\frac{9}{17}\log_2\frac{9}{17})=0.998.</script><p><img src="/2019/03/21/ML4/l4.1.png" alt></p>
+<p>然后计算当前属性集合{色泽，根蒂，敲声，纹理，脐部，触感}中每个属性的信息增益。以色泽为例，使用该属性对D进行划分，可得到三个子集。根据式(4.1)分别计算出用色泽划分之后所获得的三个分支结点的信息熵为</p>
+<script type="math/tex; mode=display">
+Ent(D^1)=-(\frac{3}{6}\log_2\frac{3}{6}+\frac{3}{6}\log_2\frac{3}{6})=1.000,\\
+Ent(D^2)=-(\frac{4}{6}\log_2\frac{4}{6}+\frac{2}{6}\log_2\frac{2}{6})=0.918,\\
+Ent(D^3)=-(\frac{1}{5}\log_2\frac{1}{5}+\frac{4}{5}\log_2\frac{4}{5})=0.722,\\</script><p>于是根据式(4.2)计算属性色泽的信息增益为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Gain(D,色泽)&=End(D)-\sum_{v=1}^3\frac{|D^v|}{|D|}Ent(D^v)\\
+&=0.998-(\frac{6}{17}\times1.000+\frac{6}{17}\times0.918+\frac{5}{17}\times0.722)\\
+&=0.109.
+\end{aligned}</script><p>类似的，可计算出其他属性的信息增益。选择信息增益最大的属性作为划分属性。然后决策树学习算法将对每个分支点做进一步划分，最终得到的决策树如图4.4所示。</p>
+<p><img src="/2019/03/21/ML4/g4.4.png" alt></p>
+<h3 id="4-2-2-增益率"><a href="#4-2-2-增益率" class="headerlink" title="4.2.2　增益率"></a>4.2.2　增益率</h3><p>若把表4.1中的编号也作为一个候选划分属性，则其信息增益远大于其他候选划分属性。这样的决策树显然不具有泛化能力，实际上信息增益准则对可取值数目较多的属性有所偏好，为减少这种偏好可能带来的不利影响，可以使用”增益率”(gain ratio)来选择最优划分属性。采用与式(4.2)相同的符号表示，增益率定义为</p>
+<script type="math/tex; mode=display">
+Gain\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)},　　　　　(4.3)</script><p>其中</p>
+<script type="math/tex; mode=display">
+IV(a)=-\sum_{v=1}^V\frac{|D^v|}{|D|}\log_2\frac{|D^v|}{|D|}　　　　　(4.4)</script><p>称为属性a的”固有值”(intrinsic value)。属性a的可能取值数目越多(即V越大),IV(a)的值通常会越大。增益率准则对可取值数目较少的属性有所偏好，因此C4.5算法使用了一个启发式：先从候选划分属性中找出信息增益高于平均水平的属性，再从中选择增益率最高的。</p>
+<h3 id="4-2-3-基尼指数"><a href="#4-2-3-基尼指数" class="headerlink" title="4.2.3　基尼指数"></a>4.2.3　基尼指数</h3><p>CART决策树使用”基尼指数”(Gini index)来选择划分属性。采用与式(4.1)相同的符号，数据集D的纯度可用基尼值来度量：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Gini(D)&=\sum_{k=1}^{|y|}\sum_{k'\neq k}p_kp_{k'}\\
+&=1-\sum_{k=1}^{|y|}p_k^2.　　　　　(4.5)
+\end{aligned}</script><p>Gini(D)反映了从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此Gini(D)越小，则数据集D的纯度越高。采用与式(4.2)相同的符号表示，属性a的基尼指数定义为</p>
+<script type="math/tex; mode=display">
+Gini\_index(D,a)=\sum_{v=1}^V\frac{|D^v|}{|D|}Gini(D^v).　　　　　(4.6)</script><p>于是，在候选属性集合A中，选择那个使得划分后基尼指数最小的属性作为最优划分属性，即$a<em>*={\arg\min}</em>{a\in A}Gini_index(D,a)$。</p>
+<h2 id="4-3-剪枝处理"><a href="#4-3-剪枝处理" class="headerlink" title="4.3　剪枝处理"></a><center>4.3　剪枝处理</center></h2><p>剪枝(pruning)是决策树学习算法对付”过拟合”的主要手段。决策树剪枝的基本策略有”预剪枝”(prepruning)和”后剪枝”(postpruning)。预剪枝是在决策树生成过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化性能提升则停止划分并将当前结点标记为叶结点；后剪枝先从训练集生成一棵完整的决策树，然后自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来泛化性能提升，则为之。本节使用留出法进行判断泛化性能是否提升的标准。将表4.1随机划分为两部分变为表4.2，上为训练集下为测试集。</p>
+<p><img src="/2019/03/21/ML4/l4.2.png" alt></p>
+<p>采用信息增益准则进行划分属性选择，生成一棵如图4.5的决策树。</p>
+<p><img src="/2019/03/21/ML4/g4.5.png" alt></p>
+<h3 id="4-3-1-预剪枝"><a href="#4-3-1-预剪枝" class="headerlink" title="4.3.1　预剪枝"></a>4.3.1　预剪枝</h3><p>基于预剪枝策略从表4.2数据所生成的决策树如图4.6所示，其测试集精度为71.4%。这是一棵仅有一层划分的决策树，亦称”决策树桩”(decision stump)。预剪枝降低了过拟合风险，减少了时间开销，却带来了欠拟合的风险。</p>
+<p><img src="/2019/03/21/ML4/g4.6.png" alt></p>
+<h3 id="4-3-2-后剪枝"><a href="#4-3-2-后剪枝" class="headerlink" title="4.3.2　后剪枝"></a>4.3.2　后剪枝</h3><p>后剪枝先基于表4.2生成如图4.5的决策树，其测试集精度为42.9%。然后依次考察每个结点，若将其领衔的子树替换为叶结点后测试集精度提升，则剪枝。最后生成如图4.7的决策树，其测试集精度为71.4%。后剪枝欠拟合风险很小，泛化性能往往优于预剪枝，但时间开销大。</p>
+<p><img src="/2019/03/21/ML4/g4.7.png" alt></p>
+<h3 id="4-4-连续与缺失值"><a href="#4-4-连续与缺失值" class="headerlink" title="4.4　连续与缺失值"></a><center>4.4　连续与缺失值</center></h3><h3 id="4-4-1-连续值处理"><a href="#4-4-1-连续值处理" class="headerlink" title="4.4.1　连续值处理"></a>4.4.1　连续值处理</h3><p>现实学习任务中属性取值不一定离散，可能为连续值。处理连续值最简单的策略是二分法。</p>
+<p>给定样本集D和连续属性a，假定a在D上出现了n个不同取值，将这些值从小到大进行排序。基于划分点t将D分为子集$D^-_t$和$D^+_t$，前者包含在属性a上取值不大于t的样本，后者反之。对相邻的属性取值$a^i,a^{i+1}$来说，t在区间$[a^i,a^{i+1})$中取任意值所产生的划分结果相同。因此对连续属性a，考察包含n-1个元素的候选划分点集合</p>
+<script type="math/tex; mode=display">
+T_a=\{\frac{a^i+a^{i+1}}{2}|1\leq i\leq n-1\},　　　　　(4.7)</script><p>然后像考虑离散值一样考虑这些划分点</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Gain(D,a)&=\max_{t\in T_a}Gain(D,a,t)\\
+&=\max_{t\in T_a}Ent(D)-\sum_{\lambda\in\{-,+\}}\frac{|D^\lambda_t|}{|D|}Ent(D^\lambda_t),　　　　　(4.8)
+\end{aligned}</script><p>例如，在表4.1的数据集上增加两个连续属性得到表4.3，来生成一棵决策树。对属性”密度”，由式(4.8)计算出信息增益0.262，对应于划分点0.381。对属性”含糖率”，计算出信息增益0.349，对应于划分点0.126。</p>
+<p><img src="/2019/03/21/ML4/l4.3.png" alt></p>
+<p><img src="/2019/03/21/ML4/g4.8.png" alt></p>
+<p>与离散属性不同的是，若当前结点划分属性为连续属性，该属性还可作为其后代结点的划分属性。</p>
+<h3 id="4-4-2-缺失值处理"><a href="#4-4-2-缺失值处理" class="headerlink" title="4.4.2　缺失值处理"></a>4.4.2　缺失值处理</h3><p>现实学习任务中可能遇到样本的某些属性值缺失，如表4.4。</p>
+<p><img src="/2019/03/21/ML4/l4.4.png" alt></p>
+<p>此时面临两个问题：(1)如何在属性值缺失的情况下进行划分属性选择。(2)给定划分属性，若样本在该属性上的值缺失，如何对样本进行划分。</p>
+<p>给定训练集D和属性a，令$\tilde{D}$表示D中在属性a上没有缺失值的样本子集。对问题(1)，仅可根据$\tilde{D}$来判断属性a的优劣。假定属性a有V个可取值，令$\tilde{D}^v$表示$\tilde{D}$在属性a上取值为$a^v$的样本子集，$\tilde{D}<em>k$表示$\tilde{D}$中属于第k类的样本子集，显然有$\tilde{D}=\bigcup^{|y|}</em>{k=1}\tilde{D}<em>k,\tilde{D}=\bigcup^V</em>{v=1}\tilde{D}^v$。假定为每个样本x赋予一个权重$w_x$，并定义</p>
+<script type="math/tex; mode=display">
+\rho=\frac{\sum_{x\in\tilde{D}}w_x}{\sum_{x\in D}w_x},　　　　　(4.9)\\
+\tilde{p}_k=\frac{\sum_{x\in\tilde{D}_k}w_x}{\sum_{x\in\tilde{D}}w_x}(1\leq k\leq|y|),　　　　　(4.10)\\
+\tilde{r}_v=\frac{\sum_{x\in\tilde{D}^v}w_x}{\sum_{x\in\tilde{D}}w_x}(1\leq v\leq V).　　　　　(4.11)</script><p>其中$\rho$表示无缺失值样本所占的比例，$\tilde{p}<em>k$表示无缺失值样本中第k类所占的比例，$\tilde{r}^v$表示无缺失值样本中在属性a上取值$a^v$的样本所占的比例。显然，$\sum</em>{k=1}^{|y|}\tilde{p}<em>k=1,\sum</em>{v=1}^V\tilde{r}_v=1$。</p>
+<p>基于上述定义将式(4.2)推广为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Gain(D,a)&=\rho\times Gain(\tilde{D},a)\\
+&=\rho\times(Ent(\tilde{D})-\sum_{v=1}^V\tilde{r}_vEnt(\tilde{D}^v)),　　　　　(4.12)
+\end{aligned}</script><p>其中由式(4.1)，有</p>
+<script type="math/tex; mode=display">
+Ent(\tilde{D})=-\sum_{k=1}^{|y|}\tilde{p}_k\log_2\tilde{p}_k.</script><p>对问题(2)，若样本x在划分属性a上的取值已知，则将x划入与其取值对应的子结点，且样本权值保持不变。否则，将x同时划入所有子结点，样本权值在与属性值$a^v$对应的子结点中调整为$\tilde{r}_v\cdot w_x$。以表4.4的数据集为例生成了如图4.9所示的决策树。</p>
+<p><img src="/2019/03/21/ML4/g4.9.png" alt></p>
+<h2 id="4-5-多变量决策树"><a href="#4-5-多变量决策树" class="headerlink" title="4.5　多变量决策树"></a><center>4.5　多变量决策树</center></h2><p>把每个属性视为坐标空间中的一个坐标轴，d个属性描述的样本对应了d维空间中的一个数据点，对样本分类则意味着在这个坐标空间中寻找不同类样本之间的分类边界。决策树形成的分类边界有明显的轴平行(axis-parallel)特点。以表4.5为数据集，学得图4.10所示决策树，其分类边界如图4.11</p>
+<p><img src="/2019/03/21/ML4/l4.5.png" alt></p>
+<p><img src="/2019/03/21/ML4/g4.10.png" alt></p>
+<p><img src="/2019/03/21/ML4/g4.11.png" alt></p>
+<p>但在学习任务的真实分类边界比较复杂时，如图4.12所示，时间开销会很大。</p>
+<p><img src="/2019/03/21/ML4/g4.12.png" alt></p>
+<p>此时可如图4.12中红色线段所示使用斜的划分边界，即使用”多变量决策树”(multivariate decision tree)或”斜决策树”(oblique decision tree)。与传统的”单变量决策树”(univariate decision tree)不同，多变量决策树学习过程中，不是为每个非叶结点寻找一个最优划分属性，而是试图建立一个合适的线性分类器。例如对表4.5数据集，可学得图4.13的多变量决策树，其分类边界如图4.14.</p>
+<p><img src="/2019/03/21/ML4/g4.13.png" alt></p>
+<p><img src="/2019/03/21/ML4/g4.14.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Einsturing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://einsturing.top/2019/03/21/ML4/" title="Note of Machine Learning 4">http://einsturing.top/2019/03/21/ML4/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/12/100天ML-6/" rel="next" title="100-Days-Of-ML-Code Day6 逻辑回归">
+                <i class="fa fa-chevron-left"></i> 100-Days-Of-ML-Code Day6 逻辑回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/23/Poj3461/" rel="prev" title="Poj3461 Oulipo">
+                Poj3461 Oulipo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/圣诞凶.jpg" alt="Einsturing">
+            
+              <p class="site-author-name" itemprop="name">Einsturing</p>
+              <p class="site-description motion-element" itemprop="description">Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Einsturing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/11725722/#/" target="_blank" title="BiliBili">
+                      
+                        <i class="fa fa-fw fa-bold"></i>BiliBili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xlor.cn/" title="XLor" target="_blank">XLor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://houwenda.github.io/" title="louduan" target="_blank">louduan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ltfnjust.club/" title="LTF" target="_blank">LTF</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-决策树"><span class="nav-number">1.</span> <span class="nav-text">第4章　决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-基本流程"><span class="nav-number">1.1.</span> <span class="nav-text">4.1　基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-划分选择"><span class="nav-number">1.2.</span> <span class="nav-text">4.2　划分选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-信息增益"><span class="nav-number">1.2.1.</span> <span class="nav-text">4.2.1　信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-增益率"><span class="nav-number">1.2.2.</span> <span class="nav-text">4.2.2　增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-基尼指数"><span class="nav-number">1.2.3.</span> <span class="nav-text">4.2.3　基尼指数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-剪枝处理"><span class="nav-number">1.3.</span> <span class="nav-text">4.3　剪枝处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-预剪枝"><span class="nav-number">1.3.1.</span> <span class="nav-text">4.3.1　预剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-后剪枝"><span class="nav-number">1.3.2.</span> <span class="nav-text">4.3.2　后剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-连续与缺失值"><span class="nav-number">1.3.3.</span> <span class="nav-text">4.4　连续与缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-连续值处理"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.4.1　连续值处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-缺失值处理"><span class="nav-number">1.3.5.</span> <span class="nav-text">4.4.2　缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-多变量决策树"><span class="nav-number">1.4.</span> <span class="nav-text">4.5　多变量决策树</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Einsturing</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UueUj58tOhhprnrbs0RwUluG-gzGzoHsz',
+        appKey: 'j2OlRwPqQvWaPdO5NH4toWkq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

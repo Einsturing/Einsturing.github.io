@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第2章　模型评估与选择2.1　经验误差与过拟合错误率(error rate) and 精度(accuracy)：分类错误的样本数占样本总数的比例称为“错误率”，如果在m个样本中有a个样本分类错误，则错误率E=a/m；相应的1-a/m称为“精度”。 误差(error)：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差(training error) or 经验误差(empirical er">
+<meta name="keywords" content="机器学习,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note of Machine Learning 2">
+<meta property="og:url" content="http://einsturing.top/2019/01/27/ML2/index.html">
+<meta property="og:site_name" content="Einsturing">
+<meta property="og:description" content="第2章　模型评估与选择2.1　经验误差与过拟合错误率(error rate) and 精度(accuracy)：分类错误的样本数占样本总数的比例称为“错误率”，如果在m个样本中有a个样本分类错误，则错误率E=a/m；相应的1-a/m称为“精度”。 误差(error)：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差(training error) or 经验误差(empirical er">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/cv.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/cm.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/PR.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/ROC.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/cost.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/FNR.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/bi.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/tp.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/ct.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/al.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/F.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/dc.png">
+<meta property="og:image" content="http://einsturing.top/2019/01/27/ML2/bvd.png">
+<meta property="og:updated_time" content="2019-03-10T09:27:36.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Note of Machine Learning 2">
+<meta name="twitter:description" content="第2章　模型评估与选择2.1　经验误差与过拟合错误率(error rate) and 精度(accuracy)：分类错误的样本数占样本总数的比例称为“错误率”，如果在m个样本中有a个样本分类错误，则错误率E=a/m；相应的1-a/m称为“精度”。 误差(error)：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差(training error) or 经验误差(empirical er">
+<meta name="twitter:image" content="http://einsturing.top/2019/01/27/ML2/cv.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://einsturing.top/2019/01/27/ML2/">
+
+
+
+
+
+  <title>Note of Machine Learning 2 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Einsturing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仅余我与暮色平分此世界</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/01/27/ML2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Note of Machine Learning 2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-27T12:04:24+08:00">
+                2019-01-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T17:27:36+08:00">
+                2019-03-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/27/ML2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/ML2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第2章-模型评估与选择"><a href="#第2章-模型评估与选择" class="headerlink" title="第2章　模型评估与选择"></a><center>第2章　模型评估与选择</center></h1><h2 id="2-1-经验误差与过拟合"><a href="#2-1-经验误差与过拟合" class="headerlink" title="2.1　经验误差与过拟合"></a><center>2.1　经验误差与过拟合</center></h2><p>错误率(error rate) and 精度(accuracy)：分类错误的样本数占样本总数的比例称为“错误率”，如果在m个样本中有a个样本分类错误，则错误率E=a/m；相应的1-a/m称为“精度”。</p>
+<p>误差(error)：学习器的实际预测输出与样本的真实输出之间的差异。</p>
+<p>训练误差(training error) or 经验误差(empirical error)：学习器在训练集上的误差。</p>
+<p>泛化误差(generalization error)：学习器在新样本上的误差。</p>
+<p>过拟合(overfitting) and 欠拟合(underfitting)：学习器把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，导致泛化性能下降的现象称为“过拟合”，相对的，“欠拟合”指对训练样本的一般性质尚未学好。</p>
+<p>欠拟合比较容易克服，过拟合是机器学习面临的关键障碍。过拟合是无法彻底避免的，只能减小其风险。可以这样理解：机器学习面临的问题通常是NP难甚至更难，而有效的学习算法必然是在多项式时间内运行完成，若可彻底避免过拟合，则通过经验误差最小化就能获最优解，这就意味着我们构造性地证明了“P=NP”；因此，只要相信”P$\neq​$NP“，过拟合就不可避免。</p>
+<p>模型选择(model selection)：现实任务中，往往有多种学习算法可供选择，对同一个学习算法，使用不同的参数配置时，也会产生不同的模型。选用哪一个学习算法、使用哪一种参数配置的问题，称为”模型选择“问题。</p>
+<a id="more"></a>
+<h2 id="2-2-评估方法"><a href="#2-2-评估方法" class="headerlink" title="2.2　评估方法"></a><center>2.2　评估方法</center></h2><p>通常，我们可通过实验测试来对学习器的泛化误差进行评估并进而做出选择。为此，需使用一个“测试集”(testing set)来测试学习器对新样本的判别能力，然后以测试集上的“测试误差”(testing error)作为泛化误差的近似。</p>
+<p>测试集应尽可能与训练集互斥。有一个包含m个样例的数据集D = {(<strong>x<sub>1</sub></strong>,y<sub>1</sub>),(<strong>x<sub>2</sub></strong>,y<sub>2</sub>),…,(<strong>x<sub>m</sub></strong>,y<sub>m</sub>)}，通过对D进行适当的处理，从中产生训练集S和测试集T。下面介绍几种常见做法。</p>
+<h3 id="2-2-1-留出法"><a href="#2-2-1-留出法" class="headerlink" title="2.2.1　留出法"></a>2.2.1　留出法</h3><p>留出法(hold-out)：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为训练集T，即D = S $\cup$ T, S $\cap$ T = $\varnothing$。在S上训练出模型后，用T来评估其测试误差，作为对泛化误差的估计。</p>
+<p>需注意的是，训练/测试集的划分要尽可能保持数据分布的一致性，避免因数据划分过程引入额外的偏差而对最终结果产生影响。</p>
+<p>另一个需注意的问题是，即便在给定训练/测试集的样本比例后，仍存在多种划分方式对初始数据集D进行分割。因此，单次留出法得到的估计结果往往不够稳定可靠，在使用留出法时，一般要采用若干次随机划分，重复进行实验评估后取平均值作为留出法的评估结果。</p>
+<p>留出法会导致一个窘境：若令训练集S包含绝大多数样本，则训练出的模型可能更接近于用D训练出的模型，但由于T比较小，评估结果可能不够稳定准确；若令测试集T多包含一些样本，则训练集S与D差别更大了，被评估的模型与用D训练出的模型相比可能有较大差别，从而降低了评估结果的保真性(fidelity)。这个问题没有完美的解决方案。</p>
+<h3 id="2-2-2-交叉验证法"><a href="#2-2-2-交叉验证法" class="headerlink" title="2.2.2　交叉验证法"></a>2.2.2　交叉验证法</h3><p>交叉验证法(cross validation)：先将数据集D划分为k个大小相似的互斥子集，即D = D<sub>1</sub> $\cup$ D<sub>2</sub> $\cup$ … $\cup$ D<sub>k</sub>，D<sub>i</sub> $\cap$ D<sub>j</sub> = $\varnothing$ (i$\neq$j)。每个子集D<sub>i</sub>都尽可能保持数据分布的一致性，即从D中通过分层采样得到。然后，每次用k - 1个子集的并集作为训练集，余下的那个子集作为测试集；这样就可获得k组训练/测试集，从而可进行k次训练和测试，最终返回的是这k个测试结果的均值。</p>
+<p>显然，交叉验证法评估结果的稳定性和保真性在很大程度上取决于k的取值，为强调这一点，通常把交叉验证法称为“k折交叉验证”(k-fold cross validation)。</p>
+<p>与留出法相似，将数据集D划分为k个子集同样存在多种划分方式。为减小因样本划分不同而引入的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证的结果的均值。</p>
+<p>假定数据集D中包含m个样本，若令k = m，则得到了交叉验证法的一个特例：留一法(Leave-One-Out，简称LOO)。留一法结果比较准确，但数据集比较大时，计算开销难以忍受。</p>
+<p><img src="/2019/01/27/ML2/cv.png" alt></p>
+<h3 id="2-2-3-自助法"><a href="#2-2-3-自助法" class="headerlink" title="2.2.3　自助法"></a>2.2.3　自助法</h3><p>自助法(bootstrapping)：给定包含m个样本的数据集D，对它进行采样产生数据集D’：每次随机从D中挑选一个样本，将其拷贝放入D‘，然后再将该样本放回初始数据集D中；这个过程重复执行m次，得到包含m个样本的数据集D’。样本在m次采样中始终不被采到的概率是</p>
+<script type="math/tex; mode=display">
+lim_{m\rightarrow\infty}(1-\frac{1}{m})^m=\frac{1}{e}\approx0.368　　　　　(2.1)</script><p>即通过自助采样，初始数据集D中约有36.8%的样本未出现在采样数据集D’中。将D’用作训练集，D\D’用作测试集；这样的测试结果，亦称“包外估计”(out-of-bagestimate)。</p>
+<p>自助法在数据集较小、难以有效划分训练/测试集时很有用，但会引入估计偏差。初始数据量足够时，留出法和交叉验证法更常用一些。</p>
+<h3 id="2-2-4-调参与最终模型"><a href="#2-2-4-调参与最终模型" class="headerlink" title="2.2.4　调参与最终模型"></a>2.2.4　调参与最终模型</h3><p>大多数学习算法都有些参数(parameter)需要设定，在进行模型评估与选择时，除了要对适用学习算法进行选择，还需对算法参数进行设定，这就是“调参”(parameter tuning)。</p>
+<p>通常把学得模型在实际使用中遇到的数据称为测试数据，模型评估与选择中用于评估测试的数据集常称为“验证集”(validation set)。</p>
+<h2 id="2-3-性能度量"><a href="#2-3-性能度量" class="headerlink" title="2.3　性能度量"></a><center>2.3　性能度量</center></h2><p>对学习器的泛化性能进行评估，不仅需要有效可行的实验估计方法，还需要有衡量模型泛化能力的评价标准，这就是性能度量(performance measure)。</p>
+<p>在预测任务中，给定样例集D = {(<strong>x<sub>1</sub></strong>,y<sub>1</sub>),(<strong>x<sub>2</sub></strong>,y<sub>2</sub>),…,(<strong>x<sub>m</sub></strong>,y<sub>m</sub>)}，其中y<sub>i</sub>是示例<strong>x<sub>i</sub></strong>的真实标记。要评估学习器f的性能，就要把学习器预测结果f(x)与真实标记y进行比较。</p>
+<p>回归任务最常用的性能度量是“均方误差”(mean squared error)</p>
+<script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(x_i)-y_i)^2.　　　　　(2.2)</script><p>更一般的，对于数据分布$\mathcal{D}$和概率密度函数p($\cdot$)，均方误差可描述为</p>
+<script type="math/tex; mode=display">
+E(f;\mathcal{D})=\int_{x\sim\mathcal{D}}(f(x)-y)^2p(x)dx.　　　　　(2.3)</script><p>下面介绍分类任务中常用的性能度量。</p>
+<h3 id="2-3-1-错误率与精度"><a href="#2-3-1-错误率与精度" class="headerlink" title="2.3.1　错误率与精度"></a>2.3.1　错误率与精度</h3><p>错误率是分类错误的样本占样本总数的比例，精度则是分类正确的样本数占样本总数的比例。对样例集D，分类错误率定义为</p>
+<script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_i\neq y_i)).　　　　　(2.4)</script><p>精度则定义为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+acc(f;D)&=\frac{1}{m}\sum_{i=1}^m\mathbb{I}(f(x_i)=y_i)　　　　　(2.5)\\
+&=1-E(f;D).
+\end{aligned}</script><p>更一般的，对于数据分布$\mathcal{D}$和概率密度函数p($\cdot$)，错误率与精度可分别描述为</p>
+<script type="math/tex; mode=display">
+E(f;\mathcal{D})=\int_{x\sim\mathcal{D}}\mathbb{I}(f(x)\neq y)p(x)dx,　　　　　(2.6)</script><script type="math/tex; mode=display">
+\begin{aligned}
+acc(f;\mathcal{D})&=\int_{x\sim\mathcal{D}}\mathbb{I}(f(x)=y)p(x)dx,　　　　　(2.7)\\
+&=1-E(f;\mathcal{D})
+\end{aligned}</script><h3 id="2-3-2-查准率、查全率与F1"><a href="#2-3-2-查准率、查全率与F1" class="headerlink" title="2.3.2　查准率、查全率与F1"></a>2.3.2　查准率、查全率与F1</h3><p>错误率与精度不能满足所有任务需求，因此引入“查准率”(precision)与“查全率”(recall)。</p>
+<p>对于二分类问题，可将样例根据其真实类别与学习器预测类别的组合划分为真正例(true positive)、假正例(false positive)、真反例(true negative)、假反例(false negative)，令TP、FP、TN、FN分别表示其对应的样例数，则显然后TP+FP+TN+FN=样例总数。分类结果的“混淆矩阵”(confusion matrix)如下</p>
+<p><img src="/2019/01/27/ML2/cm.png" alt="cm"></p>
+<p>查准率P与查全率R分别定义为</p>
+<script type="math/tex; mode=display">
+P=\frac{TP}{TP+FP},　　　　　(2.8)\\
+R=\frac{TP}{TP+FN}.　　　　　(2.9)</script><p>查准率和查全率是一对矛盾的度量。根据学习器的预测结果对样例进行排序，逐个把样本作为正例进行预测，则每次可以计算出当前的查全率、查准率。以查准率为纵轴，查全率为横轴作图，就得到了“P-R曲线“。</p>
+<p><img src="/2019/01/27/ML2/PR.png" alt></p>
+<p>”平衡点“(Break-Even Point，简称BEP)是”查准率=查全率“时的取值，用于度量学习器的优劣。</p>
+<p>F1度量：</p>
+<script type="math/tex; mode=display">
+F1=\frac{2\times P\times R}{P+R}=\frac{2\times TP}{样例总数+TP-TN}.　　　　　(2.10)</script><p>F1度量的一般形式——F<sub>$\beta$</sub>，能表达出对查准率、查全率的不同偏好：</p>
+<script type="math/tex; mode=display">
+F_\beta=\frac{(1+\beta^2)\times P\times R}{(\beta^2\times P)+R},　　　　　(2.11)</script><p>$\beta$ &gt; 0度量了查全率对查准率的相对重要性。$\beta$ = 1时退化为标准的F1；$\beta$ &gt; 1时查全率有更大影响；$\beta$ &lt; 1时查准率有更大影响。</p>
+<p>有多个混淆矩阵时，一种做法是在各混淆矩阵上分别计算出查准率和查全率，再计算平均值，得到”宏查准率“(macro-P)、”宏查全率“(macro-R)，”宏F1”(macro-F1)：</p>
+<script type="math/tex; mode=display">
+macroP=\frac{1}{n}\sum_{i=1}^nP_i,　　　　　(2.12)\\
+macroR=\frac{1}{n}\sum_{i=1}^nR_i,　　　　　(2.13)\\
+macroF1=\frac{2\times macroP\times macroR}{macroP+macroR}.　　　　　(2.14)</script><p>还可先将各混淆矩阵的对应元素进行平均，再基于这些平均值计算出“微查准率”(micro-P)、“微查全率”(micro-R)和“微F1”(micro-F1)。</p>
+<script type="math/tex; mode=display">
+microP=\frac{\overline{TP}}{\overline{TP}+\overline{FP}},　　　　　(2.15)\\
+microR=\frac{\overline{TP}}{\overline{TP}+\overline{FN}},　　　　　(2.16)\\
+microF1=\frac{2\times microP\times microR}{microP+microR}.　　　　　(2.17)</script><h3 id="2-3-3-ROC与AUC"><a href="#2-3-3-ROC与AUC" class="headerlink" title="2.3.3　ROC与AUC"></a>2.3.3　ROC与AUC</h3><p>ROC全称“受试者工作特征”(Receiver Operating Characteristic)曲线。以“真正利率”(True Positive Rata，简称TPR)为纵轴，“假正例率”(False Positive Rate，简称FPR)为横轴，两者分别定义为：</p>
+<script type="math/tex; mode=display">
+TPR=\frac{TP}{TP+FN},　　　　　(2.18)\\
+FPR=\frac{FP}{TN+FP}.　　　　　(2.19)</script><p><img src="/2019/01/27/ML2/ROC.png" alt></p>
+<p>现实任务中测试样例有限，无法产生光滑ROC曲线，只能绘制出近似ROC曲线。</p>
+<p>AUC(Area Under ROC Curve)，即ROC曲线下的面积，用于比较学习器的优劣，可估算为：</p>
+<script type="math/tex; mode=display">
+AUC=\frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1}-x_i)\cdot(y_i+y_{i+1}).　　　　　(2.20)</script><p>形式化地看，AUC考虑的是样本预测的排序质量，与排序误差有紧密联系。给定m<sup>+</sup>个正例和m<sup>-</sup>个反例，另D<sup>+</sup>和D<sup>-</sup>分别表示正、反例集合，则排序“损失”(loss)定义为：</p>
+<script type="math/tex; mode=display">
+\mathscr{L}_{rank}=\frac{1}{m^+m^-}\sum_{x^+\in D^+}\sum_{x^-\in D^-}(\mathbb{I}(f(x^+)<f(x^-))+\frac{1}{2}\mathbb{I}(f(x^+)=f(x^-))),　　　　　(2.21)</script><p>容易看出$\mathscr{L_{rank}}$对应的是ROC曲线之上的面积，有</p>
+<script type="math/tex; mode=display">
+AUC=1-\mathscr{L}_{rank}.　　　　　(2.22)</script><h3 id="2-3-4-代价敏感错误率与代价曲线"><a href="#2-3-4-代价敏感错误率与代价曲线" class="headerlink" title="2.3.4　代价敏感错误率与代价曲线"></a>2.3.4　代价敏感错误率与代价曲线</h3><p>不同类型的错误造成的后果不同。根据任务的领域知识设定一个“代价矩阵”(cost matrix)，其中cost<sub>ij</sub>表示将第i类样本预测为第j类样本的代价。</p>
+<p><img src="/2019/01/27/ML2/cost.png" alt></p>
+<p>非均等代价下，希望最小化“总体代价”(total cost)。若将上表中第0类中作为正类，第1类作为反类，另D<sup>+</sup>与D<sup>-</sup>分别代表样例集D的正例子集和反例子集，则“代价敏感”(cost-sensitive)错误率为：</p>
+<script type="math/tex; mode=display">
+E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}\mathbb{I}(f(x_i)\neq y_i)\times cost_{01}+\sum_{x_i\in D^-}\mathbb{I}(f(x_i)\neq y_i)\times cost_{10}).　　　　　(2.23)</script><p>在非均等代价下，ROC曲线不能直接反映出学习器的期望总体代价，而“代价曲线”(cost curve)则可以达到目的。代价曲线图的横轴是取值为[0,1]的正例概率代价</p>
+<script type="math/tex; mode=display">
+P(+)cost=\frac{p\times cost_{01}}{p\times cost_{01}+(1-p)\times cost_{10}},　　　　　（2.24）</script><p>其中p是样例为正例的概率；纵轴是取值为[0,1]的归一化代价</p>
+<script type="math/tex; mode=display">
+cost_{norm}=\frac{FNR\times p\times cost_{01}+FPR\times(1-p)\times cost_{10}}{p\times cost_{01}+(1-p)\times cost{10}},　　　　　(2.25)</script><p>其中FPR是假正例率，FNR = 1 - TPR是假反例率。</p>
+<p>代价曲线的绘制：ROC上每一点对应了代价平面上的一条线段，根据ROC的FPR计算出FNR，在代价平面上作从(0,FPR)到(1,FNR)的线段，线段下的面积表示了该条件下的期望总体代价；取所有线段的下界，就是在所有条件下学习器的期望总体代价。</p>
+<p><img src="/2019/01/27/ML2/FNR.png" alt></p>
+<h2 id="2-4-比较检验"><a href="#2-4-比较检验" class="headerlink" title="2.4　比较检验"></a><center>2.4　比较检验</center></h2><p>统计假设检验(hypothesis test)为学习器性能比较提供了重要依据。</p>
+<p>下面介绍两种最基本的假设检验及几种常用的机器学习性能比较方法。默认错误率为性能度量，用$\epsilon$表示。</p>
+<h3 id="2-4-1-假设检验"><a href="#2-4-1-假设检验" class="headerlink" title="2.4.1　假设检验"></a>2.4.1　假设检验</h3><p>可根据测试错误率估推出泛化错误率的分布。</p>
+<p>泛化错误率为$\epsilon​$的学习器在一个样本上犯错的概率是$\epsilon​$；测试错误率$\widehat{\epsilon}​$意味着在m个测试样本中恰有$\widehat{\epsilon}\times m​$个被误分类。假定测试样本是从样本总体分布中独立采样而得，那么泛化错误率为$\epsilon​$的学习器将其中m’个样本误分类、其余样本全都分类正确的概率是$\left(\begin{array}{cc}m\m’\end{array}\right)\epsilon^{m’}(1-\epsilon)^{m-m’}​$；由此可估算出其恰将$\widehat{\epsilon}\times m​$个样本误分类的概率如下式所示，这也表达了在包含m个样本的测试集上，泛化错误率为$\epsilon​$的学习器被测得测试错误率为$\widehat{\epsilon}​$的概率：</p>
+<script type="math/tex; mode=display">
+P(\widehat{\epsilon};\epsilon)=\left(\begin{array}{cc}m\\\widehat{\epsilon}\times m\end{array}\right)\epsilon^{\widehat{\epsilon}\times m}(1-\epsilon)^{m-\widehat{\epsilon}\times m}.　　　　　(2.26)</script><p>给定测试错误率，则解$\partial P(\widehat{\epsilon};\epsilon)/\partial\epsilon=0$可知，$P(\widehat{\epsilon};\epsilon)$在$\epsilon=\widehat{\epsilon}$时最大，$|\epsilon-\widehat{\epsilon}|$增大时$P(\widehat{\epsilon};\epsilon)$减小。这符合二项(binomial)分布，如下图所示，若$\epsilon=0.3$，则10个样本中测得3个被误分类的概率最大。</p>
+<p><img src="/2019/01/27/ML2/bi.png" alt></p>
+<p>可使用“二项检验”(binomial test)来对“$\epsilon\leq0.3​$”(即“泛化错误率是否不大于0.3”)这样的假设进行检验。更一般的，考虑假设“$\epsilon\leq\epsilon_0​$”，则在1 - $\alpha​$的概率内所能观测到的最大错误率如下式计算。这里1 - $\alpha​$反映了结论的“置信度”(confidence)，直观来看，相应于上图的非阴影部分的范围。</p>
+<script type="math/tex; mode=display">
+\overline{\epsilon}=max\epsilon　s.t.　\sum_{i=\epsilon_0\times m+1}^m\left(\begin{array}{cc}m\\i\end{array}\right)\epsilon^i(1-\epsilon)^{m-i}<\alpha.　　　　　(2.27)</script><p>此时若测试错误率$\widehat{\epsilon}$小于临界值$\overline{\epsilon}$，则根据二项检验可得出结论：在$\alpha$的显著度下1，假设“$\epsilon\leq\epsilon_0$”不能被拒绝，即能以1 - $\alpha$的置信度认为，学习器的泛化错误率不大于$\epsilon_0$；否则该假设可被拒绝，即在$\alpha$的显著度下可认为学习器的泛化错误率大于$\epsilon_0$。</p>
+<p>有多个测试错误率时使用“t检验”(t-test)。假定有k个测试错误率，则平均测试错误率$\mu$和方差$\sigma^2$为</p>
+<script type="math/tex; mode=display">
+\mu=\frac{1}{k}\sum_{i=1}^k\widehat{\epsilon_i},　　　　　(2.28)\\
+\sigma^2=\frac{1}{k-1}\sum_{i=1}^k(\widehat{\epsilon_i}-\mu)^2.　　　　　(2.29)</script><p>考虑到这k个测试错误率可看作泛化错误率$\epsilon_0$的独立采样，则变量</p>
+<script type="math/tex; mode=display">
+\tau_t=\frac{\sqrt{k}(\mu-\epsilon_0)}{\sigma}　　　　　(2.30)</script><p>服从自由度为k - 1的t分布，如下图。</p>
+<p><img src="/2019/01/27/ML2/tp.png" alt></p>
+<h3 id="2-4-2-交叉验证t检验"><a href="#2-4-2-交叉验证t检验" class="headerlink" title="2.4.2　交叉验证t检验"></a>2.4.2　交叉验证t检验</h3><p>对不同学习器的性能进行比较，可用k折交叉验证“成对t检验”(paired t-tests)来进行比较检验。这里的基本思想是若两个学习器的性能相同，则它们使用相同的训练/测试集得到的测试错误率应相同。</p>
+<p>对k折交叉验证产生的k对测试错误率，先对每对结果求差，若两学习器性能相同，则差值均值应为零。因此可根据差值来对“两学习器性能相同”这个假设做t检验，计算出差值的均值$\mu$和方差$\sigma^2$，在显著度$\alpha$下，若变量</p>
+<script type="math/tex; mode=display">
+\tau_t=|\frac{\sqrt k\mu}{\sigma}|　　　　　(2.31)</script><p>小于临界值$t_{\alpha/2,k-1}$，则不能拒绝假设，否则可认为两个学习器性能有显著差别，平均错误率较小的那个学习器性能较好。</p>
+<p>由于样本有限，不同轮次的训练集重叠会导致测试错误率并不独立，可采用”$5\times2$交叉验证“法。做5次2折交叉验证，第i次2折交叉验证产生两对测试错误率分别求差，计算第1次2折交叉验证的两个结果的平均值$\mu=0.5(\Delta_1^1+\Delta_1^2)$，但对每次2折实验的结果都计算方差$\sigma_i^2=(\Delta_i^1-\frac{\Delta_i^1+\Delta_i^2}{2})^2+(\Delta_i^2-\frac{\Delta_i^1+\Delta_i^2}{2})^2.$变量</p>
+<script type="math/tex; mode=display">
+\tau_t=\frac{\mu}{\sqrt{0.2\sum_{i=1}^5\sigma_i^2}}　　　　　(2.32)</script><p>服从自由度为5的t分布。</p>
+<h3 id="2-4-3-McNemar检验"><a href="#2-4-3-McNemar检验" class="headerlink" title="2.4.3　McNemar检验"></a>2.4.3　McNemar检验</h3><p>对于二分类问题，使用留出法可获得两学习器分类结果的差别。如”列联表“(contingency table)所示。</p>
+<p><img src="/2019/01/27/ML2/ct.png" alt></p>
+<p>若假设两学习器性能相同，则应有$e<em>{01}=e</em>{10}$，那么变量$|e<em>{01}=e</em>{10}|$应服从正态分布。McNemar检验考虑变量</p>
+<script type="math/tex; mode=display">
+\tau_{\chi^2}=\frac{(|e_{01}-e_{10}|-1)^2}{e_{01}+e_{10}}　　　　　(2.33)</script><p>服从自由度为1的$\chi^2$分布。给定显著度$\alpha$，当变量值小于临界值$\chi_\alpha^2$时不能拒绝假设，即认为两学习器性能无显著差别。</p>
+<h3 id="2-4-4-Friedman检验与Nemenyi后续检验"><a href="#2-4-4-Friedman检验与Nemenyi后续检验" class="headerlink" title="2.4.4　Friedman检验与Nemenyi后续检验"></a>2.4.4　Friedman检验与Nemenyi后续检验</h3><p>在一组数据集上对多个算法进行比较，使用基于算法排序的Friedman检验。假定用四个数据集对算法A、B、C进行比较，根据测试性能由好到坏排序，赋予序值1，2…；若算法测试性能相同，则平分序值。得到算法比较序值表。</p>
+<p><img src="/2019/01/27/ML2/al.png" alt></p>
+<p>然后用Friedman检验来判断这些算法是否性能都相同。假定在N个数据集上比较k个算法，令ri表示第i个算法的平均序值，则ri的均值和方差分别为(k+1)/2和($k^2$-1/12)。变量</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\tau_{\chi^2}&=\frac{k-1}{k}\cdot\frac{12N}{k^2-1}\sum_{i=1}^k(r_i-\frac{k+1}{2})^2\\
+&=\frac{12N}{k(k+1)}(\sum_{i=1}^kr_i^2-\frac{k(k+1)^2}{4})　　　　　(2.34)
+\end{aligned}</script><p>在k和N都较大时，服从自由度为k - 1的$\chi^2$分布。</p>
+<p>”原始Friedman检验“过于保守，现在通常使用变量</p>
+<script type="math/tex; mode=display">
+\tau_F=\frac{(N-1)\tau_{\chi^2}}{N(k-1)-\tau_{\chi^2}},　　　　　(2.35)</script><p>$\tau_F$服从自由度为k - 1和(k - 1)(N - 1)的F分布。</p>
+<p>若”所有算法性能相同“这个假设被拒绝，则需进行”后续检验“(post-hoc test)来进一步区分各算法。</p>
+<p>Nemenyi检验计算出平均序值差别的临界值域</p>
+<script type="math/tex; mode=display">
+CD=q_\alpha\sqrt{\frac{k(k+1)}{6N}},　　　　　(2.36)</script><p>若两个算法的平均序值之差超出了临界值域CD，则以相应的置信度拒绝”两个算法性能相同“这一假设。</p>
+<p>检验比较可直观地用Friedman检验图表示。图中纵轴显示各个算法，横轴是平均序值，圆点表示平均序值，横线段表示临界值与大小，若两个算法的横线段有交叠，则没有显著差别，否则反之。</p>
+<p><img src="/2019/01/27/ML2/F.png" alt></p>
+<h2 id="2-5-偏差与方差"><a href="#2-5-偏差与方差" class="headerlink" title="2.5　偏差与方差"></a><center>2.5　偏差与方差</center></h2><p>“偏差-方差分解”(bias-variance decomposition)是解释学习算法泛化性能的一种重要工具。</p>
+<p>对测试样本<strong>x</strong>，令$y_D$为<strong>x</strong>在数据集中的标记，y为<strong>x</strong>的真实标记，f(<strong>x</strong>;D)为训练集D上学得模型f在<strong>x</strong>上的预测输出。以回归任务为例，学习算法的期望预测为</p>
+<script type="math/tex; mode=display">
+\overline f(x)=\mathbb{E}_D[f(;D)],　　　　　(2.37)</script><p>使用样本数相同的不同训练集产生的方差为</p>
+<script type="math/tex; mode=display">
+var(x)=\mathbb{E}_D[(f(x;D)-\overline f(x))^2],　　　　　(2.38)</script><p>噪声为</p>
+<script type="math/tex; mode=display">
+\epsilon^2=\mathbb{E}_D[(y_D-y)^2].　　　　　(2.39)</script><p>期望输出与真实标记的差别成为偏差(bias)，即</p>
+<script type="math/tex; mode=display">
+bias^2(x)=(\overline f(x)-y)^2.　　　　　(2.40)</script><p>为便于讨论，假定噪声期望为零，即$\mathbb{E}_D[y_D-y]=0$。通过简单的多项式展开合并，可对算法的期望泛化误差进行分解：</p>
+<p><img src="/2019/01/27/ML2/dc.png" alt></p>
+<p>于是，</p>
+<script type="math/tex; mode=display">
+E(f;D)=bias^2(x)+var(x)+\epsilon^2,　　　　　(2.42)</script><p>泛化误差可分解为偏差、方差与噪声之和。</p>
+<p>偏差(2.40)度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力；方差(2.38)度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响；噪声(2.39)表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
+<p>一般来说偏差与方差是有冲突的，称为偏差-方差窘境(bias-variance dilemma)。如下图，给定学习任务，训练不足时，拟合能力不够强，此时偏差主导了泛化错误率；训练程度较深，拟合能力增强，方差主导了泛化错误率。</p>
+<p><img src="/2019/01/27/ML2/bvd.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Einsturing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://einsturing.top/2019/01/27/ML2/" title="Note of Machine Learning 2">http://einsturing.top/2019/01/27/ML2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/26/洛谷P1056/" rel="next" title="洛谷P1056 排座椅">
+                <i class="fa fa-chevron-left"></i> 洛谷P1056 排座椅
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/09/线性代数1/" rel="prev" title="第1章 行列式">
+                第1章 行列式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/圣诞凶.jpg" alt="Einsturing">
+            
+              <p class="site-author-name" itemprop="name">Einsturing</p>
+              <p class="site-description motion-element" itemprop="description">Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Einsturing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/11725722/#/" target="_blank" title="BiliBili">
+                      
+                        <i class="fa fa-fw fa-bold"></i>BiliBili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xlor.cn/" title="XLor" target="_blank">XLor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://houwenda.github.io/" title="louduan" target="_blank">louduan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ltfnjust.club/" title="LTF" target="_blank">LTF</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-模型评估与选择"><span class="nav-number">1.</span> <span class="nav-text">第2章　模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-经验误差与过拟合"><span class="nav-number">1.1.</span> <span class="nav-text">2.1　经验误差与过拟合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-评估方法"><span class="nav-number">1.2.</span> <span class="nav-text">2.2　评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-留出法"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.2.1　留出法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-交叉验证法"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.2　交叉验证法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-自助法"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.2.3　自助法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-调参与最终模型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.2.4　调参与最终模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">2.3　性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-错误率与精度"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.3.1　错误率与精度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-查准率、查全率与F1"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.3.2　查准率、查全率与F1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-ROC与AUC"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3.3　ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-代价敏感错误率与代价曲线"><span class="nav-number">1.3.4.</span> <span class="nav-text">2.3.4　代价敏感错误率与代价曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-比较检验"><span class="nav-number">1.4.</span> <span class="nav-text">2.4　比较检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-假设检验"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.4.1　假设检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-交叉验证t检验"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.4.2　交叉验证t检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-McNemar检验"><span class="nav-number">1.4.3.</span> <span class="nav-text">2.4.3　McNemar检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-Friedman检验与Nemenyi后续检验"><span class="nav-number">1.4.4.</span> <span class="nav-text">2.4.4　Friedman检验与Nemenyi后续检验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-偏差与方差"><span class="nav-number">1.5.</span> <span class="nav-text">2.5　偏差与方差</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Einsturing</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UueUj58tOhhprnrbs0RwUluG-gzGzoHsz',
+        appKey: 'j2OlRwPqQvWaPdO5NH4toWkq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
