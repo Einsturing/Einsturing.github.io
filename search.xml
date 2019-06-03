@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Kaggle-Titanic]]></title>
-    <url>%2F2019%2F04%2F17%2FKaggle-Titanic%2F</url>
-    <content type="text"></content>
-      <tags>
-        <tag>项目</tag>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[洛谷P1080 国王游戏]]></title>
     <url>%2F2019%2F04%2F14%2F%E6%B4%9B%E8%B0%B7P1080%2F</url>
     <content type="text"><![CDATA[Description恰逢H国国庆，国王邀请n位大臣来玩一个有奖游戏。首先，他让每个大臣在左、右手上面分别写下一个整数，国王自己也在左、右手上各写一个整数。然后，让这n位大臣排成一排，国王站在队伍的最前面。排好队后，所有的大臣都会获得国王奖赏的若干金币，每位大臣获得的金币数分别是：排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数，然后向下取整得到的结果。 国王不希望某一个大臣获得特别多的奖赏，所以他想请你帮他重新安排一下队伍的顺序，使得获得奖赏最多的大臣，所获奖赏尽可能的少。注意，国王的位置始终在队伍的最前面。 Input第一行包含一个整数n，表示大臣的人数。 第二行包含两个整数a和b，之间用一个空格隔开，分别表示国王左手和右手上的整数。 接下来n行，每行包含两个整数a和b，之间用一个空格隔开，分别表示每个大臣左手和右手上的整数。 Output一个整数，表示重新排列后的队伍中获奖赏最多的大臣所获得的金币数。 Sample Input123453 1 1 2 3 7 4 4 6 Sample Output12 Analysis一番玄学数学证明后可发现规律，采用贪心可解，但是数据过大需要高精算法，可是我根本不会高精，于是使用python偷懒2333。 以下为证明。 假设队列如下： \begin{array} &&left&right\\ king&a0&b0\\ p1&a1&b1\\ p2&a2&b2 \end{array}可得$ans1=max(\frac{a0}{b1},\frac{a0*a1}{b2})​$ 再假设队列如下： \begin{array} &&left&right\\ king&a0&b0\\ p1&a2&b2\\ p2&a1&b1 \end{array}可得$ans2=max(\frac{a0}{b2},\frac{a0*a2}{b1})$ 而显然，有： \frac{a0*a1}{b2}>\frac{a0}{b2}\rightarrow ans1=\frac{a0*a1}{b2}\\ \frac{a0*a2}{b1}>\frac{a0}{b1}\rightarrow ans2=\frac{a0*a2}{b1}如果令$ans2&gt;ans1$ 则有 \frac{a0*a2}{b1}>\frac{a0*a1}{b2}约分得$a1b1&lt;a2b2$ 因此，为了得到最小的ans，需要将$ai*bi$按升序排列。 Code123456789101112131415161718192021222324s=input().split()n=int(s[0])s=input().split()a,b=int(s[0]),int(s[1])dc=[]for i in range(n): dc.append(&#123;'a':0,'b':0&#125;) s=input().split() dc[i]['a']=int(s[0]) dc[i]['b']=int(s[1]) passdc.sort(key=lambda d:(d['a']*d['b']))pre=[a]ans=0for i in range(n): ans=max(ans,pre[i]//dc[i]['b']) pre.append(pre[i]*dc[i]['a']) passprint(ans)]]></content>
