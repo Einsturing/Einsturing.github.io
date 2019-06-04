@@ -355,6 +355,213 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/12/06/二叉树(Binary Tree)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/06/二叉树(Binary Tree)/" itemprop="url">Binary Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T14:12:35+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T16:03:26+08:00">
+                2019-02-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/Binary-Tree/" itemprop="url" rel="index">
+                    <span itemprop="name">Binary Tree</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/二叉树(Binary Tree)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/06/二叉树(Binary Tree)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>二叉树的定义、实现、遍历、输出、应用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	BiTNode *lchild;</span><br><span class="line">	BiTNode *rchild;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	BiTNode *bt;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">RCreate</span><span class="params">(BiTNode *p, <span class="keyword">int</span> k, <span class="keyword">int</span> end)</span></span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(<span class="keyword">int</span> end)</span></span>;</span><br><span class="line">	BinaryTree() &#123; bt = <span class="literal">NULL</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Release</span><span class="params">(BiTNode *root)</span></span>;</span><br><span class="line">	~BinaryTree();</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">PreTraverse</span><span class="params">(BiTNode *p)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">InTraverse</span><span class="params">(BiTNode *p)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">PostTraverse</span><span class="params">(BiTNode *p)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">LeafCount</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">BiTreeDepth</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">BiTNode *<span class="title">GetTreeNode</span><span class="params">(<span class="keyword">int</span> item, BiTNode *lptr, BiTNode *rptr)</span></span>;</span><br><span class="line">	<span class="function">BiTNode *<span class="title">CopyTree</span><span class="params">(BiTNode *p)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">CompareTree</span><span class="params">(BiTNode *t1, BiTNode *t2)</span></span>;</span><br><span class="line">	<span class="function">BiTNode *<span class="title">GetRoot</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">BiTreeDisplay</span><span class="params">(BiTNode *bt, <span class="keyword">int</span> level = <span class="number">1</span>)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//创建二叉树递归函数</span></span><br><span class="line"><span class="keyword">int</span> BinaryTree::RCreate(BiTNode * p, <span class="keyword">int</span> k, <span class="keyword">int</span> end) &#123;</span><br><span class="line">	BiTNode *q;</span><br><span class="line">	<span class="keyword">int</span> e;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; e;</span><br><span class="line">	<span class="keyword">if</span> (e != end) &#123;</span><br><span class="line">		q = <span class="keyword">new</span> BiTNode;</span><br><span class="line">		q-&gt;data = e;</span><br><span class="line">		q-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">		q-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">if</span> (k == <span class="number">1</span>) p-&gt;lchild = q;</span><br><span class="line">		<span class="keyword">if</span> (k == <span class="number">2</span>) p-&gt;rchild = q;</span><br><span class="line">		RCreate(q, <span class="number">1</span>, end);</span><br><span class="line">		RCreate(q, <span class="number">2</span>, end);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//按先序序列创建二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::CreateBiTree(<span class="keyword">int</span> end) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请按先序序列的顺序输入二叉树，0为空指针域标志："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	BiTNode *p;</span><br><span class="line">	<span class="keyword">int</span> e;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; e;</span><br><span class="line">	<span class="keyword">if</span> (e == end) <span class="keyword">return</span>;</span><br><span class="line">	p = <span class="keyword">new</span> BiTNode;</span><br><span class="line">	<span class="keyword">if</span> (!p) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"申请内存失败！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">	p-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">	bt = p;</span><br><span class="line">	RCreate(p, <span class="number">1</span>, end);</span><br><span class="line">	RCreate(p, <span class="number">2</span>, end);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序遍历递归函数</span></span><br><span class="line"><span class="keyword">int</span> BinaryTree::PreTraverse(BiTNode *p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">		PreTraverse(p-&gt;lchild);</span><br><span class="line">		PreTraverse(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序遍历递归函数</span></span><br><span class="line"><span class="keyword">int</span> BinaryTree::InTraverse(BiTNode *p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		InTraverse(p-&gt;lchild);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">		InTraverse(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//后续遍历递归函数</span></span><br><span class="line"><span class="keyword">int</span> BinaryTree::PostTraverse(BiTNode * p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		PostTraverse(p-&gt;lchild);</span><br><span class="line">		PostTraverse(p-&gt;rchild);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//销毁二叉树递归函数</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::Release(BiTNode *root) &#123;</span><br><span class="line">	<span class="keyword">if</span> (root != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		Release(root-&gt;lchild);</span><br><span class="line">		Release(root-&gt;rchild);</span><br><span class="line">		<span class="keyword">delete</span> root;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//析构函数</span></span><br><span class="line">BinaryTree::~BinaryTree() &#123;</span><br><span class="line">	Release(bt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非递归先序遍历二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::PreOrderTraverse() &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"先序（非递归）遍历二叉树："</span>;</span><br><span class="line">	BiTNode *p = bt;</span><br><span class="line">	<span class="built_in">stack</span>&lt;BiTNode&gt; s;</span><br><span class="line">	<span class="keyword">while</span> (p || !s.empty()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">			s.push(*p);</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			p = <span class="keyword">new</span> BiTNode;</span><br><span class="line">			*p = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">			p = p-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非递归中序遍历二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::InOrderTraverse() &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"中序（非递归）遍历二叉树："</span>;</span><br><span class="line">	BiTNode *p = bt;</span><br><span class="line">	<span class="built_in">stack</span>&lt;BiTNode&gt; s;</span><br><span class="line">	<span class="keyword">while</span> (p || !s.empty()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			s.push(*p);</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			p = <span class="keyword">new</span> BiTNode;</span><br><span class="line">			*p = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">			p = p-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非递归后序遍历结点类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BiTNode1</span> &#123;</span></span><br><span class="line">	BiTNode *bt;</span><br><span class="line">	<span class="keyword">int</span> tag;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//非递归后序遍历二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::PostOrderTraverse() &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"后序（非递归）遍历二叉树："</span>;</span><br><span class="line">	BiTNode *p = bt;</span><br><span class="line">	<span class="built_in">stack</span>&lt;BiTNode1&gt; s;</span><br><span class="line">	BiTNode1 *temp;</span><br><span class="line">	<span class="keyword">while</span> (p || !s.empty()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			BiTNode1 *t = <span class="keyword">new</span> BiTNode1;</span><br><span class="line">			t-&gt;bt = p;</span><br><span class="line">			t-&gt;tag = <span class="number">1</span>;</span><br><span class="line">			s.push(*t);</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			temp = <span class="keyword">new</span> BiTNode1;</span><br><span class="line">			*temp = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">			<span class="keyword">if</span> (temp-&gt;tag == <span class="number">1</span>) &#123;</span><br><span class="line">				temp-&gt;tag = <span class="number">2</span>;</span><br><span class="line">				s.push(*temp);</span><br><span class="line">				p = <span class="keyword">new</span> BiTNode;</span><br><span class="line">				p = temp-&gt;bt-&gt;rchild;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; temp-&gt;bt-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">				p = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//层次遍历二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::LevelOrderTraverse() &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"层次遍历二叉树："</span>;</span><br><span class="line">	<span class="built_in">queue</span>&lt;BiTNode&gt; q;</span><br><span class="line">	BiTNode *t;</span><br><span class="line">	<span class="keyword">if</span> (bt) &#123;</span><br><span class="line">		q.push(*bt);</span><br><span class="line">		<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">			t = <span class="keyword">new</span> BiTNode;</span><br><span class="line">			*t = q.front();</span><br><span class="line">			q.pop();</span><br><span class="line">			<span class="keyword">if</span> (t) <span class="built_in">cout</span> &lt;&lt; t-&gt;data &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">			<span class="keyword">if</span> (t-&gt;lchild) q.push(*t-&gt;lchild);</span><br><span class="line">			<span class="keyword">if</span> (t-&gt;rchild) q.push(*t-&gt;rchild);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算叶子的个数递归函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Leaf</span><span class="params">(BiTNode *p, <span class="keyword">int</span> &amp;count)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p) &#123;</span><br><span class="line">		Leaf(p-&gt;lchild, count);</span><br><span class="line">		Leaf(p-&gt;rchild, count);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; p-&gt;rchild == <span class="literal">NULL</span>) count++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//后序遍历计算叶子的个数</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::LeafCount() &#123;</span><br><span class="line">	<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	Leaf(bt, count);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"叶子的个数为"</span> &lt;&lt; count &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算深度递归函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Depth</span><span class="params">(BiTNode *p, <span class="keyword">int</span> level, <span class="keyword">int</span> &amp;depth)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lchild) Depth(p-&gt;lchild, level + <span class="number">1</span>, depth);</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;rchild) Depth(p-&gt;rchild, level + <span class="number">1</span>, depth);</span><br><span class="line">	<span class="keyword">if</span> (level &gt; depth) depth = level;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//后序遍历计算深度</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::BiTreeDepth() &#123;</span><br><span class="line">	<span class="keyword">int</span> depth = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (bt) &#123;</span><br><span class="line">		Depth(bt, <span class="number">1</span>, depth);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"二叉树的深度为"</span> &lt;&lt; depth &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取二叉树的一个结点</span></span><br><span class="line">BiTNode *BinaryTree::GetTreeNode(<span class="keyword">int</span> item, BiTNode * lptr, BiTNode * rptr) &#123;</span><br><span class="line">	BiTNode *p = <span class="keyword">new</span> BiTNode;</span><br><span class="line">	p-&gt;data = item;</span><br><span class="line">	p-&gt;lchild = lptr;</span><br><span class="line">	p-&gt;rchild = rptr;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序遍历复制一棵二叉树</span></span><br><span class="line">BiTNode *BinaryTree::CopyTree(BiTNode *p) &#123;</span><br><span class="line">	BiTNode *newlptr, *newrptr;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lchild) newlptr = CopyTree(p-&gt;lchild);</span><br><span class="line">	<span class="keyword">else</span> newlptr = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;rchild) newrptr = CopyTree(p-&gt;rchild);</span><br><span class="line">	<span class="keyword">else</span> newrptr = <span class="literal">NULL</span>;</span><br><span class="line">	bt = GetTreeNode(p-&gt;data, newlptr, newrptr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序遍历判断两棵二叉树是否相等</span></span><br><span class="line"><span class="keyword">int</span> BinaryTree::CompareTree(BiTNode * t1, BiTNode * t2) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t1 == <span class="literal">NULL</span> &amp;&amp; t2 == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (t1-&gt;data == t2-&gt;data&amp;&amp;CompareTree(t1-&gt;lchild, t2-&gt;lchild) &amp;&amp; CompareTree(t1-&gt;rchild, t2-&gt;rchild)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取根结点</span></span><br><span class="line">BiTNode* BinaryTree::GetRoot() &#123;</span><br><span class="line">	<span class="keyword">if</span> (bt != <span class="literal">NULL</span>) <span class="keyword">return</span> bt;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//反中序递归横向树状显示一棵二叉树</span></span><br><span class="line"><span class="keyword">void</span> BinaryTree::BiTreeDisplay(BiTNode * bt, <span class="keyword">int</span> level) &#123;</span><br><span class="line">	<span class="keyword">if</span> (bt) &#123;</span><br><span class="line">		BiTreeDisplay(bt-&gt;rchild, level + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) <span class="built_in">cout</span> &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; bt-&gt;data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		BiTreeDisplay(bt-&gt;lchild, level + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	BinaryTree bit;</span><br><span class="line">	BinaryTree bit1;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		bit.CreateBiTree(<span class="number">0</span>);</span><br><span class="line">		bit.BiTreeDisplay(bit.GetRoot(),<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"先序（递归）遍历二叉树："</span>;</span><br><span class="line">		bit.PreTraverse(bit.GetRoot());</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"中序（递归）遍历二叉树："</span>;</span><br><span class="line">		bit.InTraverse(bit.GetRoot());</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"后序（递归）遍历二叉树："</span>;</span><br><span class="line">		bit.PostTraverse(bit.GetRoot());</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">		bit.PreOrderTraverse();</span><br><span class="line">		bit.InOrderTraverse();</span><br><span class="line">		bit.PostOrderTraverse();</span><br><span class="line">		bit.LevelOrderTraverse();</span><br><span class="line"></span><br><span class="line">		bit.LeafCount();</span><br><span class="line">		bit.BiTreeDepth();</span><br><span class="line"></span><br><span class="line">		bit1.CopyTree(bit.GetRoot());</span><br><span class="line">		bit1.BiTreeDisplay(bit1.GetRoot(), <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span> (bit1.CompareTree(bit.GetRoot(), bit1.GetRoot())) <span class="built_in">cout</span> &lt;&lt; <span class="string">"相等，拷贝成功"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/11/19/Poj1651/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2309,236 +2516,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/10/02/Hdu2082/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/Hdu2082/" itemprop="url">Hdu2082 找单词</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T15:24:50+08:00">
-                2018-10-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:59:31+08:00">
-                2019-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Dynamic Programming</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/Knapsack-Problem/" itemprop="url" rel="index">
-                    <span itemprop="name">Knapsack Problem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/10/02/Hdu2082/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/02/Hdu2082/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  568
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>假设有x1个字母A， x2个字母B,….. x26个字母Z，同时假设字母A的价值为1，字母B的价值为2,….. 字母Z的价值为26。那么，对于给定的字母，可以找到多少价值&lt;=50的单词呢？单词的价值就是组成一个单词的所有字母的价值之和，比如，单词ACM的价值是1+3+14=18，单词HDU的价值是8+4+21=33。(组成的单词与排列顺序无关，比如ACM与CMA认为是同一个单词）。</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>输入首先是一个整数N，代表测试实例的个数。<br>然后包括N行数据，每行包括26个&lt;=20的整数x1,x2,…..x26.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>对于每个测试实例，请输出能找到的总价值&lt;=50的单词数,每个实例的输出占一行。</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line">9 2 6 2 10 2 2 5 6 1 0 2 7 0 2 2 7 5 10 6 10 2 10 6 1 9</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">379297</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/02/Hdu2082/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2586,7 +2568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2597,7 +2579,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2608,7 +2590,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
