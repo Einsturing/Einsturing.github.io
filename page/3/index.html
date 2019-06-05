@@ -355,6 +355,254 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/13/线性代数3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/13/线性代数3/" itemprop="url">第3章 矩阵的初等变换与线性方程组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-13T12:28:09+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:26:46+08:00">
+                2019-02-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Linear-Algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear Algebra</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/13/线性代数3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/13/线性代数3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="§1-矩阵的初等变换"><a href="#§1-矩阵的初等变换" class="headerlink" title="§1　矩阵的初等变换"></a><center>§1　矩阵的初等变换</center></h2><p><strong>定义1</strong>　下面三种变换称为矩阵的初等行变换：</p>
+<p>(i)对换两行(对换i,j两行，记作$r_i\leftrightarrow r_j$)；</p>
+<p>(ii)以数$k\neq0​$乘某一行中的所有元(第i行乘k，记作$r_i\times k​$)；</p>
+<p>(iii)把某一行所有元的k倍加到另一行对应的元上去(第j行的k倍加到第i行上，记作$r_i+kr_j$)。</p>
+<p>把行换成列，即得初等列变换的定义。统称初等变换。</p>
+<p>如果$A$经有限次初等变换变成$B$，就称$A$与$B$等价，记作$A\sim B$。矩阵之间的等价关系具有下列性质：</p>
+<p>(i)<strong>反身性　$A\sim A$；</strong></p>
+<p>(ii)<strong>对称性　若$A\sim B$，则$B\sim A$；</strong></p>
+<p>(iii)<strong>传递性　若$A\sim B$，$B\sim C$，则$A\sim C$。</strong></p>
+<p><strong>定义2</strong>　(1)非零矩阵若满足(i)非零行在零行的上面；(ii)非零行的首非零元所在列在上一行的首非零元所在列的右面，则称此矩阵为行阶梯形矩阵；</p>
+<p>(2)进一步，若$A$是行阶梯形矩阵，并且还满足：(i)非零行的首非零元素为1；(ii)首非零元所在的列的其他元均为0，则称$A$为行最简形矩阵。</p>
+<p>对于任何非零矩阵$A_{m\times n}$，总可经有限次初等行变换把它变为行阶梯形矩阵和行最简形矩阵。</p>
+<p>对最简形矩阵再施以初等列变换，可化为标准形。对于$m\times n$矩阵$A$，总可经过初等变换把它化为标准形</p>
+<script type="math/tex; mode=display">
+F=
+\left(
+\begin{matrix}
+E_r&O\\
+O&O
+\end{matrix}
+\right)_{m\times n}</script><p><strong>定理1　设$A$与$B$为$m\times n$矩阵，那么</strong></p>
+<p>(i)<strong>$A$与$B$行等价的充分必要条件是存在m阶可逆矩阵$P$，使$PA=B$；</strong></p>
+<p>(ii)<strong>$A​$与$B​$列等价的充分必要条件是存在n阶可逆矩阵$Q​$，使$AQ=B​$；</strong></p>
+<p>(iii)<strong>$A$与$B$等价的充分必要条件是存在m阶可逆矩阵$P$及n阶可逆矩阵$Q$，使$PAQ=B$。</strong></p>
+<p><strong>定义3</strong>　由单位矩阵$E$经过一次初等变换得到的矩阵称为初等矩阵。</p>
+<p><strong>性质1　设$A$是一个$m\times n$矩阵，对$A$施行一次初等行变换，相当于在$A$的左边乘相应的m阶初等矩阵；对$A$施行一次初等列变换，相当于在$A$的右边乘相应的n阶初等矩阵</strong></p>
+<p><strong>性质2　方阵$A$可逆的充分必要条件是存在有限个初等矩阵$P_1,P_2,\dots,P_l,$使$A=P_1P_2\dots P_l$。</strong></p>
+<p><strong>推论　方阵$A$可逆的充分必要条件是$A$和$E$行等价</strong></p>
+<p>有可逆矩阵$P$，使$PA=B$，求可逆矩阵$P$：</p>
+<p>由于</p>
+<script type="math/tex; mode=display">
+PA=B\Leftrightarrow
+\left\{
+\begin{array}{rcl}
+PA=B\\
+PE=P
+\end{array}
+\right.
+\Leftrightarrow P(A,E)=(B,P)</script><p>即$(A,E)$与$(B,P)$行等价，因此如果对矩阵$(A,E)$作初等行变换，当把$A$变为$B$时，$E$就变为$P$。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/13/线性代数3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/11/线性代数2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2305,231 +2553,6 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/12/12/Poj1458/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/12/Poj1458/" itemprop="url">Poj1458 Common Subsequence</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T22:10:00+08:00">
-                2018-12-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T21:51:01+08:00">
-                2019-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Dynamic Programming</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/Linear-Dynamic-Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Linear Dynamic Programming</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/12/Poj1458/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/12/Poj1458/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  479
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A subsequence of a given sequence is the given sequence with some elements (possible none) left out. Given a sequence X = &lt; x1, x2, …, xm &gt; another sequence Z = &lt; z1, z2, …, zk &gt; is a subsequence of X if there exists a strictly increasing sequence &lt; i1, i2, …, ik &gt; of indices of X such that for all j = 1,2,…,k, xij = zj. For example, Z = &lt; a, b, f, c &gt; is a subsequence of X = &lt; a, b, c, f, b, c &gt; with index sequence &lt; 1, 2, 4, 6 &gt;. Given two sequences X and Y the problem is to find the length of the maximum-length common subsequence of X and Y. </p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The program input is from the std input. Each data set in the input contains two strings representing the given sequences. The sequences are separated by any number of white spaces. The input data are correct.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each set of data the program prints on the standard output the length of the maximum-length common subsequence from the beginning of a separate line. </p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abcfbc         abfcab</span><br><span class="line">programming    contest </span><br><span class="line">abcd           mnp</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/12/Poj1458/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2582,7 +2605,7 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
