@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="3.1　运输层提供的服务运输层为不同主机进程间提供端到端的逻辑通信功能(无需考虑具体物理链路)。 运输层协议运行在端系统，不在路由器中。发送方运输层将应用进程的报文划分成若干报文段，封装后传给网络层；接收方运输层将网络层上传的报文段，去掉运输层首部后，重新装配为报文，传向应用层。双方网络层负责主机到主机的网络传输，提供主机之间的逻辑通信。 运输层协议有TCP和UDP，提供不同的服务质量，所能提供的">
+<meta name="keywords" content="笔记,计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第3章 运输层">
+<meta property="og:url" content="http://einsturing.top/2019/06/06/CN3/index.html">
+<meta property="og:site_name" content="Einsturing">
+<meta property="og:description" content="3.1　运输层提供的服务运输层为不同主机进程间提供端到端的逻辑通信功能(无需考虑具体物理链路)。 运输层协议运行在端系统，不在路由器中。发送方运输层将应用进程的报文划分成若干报文段，封装后传给网络层；接收方运输层将网络层上传的报文段，去掉运输层首部后，重新装配为报文，传向应用层。双方网络层负责主机到主机的网络传输，提供主机之间的逻辑通信。 运输层协议有TCP和UDP，提供不同的服务质量，所能提供的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-1.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/C:/Users/Einsturing/blog/source/_posts/CN3/g3-2.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-3.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-4.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-5.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-6.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-7.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-8.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-9.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-10.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-11.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-12.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-13.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-14.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-15.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-16.png">
+<meta property="og:image" content="http://einsturing.top/2019/06/06/CN3/g3-17.png">
+<meta property="og:updated_time" content="2019-06-10T14:38:06.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第3章 运输层">
+<meta name="twitter:description" content="3.1　运输层提供的服务运输层为不同主机进程间提供端到端的逻辑通信功能(无需考虑具体物理链路)。 运输层协议运行在端系统，不在路由器中。发送方运输层将应用进程的报文划分成若干报文段，封装后传给网络层；接收方运输层将网络层上传的报文段，去掉运输层首部后，重新装配为报文，传向应用层。双方网络层负责主机到主机的网络传输，提供主机之间的逻辑通信。 运输层协议有TCP和UDP，提供不同的服务质量，所能提供的">
+<meta name="twitter:image" content="http://einsturing.top/2019/06/06/CN3/g3-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://einsturing.top/2019/06/06/CN3/">
+
+
+
+
+
+  <title>第3章 运输层 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Einsturing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仅余我与暮色平分此世界</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/06/06/CN3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第3章 运输层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T13:50:19+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-10T22:38:06+08:00">
+                2019-06-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/06/CN3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/06/CN3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="3-1-运输层提供的服务"><a href="#3-1-运输层提供的服务" class="headerlink" title="3.1　运输层提供的服务"></a><center>3.1　运输层提供的服务</center></h2><p>运输层为不同主机进程间提供端到端的<strong>逻辑通信</strong>功能(无需考虑具体物理链路)。</p>
+<p><strong>运输层协议运行在端系统</strong>，不在路由器中。发送方运输层将应用进程的报文划分成若干报文段，封装后传给网络层；接收方运输层将网络层上传的报文段，去掉运输层首部后，重新装配为报文，传向应用层。双方<strong>网络层</strong>负责主机到主机的网络传输，<strong>提供主机之间的逻辑通信</strong>。</p>
+<p>运输层协议有TCP和UDP，提供不同的服务质量，所能提供的服务受到网络层提供服务的限制，如不保证时延和带宽。同样，网络层服务是不可靠的(存在分组丢失、失序和重复)，运输层协议通过检错重传、排序、查重等措施能为应用程序提供可靠的传输服务。</p>
+<p>网络层的主要协议是IP(网际协议)，TCP和UDP都基于IP。IP提供不可靠的传输服务，尽最大的努力在通信的主机之间交付数据报，但不保证按序交付和数据的完整性。IP使用IP地址，即设备接口的网络层地址，每台主机至少有一个，路由器有多个。</p>
+<a id="more"></a>
+<h2 id="3-2-多路复用与分解"><a href="#3-2-多路复用与分解" class="headerlink" title="3.2　多路复用与分解"></a><center>3.2　多路复用与分解</center></h2><p>主机上可能同时运行<strong>多个应用进程</strong>，当运输层从网络层接收数据后，<strong>通过套接字</strong>定向到相应的进程，主机上的<strong>套接字可以有多个</strong>，对应不同的进程。</p>
+<p>发送主机的多路复用：运输层从不同套接字收集数据，并<strong>为每个数据块封装上运输层首部，生成报文段</strong>，交给网络层。</p>
+<p>接收主机的多路分解：运输层从网络层收到报文段，取出运输层首部并识别出套接字，并将剩余数据传给该套接字。</p>
+<p>无连接的多路复用与分解：UDP套接字由<strong>二元组(IP地址，端口号)</strong>组成，具有不同源套接字、相同目的套接字的不同UDP报文段，可传送到相同的目的进程。创建UDP套接字可由操作系统分配临时端口号或指定端口号，客户机进程通常使用临时端口号，服务器进程通常使用周知端口号。</p>
+<p>面向连接的多路复用与分解：TCP套接字由<strong>四元组(源IP地址，源端口号，目的IP地址，目的端口号)</strong>组成，服务器支持多个并行的TCP套接字，每个新的连接都由服务器创建的新进程负责。创建套接字时，<strong>服务器进程</strong>先创建欢迎套接字，侦听任何客户机的连接请求；<strong>客户机进程</strong>创建客户套接字并发起连接；当服务器收到连接请求后，<strong>创建一个新的套接字与客户建立连接，老的欢迎套接字继续侦听其他客户请求</strong>；TCP连接完成后，客户机和服务器可互相发送数据。</p>
+<p><strong>Web服务器</strong>可以产生多个进程<strong>同时与多个客户机连接</strong>，每个进程都使用其对应的TCP套接字，收发HTTP报文，高性能Web服务器可能只使用一个进程，但为每个新连接创建一个<strong>新线程(一个轻量级的子进程)，建立新的TCP套接字(此时服务器进程的端口号不变)</strong>。</p>
+<h2 id="3-3-无连接运输：UDP"><a href="#3-3-无连接运输：UDP" class="headerlink" title="3.3　无连接运输：UDP"></a><center>3.3　无连接运输：UDP</center></h2><p>UDP提供“尽力而为”的服务，可能丢包或失序。无连接运输通信双方无握手过程，每个UDP段相互独立(而多个TCP段通常属于同一个文件)。</p>
+<p>UDP的检验和(ckecksum)：UDP提供有限的可靠性，检查端到端传输的<strong>比特差错</strong>(注意：会同时检查网络层首部部分字段，如IP地址等)，只检错，不纠错不报错。</p>
+<p>发送方将要检查数据按<strong>16位分块，检验和字段初始为16个0</strong>；将所有块<strong>求和(最高位进位加到最低位)</strong>；<strong>对和求反</strong>，得到检验和，放入检验和字段再发送。接收方对收到的相关数据(包括检验和)分块、求和，如果结果<strong>全”1”</strong>，则数据无错，否则数据出错。</p>
+<p><img src="/2019/06/06/CN3/g3-1.png" alt></p>
+<center>图3-1：UDP的检验和</center>
+
+<p>使用UDP协议的原因在于，不创建连接可减少时延，段首部简单导致传输、处理开销小，无拥塞控制可以尽可能快地传输。UDP主要应用于能容忍数据丢失，小块数据的快速传送，如流式多媒体、DNS、SNMP(简单网络管理协议)、TFTP(简单文件传输协议)、RIP(路由信息协议)。</p>
+<p>也有基于UDP的可靠传输，需在应用层采取额外的可靠性措施，实现特定的差错恢复。</p>
+<h2 id="3-4-可靠数据传输的原理"><a href="#3-4-可靠数据传输的原理" class="headerlink" title="3.4　可靠数据传输的原理"></a><center>3.4　可靠数据传输的原理</center></h2><p>可靠数据传输指低层信道不太可靠，本层采取一些措施，为上一层数据提供<strong>可靠传输服务</strong>，即数据不出错，不丢失，按序传送。</p>
+<p>可靠传输服务通过分别设计可靠数据传输协议的<strong>发送方和接收方实体</strong>来实现。</p>
+<p>发送方：上一层通过<strong>rdt_send()</strong>函数调用本层可靠数据传输协议；本层协议实体通过<strong>udt_send()</strong>使用下层不可靠信道发送分组。</p>
+<p>接收方：本层协议实体通过<strong>rdt_rcv()</strong>从下层收到数据，并实现数据可靠性处理；本层通过<strong>deliver_data()</strong>函数将可靠数据交付给上一层。</p>
+<p>下为针对不同信道的可靠数据传输协议。</p>
+<p>1.完全可靠信道：</p>
+<p>rdt 1.0 实现发与收<br>2.具有比特差错的信道：</p>
+<p>rdt 2.0 增加检错：采用确认和重传(使用校验和)</p>
+<p>rdt 2.1 增加确认出错的处理：如果确认出错，发送方重传数据分组，接收方检测冗余数据分组(数据分组使用序号)</p>
+<p>rdt 2.2 用ACK实现NAK功能(ACK使用序号)</p>
+<p>3.具有比特差错和丢包的信道：</p>
+<p>rdt 3.0 增加对丢包的处理(发送方使用定时器)</p>
+<p>使用有限状态自动机(FSM/FSA,Finite State Machine/Automaton)，可完整地描述协议发送方和接收方实体的工作逻辑。</p>
+<p>有限状态机是离散事件系统建模与分析的图形化数学工具，组成如下。</p>
+<p>圆圈：表示系统的状态，虚线箭头指向系统的初始状态</p>
+<p>带箭头的弧：表示系统的状态变迁</p>
+<p>弧的横线上方：表示引起状态变迁的事件</p>
+<p>弧的横线下方：表示变迁时系统要采取的动作</p>
+<p>$\Lambda$符号：表示零事件或零动作</p>
+<p><img src="/2019/06/06/CN3/C:/Users/Einsturing/blog/source/_posts/CN3/g3-2.png" alt></p>
+<center>图3-2：FSM</center>
+
+<h3 id="3-4-1-构造可靠数据传输协议"><a href="#3-4-1-构造可靠数据传输协议" class="headerlink" title="3.4.1　构造可靠数据传输协议"></a>3.4.1　构造可靠数据传输协议</h3><p>1、可靠信道上的可靠数据传输：rdt 1.0</p>
+<p>假设<strong>信道完全可靠</strong>，数据传送不出错不丢包，<strong>收发双方速率匹配</strong>，所以接收方<strong>不用检错和返回确认</strong>。</p>
+<p>发送方：将数据发向下一层信道，从上一层接收数据rdt_send(data)；封装成本层分组make_pkt(data)；将分组使用下一层的传输服务udt_send(packet)。</p>
+<p>接收方：从下层信道读取数据，从下层接收一个分组rdt_rcv(packet)；解封取出数据extract(packet,data)进行处理；将剩余数据传给上层deliver_data(data)。</p>
+<p><img src="/2019/06/06/CN3/g3-3.png" alt></p>
+<center>图3-3：rdt 1.0的FSM</center>
+
+<p>2、具有比特差错信道的可靠数据传输：rdt 2.0</p>
+<p>假设下一层信道不完全可靠，<strong>可能产生比特差错，但不丢失分组</strong>。</p>
+<p>ARQ(Automatic Repeat reQuest 自动重传请求)协议：接收方肯定确认，告诉发送方，<strong>分组已被正确接收</strong>；接收方否定确认，告诉发送方，<strong>分组出错，需要发送方重传</strong>。</p>
+<p>基于<strong>检测重传机制</strong>的可靠数据传输协议称为<strong>自动重传请求ARQ协议</strong>。</p>
+<p>ARQ协议的原理</p>
+<p>检测：<strong>发送方让分组携带特殊字段用于接收方检错</strong>。如首部增加一个<strong>检验和(checksum)字段</strong>。</p>
+<p>确认：接收方针对每个分组返回<strong>肯定确认(ACK)或否定确认(NAK)</strong>分组。理论上这种分组只需一个比特长，如用1表示ACK，0表示NAK。</p>
+<p>重传：发送方收到NAK后，重传之前分组。</p>
+<p><img src="/2019/06/06/CN3/g3-4.png" alt></p>
+<center>图3-4：rdt 2.0发送方FSM</center>
+
+<p>发送方在<strong>收到ACK分组之前，不会发送任何新分组</strong>，直到收到ACK分组为止。因此rdt 2.0属于<strong>停等(stop-and-wait)协议</strong>，即发送方发完一个分组后停下来，等待对方应答。</p>
+<p><img src="/2019/06/06/CN3/g3-5.png" alt></p>
+<center>图3-5：rdt 2.0接收方FSM</center>
+
+<p>rdt 2.0协议解决了数据出错的问题，但没有考虑ACK确认或NAK确认出错的情况。</p>
+<p>对确认出错的处理有两种方法。若<strong>ACK和NAK含加强的检验和</strong>，使发送方不仅可以确认检错，还可纠错。如海明纠错码可纠正一位差错。若<strong>ACK和NAK含普通的检验和</strong>，当发送方收到出错的ACK或NAK时，简单地重发之前的数据分组，是常用方式。但<strong>新问题</strong>是，接收方可能收到冗余数据分组。</p>
+<p>对冗余数据分组的处理，可给数据分组首部<strong>添加一个序号字段</strong>。发送方使用序号给数据分组编号，每发送一个新的数据分组，序号加1。接收方检查序号，区别重复数据分组。如重复，丢弃后到的重复分组，并返回ACK。(接收方对正确收到的重复分组也会返回ACK)</p>
+<p>3、增加确认出错处理的可靠数据传输：rdt 2.1</p>
+<p>停等协议一次只传一个分组，直到收到正确确认才传下一个。此时序号只需一位比特，就可以区分正在传送的数据分组与其它分组。<strong>rdt 2.1中ACK和NAK确认分组无序号</strong>，因为停等协议中，发送方知道，它们是对最近发送数据分组的确认。<strong>FSM状态数翻倍</strong>，用于区分数据分组0或数据分组1的不同状态。</p>
+<p><img src="/2019/06/06/CN3/g3-6.png" alt></p>
+<center>图3-6：rdt 2.1发送方FSM</center>
+
+<p><img src="/2019/06/06/CN3/g3-7.png" alt></p>
+<center>图3-7：rdt 2.1接收方FSM</center>
+
+<p>4、无NAK的可靠数据传输：rdt 2.2</p>
+<p>通过在ACK确认分组中增加序号字段，实现无NAK的可靠数据传输。</p>
+<p>接收方接<strong>收到出错数据分组</strong>时，丢弃，不发送NAK，而<strong>发送前一个数据分组的ACK</strong>。(和收到重复数据分组的处理一样)</p>
+<p>发送方收到前一个数据分组的ACK，则<strong>重发当前数据分组</strong>。</p>
+<p><img src="/2019/06/06/CN3/g3-8.png" alt></p>
+<center>图3-8：rdt 2.2发送方FSM</center>
+
+<p><img src="/2019/06/06/CN3/g3-9.png" alt></p>
+<center>图3-9：rdt 2.2接收方FSM</center>
+
+<p>5、具有比特差错且丢包信道上的可靠数据传输：rdt 3.0</p>
+<p>考虑信道会出现分组差错，并且可能出现分组丢失，如发送方的<strong>数据分组丢失</strong>，接收方的<strong>ACK分组丢失</strong>。<strong>rdt 3.0通过在发送方增加定时器处理丢包</strong>。</p>
+<p>超时重发：发送方有一个定时器，发送一个数据分组，就启动定时器，<strong>如在超时未收到其ACK，则重传数据分组</strong>。</p>
+<p>超时时间选择：通常为往返平均时间的两倍。</p>
+<p>新问题：一个数据分组若具有大的时延，导致发送方超时重传，使得接收方会收到<strong>冗余数据分组</strong>。</p>
+<p>解决：接收方通过序号判断重复分组(rdt 2.2接收方已实现，因此rdt 3.0接收方的FSM与2.2相同)。</p>
+<p><img src="/2019/06/06/CN3/g3-10.png" alt></p>
+<center>图3-10：rdt 3.0发送方FSM</center>
+
+<p><img src="/2019/06/06/CN3/g3-11.png" alt></p>
+<center>图3-11：rdt 3.0运行情况一</center>
+
+<p><img src="/2019/06/06/CN3/g3-12.png" alt></p>
+<center>图3-12：rdt 3.0运行情况二</center>
+
+<p>保证可靠数据传输的措施：损坏：检验确认重传。冗余或乱序：序号。丢失：定时器(超时重传)。</p>
+<p>rdt 3.0是一个停等协议，属于流量控制，能够正常工作，但效率不高。</p>
+<p>发送方的信道利用率$U_{sender}=\frac{发送方将分组发送到信道的时间，传输时延L/R}{通信使用信道的时间，发送方从发送一个数据分组开始，到收到对方ACK分组所需的时间}$。</p>
+<p>对停等协议进行改进，允许发送方连续发送多个分组而无需等待确认，称为<strong>流水线技术</strong>。</p>
+<h3 id="3-4-2-流水线可靠数据传输协议"><a href="#3-4-2-流水线可靠数据传输协议" class="headerlink" title="3.4.2　流水线可靠数据传输协议"></a>3.4.2　流水线可靠数据传输协议</h3><p>令$N$为连续发送分组个数，则其信道利用率为</p>
+<script type="math/tex; mode=display">
+U_{sender}=\frac{L/R}{L/R+RTT}N</script><p>使用流水线技术有下列要求</p>
+<p>需要增加序号范围：区分连续发送的各分组。</p>
+<p>需要缓存：<strong>发送方</strong>缓存已发送但未收到确认的分组(可能要重发)；<strong>接收方</strong>缓存已正确接收但还未向上层提交的分组。两个缓存大小取决于所用的<strong>流水线差错恢复技术</strong>。</p>
+<p>流水线的差错恢复技术如下</p>
+<p>回退N步(Go-Back-N GBN协议)：发送方缓存大小为N个分组，接收方缓存大小为1个分组。</p>
+<p>选择性重传(Selective Repeat SR协议)：发送方和接收方缓存都为N个分组。</p>
+<p>停等法的差错恢复技术(rdt)：发送方和接收方缓存都为1个分组。</p>
+<h3 id="3-4-3-回退N步"><a href="#3-4-3-回退N步" class="headerlink" title="3.4.3　回退N步"></a>3.4.3　回退N步</h3><p>GBN(Go-Back-N 回退N步协议)：</p>
+<p>发送方：可连续发送多个数据分组(始终要保证未确认的分组数不超过N，即发送方缓存大小)，停止等待，并启动计时器。如收到某未确认分组的ACK，继续发送后续可发送分组；如超时，从未收到ACK的第一个分组开始重发。</p>
+<p>接收方：最终实现按序向上层提交数据。如收到正确且有序分组，放入缓存，准备向上层提交，并返回此分组的ACK；收到出错或失序分组，每次返回按序正确收到的最后一个分组的ACK。</p>
+<p>发送方可连续发送的分组数不能超过发送方缓存的大小N，即发送方已发送未确认的最大分组数，因此，通过设置<strong>发送窗口</strong>(对应发送方缓存)和<strong>接收窗口</strong>(对应接收方缓存)，实现<strong>流量控制</strong>。</p>
+<p>1、发送窗口($W_S=N$)</p>
+<p>指发送方缓存，存放已发送未确认和当前可以发送的分组，用于控制发送速度。</p>
+<p><img src="/2019/06/06/CN3/g3-13.png" alt></p>
+<center>图3-13：发送窗口</center>
+
+<p>发送方的分组：</p>
+<p>$[0,base-1]$：已发送并收到确认的分组。</p>
+<p>$[base,nextseqnum-1]$：已发送未确认的分组。</p>
+<p>$[nextseqnum,base+N-1]$：当前可发送的分组。</p>
+<p>$\geq base+N$：不能发送，除非收到新的确认，使得发送窗口向右移动。</p>
+<p>发送窗口大小$W_S=N$，即序号范围$[base,base+N-1]$，包括<strong>已发送未确认</strong>以及<strong>可立即发送</strong>的分组。</p>
+<p>随着已发送的分组陆续被确认，发送窗口在序号空间中向右滑动，所以GBN协议又称为<strong>滑动窗口协议</strong>(sliding-window-protol)</p>
+<p>窗口已满(窗口中全都是已发送未确认分组)：$nextseqnum=base+N$。</p>
+<p>窗口未满(有可立即发送的分组)：$nextseqnum&lt;base+N$。</p>
+<p>2、分组序号的取值范围</p>
+<p>如果序号位数为<strong>k</strong>，其序号范围是$[0,2^k-1]$，GBN发送窗口大小至少要比序号个数少一：</p>
+<script type="math/tex; mode=display">
+W_s=N\leq2^k-1</script><p>停等协议是一个特殊的GBN协议(即已发送未确认的分组数不能超过1)，其序号的位数为$k=1$，序号范围是$[0,1]$，发送窗口大小为$W_S=N=1$。</p>
+<p>3、GBN发送方</p>
+<p>上层的调用：判断<strong>发送窗口是否已满</strong>$nextseqnum=base+N?$若<strong>已满</strong>，则无法发送，以后再试；若<strong>未满</strong>，则封装并<strong>发送</strong>，$nextseqnum$加1，如果是窗内第一个分组$base==nextseqnum$，启动定时器。</p>
+<p>超时：发送方有<strong>一个定时器</strong>，用于<strong>第一个已发送未确认分组</strong>，此分组位于窗口的开始位置，即基序号位置。超时后，<strong>重发</strong>所有从基序号开始的已发送分组，重定时。</p>
+<p>收到ACK：表明对应分组及其之前分组已被正确有序接收(即<strong>累计确认</strong>)。并将窗口移动，使得基序号移动到最小未确认分组处，此时，若窗口为空(没有已发送未确认分组)，则停止定时器，否则重启定时器。</p>
+<p><img src="/2019/06/06/CN3/g3-14.png" alt></p>
+<center>图3-14：GBN发送方FSM</center>
+
+<p>4、GBN接收方</p>
+<p><strong>接收方窗口(缓存)$W_R=1$</strong>，采用<strong>累计确认</strong>，即返回的ACK对应目前已正确按序接收的最后一个分组。</p>
+<p>若收到正确且序号为期待序号的分组，则将分组放入缓存等待向上提交，并返回此分组ACK；若收到出错或失序(序号超前或滞后)的分组，则返回正确有序收到的最后一个分组的ACK。</p>
+<p><img src="/2019/06/06/CN3/g3-15.png" alt></p>
+<center>图3-15：GBN接收方的FSM</center>
+
+<p>5、GBN发送窗口的大小</p>
+<p>若序号位数<strong>$k$位</strong>，发送窗口大小$W_S=N\leq2^k-1$，而不是$2^k$。如序号位数<strong>3位</strong>，则序号为<strong>0~7</strong>。GBN发送窗口<strong>最大尺寸</strong>是<strong>7</strong>，而不是<strong>8</strong>。是为了防止ACK全部丢失的情况下，收方误认为重发分组为新分组。</p>
+<p>GBN的可靠性措施：使用检验和、累计确认、序号以及超时重传。</p>
+<h3 id="3-4-4-选择性重传-SR"><a href="#3-4-4-选择性重传-SR" class="headerlink" title="3.4.4　选择性重传(SR)"></a>3.4.4　选择性重传(SR)</h3><p>GBN的不足在于，定时器超时后，发送方<strong>重传所有已发送未累计确认的分组</strong>。当窗口和带宽时延积都很大时，重传的分组会很多，<strong>影响效率</strong>。</p>
+<p>SR(Selective Repeat)对此改进，<strong>采用非累积确认</strong>，发送方<strong>定时器</strong>超时后，<strong>只重传已发送未确认(非累积确认)的分组</strong>。</p>
+<p>1、SR发送方</p>
+<p>从上层收到数据：检查发送窗口是否已满，未满则发送，否则拒绝发送。</p>
+<p>超时：发送方这对每个分组都有一个定时器，若<strong>超时，重发对应分组</strong>。而GBN中，超时后重发所有已发送未累计确认分组。</p>
+<p>收到ACK：(非累计确认)将对应分组标记为已确认；如果ACK序号等于发送基序号，<strong>则发送窗口移动，使得基序号移动到最小未确认分组处，并重启定时器</strong>。如新窗口内可发送未发送分组，应立即发送。</p>
+<p>2、SR接收方</p>
+<p><strong>接收窗口$W_R&gt;1$个分组，可存放序号在接收窗口内的乱序且无错分组</strong>。直到所有序号更小的分组被收到为止，再<strong>一起交付给上层</strong>。<strong>所以从上层看，是可靠的传输(正确且有序)。</strong></p>
+<p>若正确收到的分组序号在$[rcv_base,rcv_base+N-1]$，则返回此分组的ACK。若该分组以前<strong>没收到过，则缓存起来</strong>；若该分组序号<strong>等于接收基序号</strong>，则将该分组与后续已缓存的连续分组一起交付给上层，<strong>接收窗口移动，使基序号移动到最小未缓存分组处</strong>。</p>
+<p>若正确收到的分组序号在$[rcv_base-N,rcv_base-1]$，则返回此分组的ACK，<strong>避免因为ACK丢失，导致发送窗口无法移动</strong>。</p>
+<p>其他情况(其他序号或受损)，则忽略。</p>
+<p><img src="/2019/06/06/CN3/g3-16.png" alt></p>
+<center>图3-16：SR过程举例</center>
+
+<p>3、SR窗口的大小</p>
+<p>若序号位数<strong>k位</strong>，SR发送和接收窗口<strong>最大为$2^{k-1}$，不是$2^k-1$</strong>。如序号位数<strong>2位</strong>，则序号为<strong>0~3</strong>，SR发送窗口和接收窗口尺寸最大是<strong>2，不是3</strong>。是为了防止ACK全部丢失时，收方将重发的分组当成新分组。</p>
+<p>4、三种协议比较</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>停等协议rdt2.x 3.0</th>
+<th>GBN协议</th>
+<th>SR协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送方</td>
+<td>发<strong>1</strong>个分组，等待确认；重发出错分组</td>
+<td>最多连发<strong>n</strong>个；一个定时器，指向基序号分组；超时，重发窗口中所有已发送未累计确认分组</td>
+<td>最多连发<strong>n</strong>个；每个分组一个定时器；超时，只重发对应分组</td>
+</tr>
+<tr>
+<td>接收方</td>
+<td><strong>只能按序号</strong>接受；不缓存乱序分组</td>
+<td><strong>只能按序号</strong>接受；累计确认；不缓存乱序分组；返回最后一个正确有序接收分组的ACK</td>
+<td><strong>可不按序号</strong>接收；非累积确认；缓存窗口内乱序分组；收到当前接收窗口或前一窗口内正确分组，返回对应ACK</td>
+</tr>
+<tr>
+<td>窗口大小</td>
+<td>$W_S=W_R=1$</td>
+<td>$1&lt;W_S\leq2^k-1;W_R=1$</td>
+<td>$1&lt;W_S,W_R\leq2^{k-1}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>5、可靠传输机制</p>
+<p>校验和：用于检测分组错误</p>
+<p>确认：接收方告诉发送方某个分组或一组分组已被正确地接收。可以是<strong>逐个或累计确认</strong>。</p>
+<p>否认：接收方告诉发送方某个分组尚未正确地接收。</p>
+<p>序号：<strong>发送的数据分组按顺序编号</strong>。用于检测分组重复或乱序。</p>
+<p>定时器：实现发送方<strong>超时重传</strong>，用于检测数据分组或ACK丢失，新问题是超时重传可导致发送方重复传送，接收方通过序号鉴别。</p>
+<p>窗口、流水线：发送方、接收方可以<strong>连续发送或接收</strong>序号落在窗口内的分组，而不用等待。</p>
+<p>流量控制：控制发送方发送窗口的大小，使得接收方空闲缓存来得及接收。</p>
+<p>拥塞控制：控制发方速度(也是通过控制发送窗口实现)，使网络来得及传送。</p>
+<p>即使发送和接收窗口都没有序号$x$，但由于网络延时，<strong>接收方可能收到一个以前的序号$x$的分组</strong>，为避免此情况，TCP<strong>规定分组在网络中的最长寿命</strong>大约3分钟。</p>
+<p><strong>TCP采用以上所有措施。</strong></p>
+<h2 id="3-5-可靠的传输层协议：TCP"><a href="#3-5-可靠的传输层协议：TCP" class="headerlink" title="3.5　可靠的传输层协议：TCP"></a><center>3.5　可靠的传输层协议：TCP</center></h2><h3 id="3-5-1-TCP连接"><a href="#3-5-1-TCP连接" class="headerlink" title="3.5.1　TCP连接"></a>3.5.1　TCP连接</h3><p>TCP协议</p>
+<p>面向连接：数据分组传输前，发送方与接收方进行<strong>三次握手(交换控制分组)建立连接</strong>。TCP连接不是电路或虚电路形式，它是基于网络层的IP协议，无固定路径的一种连接(虚连接)。</p>
+<p>全双工服务：连接上的<strong>双向</strong>数据流。</p>
+<p>点对点：不能多播。</p>
+<p>流量控制：控制发送方发送速率，使得接收方来得及接收。</p>
+<p>拥塞控制：控制发送方发送速率，使得网络来得及传输。</p>
+<p>TCP通信过程</p>
+<p>建立TCP连接：<strong>三次握手，交换控制参数，第三次握手时已经可以传数据了。</strong></p>
+<p>进程通信：通过<strong>套接字</strong>。封装成<strong>报文段</strong>传输。通过校验和检测，确认，重传，序号，定时器，流量控制，拥塞控制，在无连接的IP之上实现面向连接(虚连接)的进程间可靠的传输服务。</p>
+<h3 id="3-5-2-TCP报文段结构"><a href="#3-5-2-TCP报文段结构" class="headerlink" title="3.5.2　TCP报文段结构"></a>3.5.2　TCP报文段结构</h3><p><img src="/2019/06/06/CN3/g3-17.png" alt></p>
+<center>图3-17：TCP报文段结构</center>
+
+<p><strong>TCP把进程数据看成是一个字节流。</strong></p>
+<p>TCP序号：报文段中<strong>第1个数据字节</strong>在字节流中的字节序号。</p>
+<p>TCP确认号：<strong>期望</strong>收到对方<strong>下一个字节的序号</strong>；累计确认。</p>
+<p>TCP是<strong>全双工的</strong>，两个方向上都有<strong>独立的序号</strong>，且起始序号是随机的。</p>
+<h2 id="3-6-拥塞控制"><a href="#3-6-拥塞控制" class="headerlink" title="3.6　拥塞控制"></a><center>3.6　拥塞控制</center></h2><p>拥塞：太多的<strong>源发送太多太快</strong>的数据，使网络来不及传输。表现为<strong>长时延</strong>(路由器缓冲区排队)或<strong>丢包</strong>(路由器缓冲区溢出)。解决方法有<strong>重传(恶性循环)</strong>或<strong>在拥塞时，控制相应发送方的速率</strong>。</p>
+<h3 id="3-6-1-拥塞的原因与代价"><a href="#3-6-1-拥塞的原因与代价" class="headerlink" title="3.6.1　拥塞的原因与代价"></a>3.6.1　拥塞的原因与代价</h3><p>代价一：当分组到达路由器速率接近链路容量时，分组<strong>时延</strong>将非常大。</p>
+<p>代价二：路由器缓存溢出，会丢包，并引起发送方超时<strong>重传</strong>。</p>
+<p>代价三：分组的时延大导致<strong>重传重复数据</strong>。</p>
+<p>代价四：当一个分组被丢弃时，每个上游路由器的转发工作成为<strong>无用功</strong>。</p>
+<p>所以拥塞控制意义重大，是组网技术中十大重要问题之一。</p>
+<h3 id="3-6-2-拥塞控制的方法"><a href="#3-6-2-拥塞控制的方法" class="headerlink" title="3.6.2　拥塞控制的方法"></a>3.6.2　拥塞控制的方法</h3><p>根据<strong>网络层是否参与运输层的拥塞控制</strong>，分为端到端拥塞控制(网络层不参与)和网络辅助的拥塞控制。</p>
+<p>端到端的拥塞控制：</p>
+<p><strong>网络层没有提供支持</strong>，<strong>端系统</strong>必须<strong>对网络进行观察</strong>(如通过超时机制)来判断网络是否永拥塞。如因特网的TCP拥塞机制。</p>
+<p>网络辅助的拥塞控制：</p>
+<p><strong>网络层的路由器</strong>向发送方<strong>提供拥塞反馈信息</strong>。如ATM网络的可用比特率ABR(Available Bit Rate)的拥塞控制。路由器的两种反馈信息是用一个比特告知是否拥塞和告知本路由器能在支持的输出速率。</p>
+<p>信息反馈的方式有直接反馈，即<strong>路由器发送拥塞分组告知发送方</strong>；经过接收方的反馈，即路由器对去往接收方分组的某个字段进行<strong>标记</strong>，来指示是否拥塞，<strong>接收方收到后，再通知发送方网络是否拥塞</strong>(至少要一个完整的往返时间)。</p>
+<h3 id="3-6-3-ATM-ABR拥塞控制"><a href="#3-6-3-ATM-ABR拥塞控制" class="headerlink" title="3.6.3　ATM ABR拥塞控制"></a>3.6.3　ATM ABR拥塞控制</h3><p>ATM异步传输模式(Asynchronous Transfer Mode)：是一种采用网络辅助的拥塞控制的案例。ATM是建立在<strong>电路交换和分组交换</strong>的基础上的一种面向连接的快速分组交换技术，采用<strong>虚电路VC</strong>，从源到目的路径上的每台交换机<strong>维持虚电路VC状态</strong>，可以跟踪各个发送方的行为，并采取源特定拥塞控制动作。</p>
+<p>ABR可用比特率(available bit-rate)：是一种<strong>弹性</strong>数据传输服务。网络<strong>轻载时</strong>，ABR服务会充分利用空闲的可用带宽；网络<strong>拥塞时</strong>，ABR服务会将其传输速率<strong>抑制</strong>为预先确定的最小传输速率。</p>
+<p>ATM ABR拥塞控制的框架</p>
+<p>信元即分组，是ATM术语。</p>
+<p>数据信元：从源经过一系列中间交换机传输到目的地。</p>
+<p>资源管理信元(RM cell)：散布在数据信元中，用来在主机和交换机之间<strong>传递与拥塞相关的信息</strong>。</p>
+<p>发送方发出的RM信元，散布比率可调，默认值是<strong>每32个</strong>数据信元中<strong>有一个</strong>RM信元。</p>
+<p>RM信元作用：用来提供直接网络反馈和经由接收方的网络反馈。当一个RM信元<strong>到达目的地</strong>时，将被“掉转方向“回送给发送方 (可能做修改)；交换机也可以自己产生一个RM信元，并将该RM信元<strong>直接发送给源。</strong></p>
+<p>ATM ABR拥塞控制是基于速率的方法，即发送方明确地计算出它所能发送的最大速率，并以此进行调整。</p>
+<p>通知拥塞信息的三种机制：EFCI(显示转发拥塞指示)比特；CI(拥塞指示)和NI(无增长)比特；ER(显式速率)的设置。</p>
+<h2 id="3-7-TCP的拥塞控制"><a href="#3-7-TCP的拥塞控制" class="headerlink" title="3.7　TCP的拥塞控制"></a><center>3.7　TCP的拥塞控制</center></h2><p>TCP是端到端的拥塞控制(网络层不参与)，由发送方感知网络拥塞，据此改变发送速率。无拥塞时增加发送速率，有拥塞时降低发送速率。</p>
+<p>发送方通过判定感知网络拥塞，即<strong>定时器超时</strong>或者<strong>收到3个重复ACK时</strong>，降低发送速率。</p>
+<p><strong>发送方的拥塞窗口</strong>：随网络拥塞情况动态调整。TCP发送方通过发送窗口，控制已发送未确认的分组数不能超过接收窗口（表示接收方可用缓存大小，通过ACK获知）和拥塞窗口的最小值，实现流量控制和拥塞控制。</p>
+<p>拥塞控制算法有：AIMD(加增倍减算法)，慢启动，超时事件后的保守机制等。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Einsturing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://einsturing.top/2019/06/06/CN3/" title="第3章 运输层">http://einsturing.top/2019/06/06/CN3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/计算机网络/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/CN2/" rel="next" title="第2章 应用层">
+                <i class="fa fa-chevron-left"></i> 第2章 应用层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/圣诞凶.jpg" alt="Einsturing">
+            
+              <p class="site-author-name" itemprop="name">Einsturing</p>
+              <p class="site-description motion-element" itemprop="description">Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Einsturing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/11725722/#/" target="_blank" title="BiliBili">
+                      
+                        <i class="fa fa-fw fa-bold"></i>BiliBili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xlor.cn/" title="XLor" target="_blank">XLor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://houwenda.github.io/" title="louduan" target="_blank">louduan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ltfnjust.club/" title="LTF" target="_blank">LTF</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.miracle-io.xyz/" title="Banana" target="_blank">Banana</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-运输层提供的服务"><span class="nav-number">1.</span> <span class="nav-text">3.1　运输层提供的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-多路复用与分解"><span class="nav-number">2.</span> <span class="nav-text">3.2　多路复用与分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-无连接运输：UDP"><span class="nav-number">3.</span> <span class="nav-text">3.3　无连接运输：UDP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-可靠数据传输的原理"><span class="nav-number">4.</span> <span class="nav-text">3.4　可靠数据传输的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-构造可靠数据传输协议"><span class="nav-number">4.1.</span> <span class="nav-text">3.4.1　构造可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-流水线可靠数据传输协议"><span class="nav-number">4.2.</span> <span class="nav-text">3.4.2　流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3-回退N步"><span class="nav-number">4.3.</span> <span class="nav-text">3.4.3　回退N步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4-选择性重传-SR"><span class="nav-number">4.4.</span> <span class="nav-text">3.4.4　选择性重传(SR)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-可靠的传输层协议：TCP"><span class="nav-number">5.</span> <span class="nav-text">3.5　可靠的传输层协议：TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-TCP连接"><span class="nav-number">5.1.</span> <span class="nav-text">3.5.1　TCP连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-TCP报文段结构"><span class="nav-number">5.2.</span> <span class="nav-text">3.5.2　TCP报文段结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-拥塞控制"><span class="nav-number">6.</span> <span class="nav-text">3.6　拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-1-拥塞的原因与代价"><span class="nav-number">6.1.</span> <span class="nav-text">3.6.1　拥塞的原因与代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2-拥塞控制的方法"><span class="nav-number">6.2.</span> <span class="nav-text">3.6.2　拥塞控制的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-3-ATM-ABR拥塞控制"><span class="nav-number">6.3.</span> <span class="nav-text">3.6.3　ATM ABR拥塞控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-TCP的拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">3.7　TCP的拥塞控制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Einsturing</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UueUj58tOhhprnrbs0RwUluG-gzGzoHsz',
+        appKey: 'j2OlRwPqQvWaPdO5NH4toWkq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
