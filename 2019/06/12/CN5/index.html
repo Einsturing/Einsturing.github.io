@@ -153,7 +153,7 @@
 <meta property="og:image" content="http://einsturing.top/2019/06/12/CN5/g5-5.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/12/CN5/g5-6.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/12/CN5/g5-7.png">
-<meta property="og:updated_time" content="2019-06-13T14:12:49.836Z">
+<meta property="og:updated_time" content="2019-06-21T03:04:36.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第5章 链路层和局域网">
 <meta name="twitter:description" content="链路层用于在相邻节点之间传输数据帧。 链路层的特点：网络层的分组被封装成链路层的帧；实现设备间帧的传输；各链路(网络)可能采用不同的链路层协议，因此TCP/IP对此层及物理层未做定义。">
@@ -408,8 +408,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-13T22:12:49+08:00">
-                2019-06-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-21T11:04:36+08:00">
+                2019-06-21
               </time>
             
           </span>
@@ -697,7 +697,7 @@
 <center>图5-7：PPP帧格式(与HDLC帧类似)</center>
 
 <p>传输透明性：如果在其它字段也出现01111110，接收方可能会误认为是标志字段。用字节填充技术实现传输的透明性。</p>
-<p>定义一个转义字节01111101 (7D) ，发送方：在标志字段以外的其他字段中：若出现01111110 (7E)：在其前面增加一个转义字节，如01111101 01111110(7D7E)，若出现01111101 (7D)：在其前面增加一个转义字节，如01111101 01111101(7D7D)；接收方：遇到无转义字节的 01111110 (7E) ，先后表示帧的开始与结束，帧内遇到7D7E或7D7D就去掉一个7D，还原数据。</p>
+<p>定义一个转义字节01111101 (7D) ，发送方：在标志字段以外的其他字段中：若出现01111110 (7E)：用7D 5E替换，若出现01111101 (7D)：用7D 5D替换；接收方：遇到无转义字节的 01111110 (7E) ，先后表示帧的开始与结束，帧内遇到7D5E或7D5D就分别还原成7E或7D。</p>
 <h3 id="5-7-2-PPP链路控制协议"><a href="#5-7-2-PPP链路控制协议" class="headerlink" title="5.7.2　PPP链路控制协议"></a>5.7.2　PPP链路控制协议</h3><p>用来完成PPP链路的<strong>初始化、维护、差错报告和关闭</strong>，PPP协议在交换数据前，收发双方要进行链路配置。</p>
 <p>PPP通信过程：建立连接：建立<strong>物理</strong>连接$\rightarrow$建立<strong>链路</strong>连接$\rightarrow$建立<strong>网络</strong>连接；数据传输；释放连接：释放<strong>网络</strong>连接$\rightarrow$释放<strong>链路</strong>连接$\rightarrow$释放<strong>物理</strong>连接。</p>
 <h2 id="5-8-链路虚拟化：网络作为链路层"><a href="#5-8-链路虚拟化：网络作为链路层" class="headerlink" title="5.8　链路虚拟化：网络作为链路层"></a><center>5.8　链路虚拟化：网络作为链路层</center></h2><p>链路：网络中连接主机的<strong>物理线路。</strong></p>
