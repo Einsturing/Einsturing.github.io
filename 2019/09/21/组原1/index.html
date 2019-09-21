@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,计算机组成原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.1　计算机的发展历史1946年2月15日第一台计算机ENIAC(Electronic Numerical Integrator and Computer)诞生，发展历程分硬件和软件。 1.1.1　更新换代的计算机硬件计算机分为5个发展阶段。 1.电子管时代(1946-1959年) 2.晶体管时代(1959-1964年) 3.中、小规模集成电路(MSI、SSI)时代(1964-1975年) 4.">
+<meta name="keywords" content="笔记,计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1章 概论">
+<meta property="og:url" content="http://einsturing.top/2019/09/21/组原1/index.html">
+<meta property="og:site_name" content="Einsturing">
+<meta property="og:description" content="1.1　计算机的发展历史1946年2月15日第一台计算机ENIAC(Electronic Numerical Integrator and Computer)诞生，发展历程分硬件和软件。 1.1.1　更新换代的计算机硬件计算机分为5个发展阶段。 1.电子管时代(1946-1959年) 2.晶体管时代(1959-1964年) 3.中、小规模集成电路(MSI、SSI)时代(1964-1975年) 4.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-1.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-2.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-3.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-4.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-5.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-6.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-7.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-8.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-9.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/21/组原1/g1-10.png">
+<meta property="og:updated_time" content="2019-09-21T03:24:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1章 概论">
+<meta name="twitter:description" content="1.1　计算机的发展历史1946年2月15日第一台计算机ENIAC(Electronic Numerical Integrator and Computer)诞生，发展历程分硬件和软件。 1.1.1　更新换代的计算机硬件计算机分为5个发展阶段。 1.电子管时代(1946-1959年) 2.晶体管时代(1959-1964年) 3.中、小规模集成电路(MSI、SSI)时代(1964-1975年) 4.">
+<meta name="twitter:image" content="http://einsturing.top/2019/09/21/组原1/g1-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://einsturing.top/2019/09/21/组原1/">
+
+
+
+
+
+  <title>第1章 概论 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Einsturing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仅余我与暮色平分此世界</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/09/21/组原1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第1章 概论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T11:20:12+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T11:24:59+08:00">
+                2019-09-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Composition-Principle/" itemprop="url" rel="index">
+                    <span itemprop="name">Composition Principle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/21/组原1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/21/组原1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-1-计算机的发展历史"><a href="#1-1-计算机的发展历史" class="headerlink" title="1.1　计算机的发展历史"></a><center>1.1　计算机的发展历史</center></h2><p>1946年2月15日第一台计算机ENIAC(Electronic Numerical Integrator and Computer)诞生，发展历程分硬件和软件。</p>
+<h3 id="1-1-1-更新换代的计算机硬件"><a href="#1-1-1-更新换代的计算机硬件" class="headerlink" title="1.1.1　更新换代的计算机硬件"></a>1.1.1　更新换代的计算机硬件</h3><p>计算机分为5个发展阶段。</p>
+<p>1.电子管时代(1946-1959年)</p>
+<p>2.晶体管时代(1959-1964年)</p>
+<p>3.中、小规模集成电路(MSI、SSI)时代(1964-1975年)</p>
+<p>4.超、大规模集成电路(VLSI、LSI)时代(1975-1990年)</p>
+<p>5.超级规模集成电路时代</p>
+<h3 id="1-1-2-日臻完善的计算机软件"><a href="#1-1-2-日臻完善的计算机软件" class="headerlink" title="1.1.2　日臻完善的计算机软件"></a>1.1.2　日臻完善的计算机软件</h3><p>计算机软件的发展与计算机硬件及技术的发展紧密相关。</p>
+<p>1.汇编语言阶段(20世纪50年代)</p>
+<p>2.程序批处理阶段(20世纪60年代)</p>
+<p>3.分时多用户阶段(20世纪70年代)</p>
+<p>4.分布式管理阶段(20世纪80年代)</p>
+<p>5.软件重用阶段(20世纪90年代)</p>
+<p>6.Web服务阶段(21世纪前10年)</p>
+<p>7.云计算阶段(2020年)</p>
+<h2 id="1-2-计算机系统的硬件组成"><a href="#1-2-计算机系统的硬件组成" class="headerlink" title="1.2　计算机系统的硬件组成"></a><center>1.2　计算机系统的硬件组成</center></h2><p>一个完整的计算机系统由硬件和软件系统组成。硬件系统指组成计算机的各种物理装置以及它们的设计与实现技术。软件系统泛指计算机系统中使用的各种程序和文件。</p>
+<h3 id="1-2-1-计算机的功能部件"><a href="#1-2-1-计算机的功能部件" class="headerlink" title="1.2.1　计算机的功能部件"></a>1.2.1　计算机的功能部件</h3><p>计算机的基本功能包括数据加工、保存、传送和操作控制，由相应的硬件承担有关工作。计算机的硬件由输入设备、输出设备、运算器、存储器和控制器组成。</p>
+<p><img src="/2019/09/21/组原1/g1-1.png" alt></p>
+<p>输入输出设备又称I/O设备，存储器分为主存储器和辅助存储器，CPU能够直接访问的存储器是主存。</p>
+<p><img src="/2019/09/21/组原1/g1-2.png" alt></p>
+<p>主存中存储体是存放二进制信息的主体；地址寄存器存放所要访问的存储单元的地址码，由它经地址译码找到被选的存储单元；数据存储器是主存与其他部件的接口，用于暂存从存储器中读出或向存储器中写入的信息；控制逻辑用于产生存储器操作所需的各种时序信号。主存实现了按地址进行访问。</p>
+<p>运算器是计算机的执行部件，完成算术逻辑运算和对数据的加工处理，其核心是算术逻辑部件ALU(Arithmetic and Logical Unit)。运算器设有若干寄存器用于暂存操作数据和中间结果，由于寄存器往往兼备多种用途，通常称为通用寄存器。</p>
+<p><img src="/2019/09/21/组原1/g1-3.png" alt></p>
+<p>控制器根据事先编好的程序，指挥控制整个计算机系统中的各部件进行工作。</p>
+<p>程序：就是解题步骤，解题步骤最终以指令序列形式来描述，指令序列事先存放在存储器中(存储程序)，执行程序实质是由控制器按着事先安排好的指令序列依次读出存储器中存放的程序指令，逐条解释、执行每一条指令，从而控制计算机各个部件有条不紊地自动工作(程序控制)。</p>
+<h3 id="1-2-2-冯诺依曼计算机"><a href="#1-2-2-冯诺依曼计算机" class="headerlink" title="1.2.2　冯诺依曼计算机"></a>1.2.2　冯诺依曼计算机</h3><p>美国数学家冯诺依曼于1946年提出存储程序概念，奠定了现代计算机的结构基础。</p>
+<p>冯氏计算机要素为：五大部件运算器、控制器、存储器、输入设备、输出设备；存储程序，程序控制；使用二进制编码表示指令和数据。</p>
+<p>运算器和控制器统称为CPU，CPU与主存统称为计算机主机，输入设备、输出设备、外存储器统称I/O设备。</p>
+<p>指令是程序的基本单位，程序是若干指令的有序集合，指令和数据以二进制代码存于存储器中，均可按地址访问。指令由操作码和地址码组成，操作码表示操作性质地址码表示操作数在存储器中的位置。</p>
+<p>早期的冯诺依曼计算机结构以运算器为中心。</p>
+<p><img src="/2019/09/21/组原1/g1-4.png" alt></p>
+<p>现代计算器组织结构逐步转变为以存储器为中心。</p>
+<p><img src="/2019/09/21/组原1/g1-5.png" alt></p>
+<h2 id="1-3-计算机的软件系统"><a href="#1-3-计算机的软件系统" class="headerlink" title="1.3　计算机的软件系统"></a><center>1.3　计算机的软件系统</center></h2><p>软件在计算机系统中起着指挥和管理的作用，是计算机用户和硬件的接口界面，是计算机系统结构设计的主要依据。软件分为系统软件和应用软件。</p>
+<h3 id="1-3-1-系统软件"><a href="#1-3-1-系统软件" class="headerlink" title="1.3.1　系统软件"></a>1.3.1　系统软件</h3><p>系统软件是一组保证计算机系统高效、正确运行的基础软件，包括操作系统、语言处理系统、数据库管理系统、分布式软件系统、网络软件系统、各种服务程序。其中操作系统负责管理(硬、软件资源)与抽象(隐藏细节，方便使用)，语言处理系统分为编译与解释。</p>
+<h3 id="1-3-2-应用软件"><a href="#1-3-2-应用软件" class="headerlink" title="1.3.2　应用软件"></a>1.3.2　应用软件</h3><p>指用户为解决某个应用领域中的各类问题而编制的程序。</p>
+<h2 id="1-4-计算机系统的组织结构"><a href="#1-4-计算机系统的组织结构" class="headerlink" title="1.4　计算机系统的组织结构"></a><center>1.4　计算机系统的组织结构</center></h2><h3 id="1-4-1-硬件与软件的关系"><a href="#1-4-1-硬件与软件的关系" class="headerlink" title="1.4.1　硬件与软件的关系"></a>1.4.1　硬件与软件的关系</h3><p>硬件是计算机系统的物质基础，软件是计算机系统的灵魂。对某一具体功能来说，可以用硬件实现，也可以用软件实现，硬件、软件在逻辑功能上等效。</p>
+<p>固件是载有在用户环境中不能加以改变的程序及数据的器件，将复杂且常用的程序写入只读存储器就构成了固件。固件从功能上看是软件，从形态上看是硬件，如PC中主板BIOS、显卡BIOS，网卡BOOT ROM。</p>
+<h3 id="1-4-2-计算机系统的多级层次结构"><a href="#1-4-2-计算机系统的多级层次结构" class="headerlink" title="1.4.2　计算机系统的多级层次结构"></a>1.4.2　计算机系统的多级层次结构</h3><p>根据机器之间的有机关系，可以将计算机系统分为多级层次结构，目的是分清各级层次结构彼此间的界面，明确各自的功能，以便构成合理、高效的计算机系统。</p>
+<p><img src="/2019/09/21/组原1/g1-6.png" alt></p>
+<p>虚机器建立在实机器的基础上，利用软件技术扩充实机器的功能。机器语言层和操作系统层是虚、实机器的分界面，软、硬件功能的分配，决定了虚、实机器的界面。</p>
+<h3 id="1-4-3-计算机硬件系统的组织"><a href="#1-4-3-计算机硬件系统的组织" class="headerlink" title="1.4.3　计算机硬件系统的组织"></a>1.4.3　计算机硬件系统的组织</h3><p>计算机硬件系统的组织问题是把5大基本部件互连起来构成计算机的硬件系统。</p>
+<p>总线是一组可为多个功能部件的公共信息传送线路，可分为CPU内部总线、部件内总线、系统总线、外总线。</p>
+<p>采用总线结构可以大大减少系统中的信息传输线数，减轻发送部件的负载。可以简化硬件结构，灵活地修改与扩充系统，但是会牺牲性能。</p>
+<p>总线的连接方式有单总线结构、双总线结构(又分以CPU为中心的双总线结构和面向主存的双总线结构)、三总线结构。</p>
+<p><img src="/2019/09/21/组原1/g1-7.png" alt></p>
+<p><img src="/2019/09/21/组原1/g1-8.png" alt></p>
+<p><img src="/2019/09/21/组原1/g1-9.png" alt></p>
+<p>单总线结构优点是可将I/O与存储器同等对待，统一进行编址，控制简单，易于扩充，易于标准化生产；缺点是可能成为系统性能瓶颈。</p>
+<p>三总线结构在面向主存的双总线结构的基础上，增加I/O总线，使得CPU与主存、主存与I/O之间均具备独立的信息传输道路。</p>
+<p>通道是一种具有处理机功能的专门用来管理I/O操作的控制部件，将管理外设的任务从CPU上接管过来(可编程-通道程序)。</p>
+<p><img src="/2019/09/21/组原1/g1-10.png" alt></p>
+<h2 id="1-5-计算机的工作特点和性能指标"><a href="#1-5-计算机的工作特点和性能指标" class="headerlink" title="1.5　计算机的工作特点和性能指标"></a><center>1.5　计算机的工作特点和性能指标</center></h2><h3 id="1-5-1-计算机的工作特点"><a href="#1-5-1-计算机的工作特点" class="headerlink" title="1.5.1　计算机的工作特点"></a>1.5.1　计算机的工作特点</h3><p>计算机的工作特点有：能自动连续地工作、运算速度快、运算精度高、具有很强的存储能力和逻辑判断能力、通用性强。</p>
+<h3 id="1-5-2-计算机的性能指标"><a href="#1-5-2-计算机的性能指标" class="headerlink" title="1.5.2　计算机的性能指标"></a>1.5.2　计算机的性能指标</h3><p>计算机的性能指标有：基本字长、主存容量、运算速度、所配置的外部设备及其性能指标、系统软件的配置。</p>
+<p>基本字长是指参与运算的数的基本位数，是信息处理单位。字长标志着计算机系统的处理数据的范围和运算精度，呈正相关。</p>
+<p>主存储器所能存储的最大信息量称为主存容量，计算机的处理能力很大程度取决于主存容量的大小，更取决于存储层次设计的合理性。</p>
+<p>由于计算机执行不同的操作所需的时间可能不同，因而对运算速度的描述通常采用不同方法。大、中型机常使用每秒平均执行的指令条数(IPS)作为运算速度单位，如MIPS(每秒百万条指令)、MFLOPS(每秒百万次浮点运算)。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&MIPS=\frac{指令条数}{执行时间}\times10^{-6}\\
+&MFLOPS=\frac{浮点运算次数}{执行时间}\times10^-6\\
+&MFLOPS\approx3\sim4MIPS\\
+\end{aligned}</script><p>主时钟频率某种意义上与执行速度成正比，但主频并不能代表执行速度。相同的ISA、微架构、实现下，主频提升意味着执行速度加快，主频与功耗成正比。</p>
+<h2 id="1-6-计算机的分类与应用"><a href="#1-6-计算机的分类与应用" class="headerlink" title="1.6　计算机的分类与应用"></a><center>1.6　计算机的分类与应用</center></h2><h3 id="1-6-1-计算机的分类"><a href="#1-6-1-计算机的分类" class="headerlink" title="1.6.1　计算机的分类"></a>1.6.1　计算机的分类</h3><p>计算机常见的分类方法有：按处理的信息形式分、按计算机字长分、按计算机应用范围分、按计算规模分。</p>
+<p>按处理的信息形式分为电子数字计算机和电子模拟计算机；按应用范围分为专用机和通用机。</p>
+<h3 id="1-6-2-计算机的应用"><a href="#1-6-2-计算机的应用" class="headerlink" title="1.6.2　计算机的应用"></a>1.6.2　计算机的应用</h3><p>计算机的应用可以划分为：科学计算、数据处理、现代控制、辅助设计、人工智能、网络应用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Einsturing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://einsturing.top/2019/09/21/组原1/" title="第1章 概论">http://einsturing.top/2019/09/21/组原1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/计算机组成原理/" rel="tag"><i class="fa fa-tag"></i> 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/05/高数2/" rel="next" title="高数笔记-导数与微分">
+                <i class="fa fa-chevron-left"></i> 高数笔记-导数与微分
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/21/编原1/" rel="prev" title="第1章 引论">
+                第1章 引论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/圣诞凶.jpg" alt="Einsturing">
+            
+              <p class="site-author-name" itemprop="name">Einsturing</p>
+              <p class="site-description motion-element" itemprop="description">Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Einsturing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/11725722/#/" target="_blank" title="BiliBili">
+                      
+                        <i class="fa fa-fw fa-bold"></i>BiliBili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xlor.cn/" title="XLor" target="_blank">XLor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://houwenda.github.io/" title="louduan" target="_blank">louduan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ltfnjust.club/" title="LTF" target="_blank">LTF</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.miracle-io.xyz/" title="Banana" target="_blank">Banana</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-计算机的发展历史"><span class="nav-number">1.</span> <span class="nav-text">1.1　计算机的发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-更新换代的计算机硬件"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.1　更新换代的计算机硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-日臻完善的计算机软件"><span class="nav-number">1.2.</span> <span class="nav-text">1.1.2　日臻完善的计算机软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-计算机系统的硬件组成"><span class="nav-number">2.</span> <span class="nav-text">1.2　计算机系统的硬件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-计算机的功能部件"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1　计算机的功能部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-冯诺依曼计算机"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2　冯诺依曼计算机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-计算机的软件系统"><span class="nav-number">3.</span> <span class="nav-text">1.3　计算机的软件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-系统软件"><span class="nav-number">3.1.</span> <span class="nav-text">1.3.1　系统软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-应用软件"><span class="nav-number">3.2.</span> <span class="nav-text">1.3.2　应用软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-计算机系统的组织结构"><span class="nav-number">4.</span> <span class="nav-text">1.4　计算机系统的组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-硬件与软件的关系"><span class="nav-number">4.1.</span> <span class="nav-text">1.4.1　硬件与软件的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-计算机系统的多级层次结构"><span class="nav-number">4.2.</span> <span class="nav-text">1.4.2　计算机系统的多级层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-计算机硬件系统的组织"><span class="nav-number">4.3.</span> <span class="nav-text">1.4.3　计算机硬件系统的组织</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-计算机的工作特点和性能指标"><span class="nav-number">5.</span> <span class="nav-text">1.5　计算机的工作特点和性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-计算机的工作特点"><span class="nav-number">5.1.</span> <span class="nav-text">1.5.1　计算机的工作特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-计算机的性能指标"><span class="nav-number">5.2.</span> <span class="nav-text">1.5.2　计算机的性能指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-计算机的分类与应用"><span class="nav-number">6.</span> <span class="nav-text">1.6　计算机的分类与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-计算机的分类"><span class="nav-number">6.1.</span> <span class="nav-text">1.6.1　计算机的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-计算机的应用"><span class="nav-number">6.2.</span> <span class="nav-text">1.6.2　计算机的应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Einsturing</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UueUj58tOhhprnrbs0RwUluG-gzGzoHsz',
+        appKey: 'j2OlRwPqQvWaPdO5NH4toWkq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

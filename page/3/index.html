@@ -355,6 +355,956 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/05/100天ML-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/100天ML-1/" itemprop="url">100-Days-Of-ML-Code Day1 数据预处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T14:49:07+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-06T18:25:25+08:00">
+                2019-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/05/100天ML-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/05/100天ML-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  916
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="数据预处理-第1天"><a href="#数据预处理-第1天" class="headerlink" title="数据预处理|第1天"></a><center>数据预处理|第1天</center></h1><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p><img src="/2019/03/05/100天ML-1/Day 1.jpg" alt></p>
+<h2 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Age</th>
+<th>Salary</th>
+<th>Purchased</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>France</td>
+<td>44</td>
+<td>72000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>27</td>
+<td>48000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>30</td>
+<td>54000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>38</td>
+<td>61000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>40</td>
+<td></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>France</td>
+<td>35</td>
+<td>58000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td></td>
+<td>52000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>France</td>
+<td>48</td>
+<td>79000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>50</td>
+<td>83000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>France</td>
+<td>37</td>
+<td>67000</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/05/100天ML-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/04/洛谷P1538/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/04/洛谷P1538/" itemprop="url">洛谷P1538 迎春舞会之数字舞蹈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T21:05:10+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-04T21:19:56+08:00">
+                2019-03-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/Others/" itemprop="url" rel="index">
+                    <span itemprop="name">Others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/04/洛谷P1538/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/04/洛谷P1538/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  490
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>在越来越讲究合作的时代，人们注意的更多的不是个人物的舞姿，而是集体的排列。</p>
+<p>为了配合每年的倒计时，同学们决定排出——“数字舞蹈”。顾名思义就是所有人一起排成若干个数字，更为创新的是，每个人都是趴在地上，保证横竖。</p>
+<p>现在给出数字及其要求摆出的大小，请你编程，模拟同学们的优美姿态。</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行为k。k表示要摆出数字的大小。</p>
+<p>第二行为全部由数字组成的字符串，即要摆出的几个数字。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>按题目要求输出。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1234567890</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   --   --        --   --   --   --   --   -- </span><br><span class="line">|    |    | |  | |    |       | |  | |  | |  |</span><br><span class="line">|    |    | |  | |    |       | |  | |  | |  |</span><br><span class="line">   --   --   --   --   --        --   --      </span><br><span class="line">| |       |    |    | |  |    | |  |    | |  |</span><br><span class="line">| |       |    |    | |  |    | |  |    | |  |</span><br><span class="line">   --   --        --   --        --   --   --</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/04/洛谷P1538/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/16/洛谷P1309/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/洛谷P1309/" itemprop="url">洛谷P1309 瑞士轮</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T21:35:51+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-06T20:22:14+08:00">
+                2019-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/Sort/" itemprop="url" rel="index">
+                    <span itemprop="name">Sort</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/Sort/Merge-Sort/" itemprop="url" rel="index">
+                    <span itemprop="name">Merge Sort</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/16/洛谷P1309/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/16/洛谷P1309/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  935
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>$2\times N$名编号为 $1\sim 2N$ 的选手共进行$R$轮比赛。每轮比赛开始前，以及所有比赛结束后，都会按照总分从高到低对选手进行一次排名。选手的总分为第一轮开始前的初始分数加上已参加过的所有比赛的得分和。总分相同的，约定编号较小的选手排名靠前。</p>
+<p>每轮比赛的对阵安排与该轮比赛开始前的排名有关：第1名和第2名、第3名和第4名、……、第$2K-1$名和第$2K$名、…… 、第$2N-1$名和第$2N$名，各进行一场比赛。每场比赛胜者得1分，负者得0分。也就是说除了首轮以外，其它轮比赛的安排均不能事先确定，而是要取决于选手在之前比赛中的表现。</p>
+<p>现给定每个选手的初始分数及其实力值，试计算在R轮比赛过后，排名第Q的选手编号是多少。我们假设选手的实力值两两不同，且每场比赛中实力值较高的总能获胜。</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行是三个正整数$N,R,Q$每两个数之间用一个空格隔开，表示有$2\times N$名选手、R轮比赛，以及我们关心的名次Q。</p>
+<p>第二行是$2\times N$个非负整数$s<em>1,s_2,\dots,s</em>{2N},$每两个数之间用一个空格隔开，其中$s<em>i$表示编号为i的选手的初始分数。 第三行是$2\times N$个正整数$w_1,w_2,\dots,w</em>{2N}$每两个数之间用一个空格隔开，其中$w_i$表示编号为i的选手的实力值。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>一个整数，即R轮比赛结束后，排名第Q的选手的编号。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 4 2 </span><br><span class="line">7 6 6 7 </span><br><span class="line">10 5 20 15</span><br></pre></td></tr></table></figure>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/16/洛谷P1309/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/16/线性代数6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/线性代数6/" itemprop="url">第6章 线性空间与线性变换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T12:40:19+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:27:34+08:00">
+                2019-02-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Linear-Algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear Algebra</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/16/线性代数6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/16/线性代数6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="§1-线性空间的定义与性质"><a href="#§1-线性空间的定义与性质" class="headerlink" title="§1　线性空间的定义与性质"></a><center>§1　线性空间的定义与性质</center></h2><p><strong>定义1</strong>　设$V$是一个非空集合，$\mathbb{R}$为实数域。如果在$V$中定义了一个加法，即对于任意两个元素$\alpha,\beta\in V$，总有惟一的一个元素$\gamma\in V$与之对应，称为$\alpha$与$\beta$的和，记作$\gamma=\alpha+\beta$；在$V$中又定义了一个数的乘法(简称数乘)，即对于任一数$\lambda\in\mathbb{R}$与任意元素$\alpha\in V$，总有惟一的一个元素$\delta\in V$与之对应，称为$\lambda$与$\alpha$的数量乘积，记作$\delta=\lambda\alpha$，并且这两种运算满足以下八条运算规律(设$\alpha、\beta、\gamma\in V,\lambda、\mu\in\mathbb{R}$)：</p>
+<p>(i)$\alpha+\beta=\beta+\alpha$；</p>
+<p>(ii)$(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$；</p>
+<p>(iii)在$V$中存在零元素0，对任何$\alpha\in V$，都有$\alpha+0=\alpha$；</p>
+<p>(iv)对任何$\alpha\in V$，都有$\alpha$的负元素$\beta\in V$，使$\alpha+\beta-0$；</p>
+<p>(v)$1\alpha=\alpha$；</p>
+<p>(vi)$\lambda(\mu\alpha)=(\lambda\mu)\alpha$；</p>
+<p>(vii)$(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；</p>
+<p>(viii)$\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$；</p>
+<p>那么就称$V$为(实数域$\mathbb{R}$上的)向量空间(或线性空间)，$V$中的元素不论其本来的性质如何，统称为(实)向量。</p>
+<p>线性空间的性质：</p>
+<p><strong>1.零向量是惟一的.</strong></p>
+<p><strong>2.任一向量的负向量是惟一的，$\alpha$的负向量记作$-\alpha$.</strong></p>
+<p><strong>3.$0\alpha=0,(-1)\alpha=-\alpha,\lambda0=0.$</strong></p>
+<p><strong>4.如果$\lambda\alpha=0$，则$\lambda=0$或$\alpha=0$.</strong></p>
+<p><strong>定义2</strong>　设$V$是一个线性空间，$L$是$V$的一个非空子集，如果$L$对于$V$中所定义的加法和数乘两种运算也构成一个线性空间，则称$L$为$V$的子空间。</p>
+<p><strong>定理1　线性空间$V$的非空子集$L$构成子空间的充分必要条件是：$L$对于$V$中的线性运算封闭。</strong></p>
+<h2 id="§2-维数、基与坐标"><a href="#§2-维数、基与坐标" class="headerlink" title="§2　维数、基与坐标"></a><center>§2　维数、基与坐标</center></h2><p><strong>定义3</strong>　在线性空间$V​$中，如果存在n个向量$\alpha_1,\alpha_2,\dots,\alpha_n​$，满足：</p>
+<p>(i)$\alpha_1,\alpha_2,\dots,\alpha_n$线性无关；</p>
+<p>(ii)$V​$中任一向量$\alpha​$总可由$\alpha_1,\alpha_2,\dots,\alpha_n​$线性表示，</p>
+<p>那么$\alpha_1,\alpha_2,\dots,\alpha_n​$就称为线性空间$V​$的一个基，n称为线性空间$V​$的维数。只含一个零向量的线性空间没有基，规定它的维数为0。维数为n的线性空间称为n维线性空间，记作$V_n​$。</p>
+<p><strong>定义4</strong>　设$\alpha_1,\alpha_2,\dots,\alpha_n​$是线性空间$V_n​$的一个基，对于任一向量$\alpha\in V_n​$，总有且仅有一组有序数$x_1,x_2,\dots,x_n​$使$\alpha=x_1\alpha_1+x_2\alpha_2+\dots+x_n\alpha_n,x_1,x_2,\dots,x_n​$这组有序数就称为向量$\alpha​$在$\alpha_1,\alpha_2,\dots,\alpha_n​$这个基中的坐标，并记作$\alpha=(x_1,x_2,\dots,x_n)^T​$。</p>
+<p>设$V$与$U$是两个线性空间，如果在它们的向量之间有一一对应关系，且这个对应关系保持线性组合的对应，那么就说线性空间$V$与$U$同构。维数相等的线性空间都同构。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/16/线性代数6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/15/线性代数5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1359,8 +2309,8 @@ PE=P
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:26:23+08:00">
-                2019-02-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-08T11:11:15+08:00">
+                2019-08-08
               </time>
             
           </span>
@@ -1792,837 +2742,6 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/01/27/ML2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/ML2/" itemprop="url">Note of Machine Learning 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-27T12:04:24+08:00">
-                2019-01-27
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T17:27:36+08:00">
-                2019-03-10
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/27/ML2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/ML2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  11
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="第2章-模型评估与选择"><a href="#第2章-模型评估与选择" class="headerlink" title="第2章　模型评估与选择"></a><center>第2章　模型评估与选择</center></h1><h2 id="2-1-经验误差与过拟合"><a href="#2-1-经验误差与过拟合" class="headerlink" title="2.1　经验误差与过拟合"></a><center>2.1　经验误差与过拟合</center></h2><p>错误率(error rate) and 精度(accuracy)：分类错误的样本数占样本总数的比例称为“错误率”，如果在m个样本中有a个样本分类错误，则错误率E=a/m；相应的1-a/m称为“精度”。</p>
-<p>误差(error)：学习器的实际预测输出与样本的真实输出之间的差异。</p>
-<p>训练误差(training error) or 经验误差(empirical error)：学习器在训练集上的误差。</p>
-<p>泛化误差(generalization error)：学习器在新样本上的误差。</p>
-<p>过拟合(overfitting) and 欠拟合(underfitting)：学习器把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，导致泛化性能下降的现象称为“过拟合”，相对的，“欠拟合”指对训练样本的一般性质尚未学好。</p>
-<p>欠拟合比较容易克服，过拟合是机器学习面临的关键障碍。过拟合是无法彻底避免的，只能减小其风险。可以这样理解：机器学习面临的问题通常是NP难甚至更难，而有效的学习算法必然是在多项式时间内运行完成，若可彻底避免过拟合，则通过经验误差最小化就能获最优解，这就意味着我们构造性地证明了“P=NP”；因此，只要相信”P$\neq​$NP“，过拟合就不可避免。</p>
-<p>模型选择(model selection)：现实任务中，往往有多种学习算法可供选择，对同一个学习算法，使用不同的参数配置时，也会产生不同的模型。选用哪一个学习算法、使用哪一种参数配置的问题，称为”模型选择“问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/27/ML2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/01/26/洛谷P1056/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/26/洛谷P1056/" itemprop="url">洛谷P1056 排座椅</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-26T20:46:42+08:00">
-                2019-01-26
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-06T20:20:15+08:00">
-                2019-03-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Greedy/" itemprop="url" rel="index">
-                    <span itemprop="name">Greedy</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/26/洛谷P1056/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/洛谷P1056/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>上课的时候总会有一些同学和前后左右的人交头接耳，这是令小学班主任十分头疼的一件事情。不过，班主任小雪发现了一些有趣的现象，当同学们的座次确定下来之后，只有有限的D对同学上课时会交头接耳。</p>
-<p>同学们在教室中坐成了M行N列，坐在第i行第j列的同学的位置是(i,j)(i,j)，为了方便同学们进出，在教室中设置了K条横向的通道，L条纵向的通道。</p>
-<p>于是，聪明的小雪想到了一个办法，或许可以减少上课时学生交头接耳的问题：她打算重新摆放桌椅，改变同学们桌椅间通道的位置，因为如果一条通道隔开了2个会交头接耳的同学，那么他们就不会交头接耳了。</p>
-<p>请你帮忙给小雪编写一个程序，给出最好的通道划分方案。在该方案下，上课时交头接耳的学生的对数最少。</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行，有5个用空格隔开的整数，分别是M,N,K,L,D(2 $\leq$ N,M $\leq$ 1000,0 $\leq$ K&lt;M,0 $\leq$ L&lt;N,D $\leq$ 2000)</p>
-<p>接下来的D行，每行有4个用空格隔开的整数。第i行的4个整数Xi,Yi,Pi,Qi，表示坐在位置(Xi,Yi)与(Pi,Qi)的两个同学会交头接耳（输入保证他们前后相邻或者左右相邻）。</p>
-<p>输入数据保证最优方案的唯一性。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>共两行。<br>第一行包含K个整数a1,a2,…,aK，表示第a1行和a1+1行之间、第a2行和a2+1行之间、…、第aK行和第aK+1行之间要开辟通道，其中ai&lt;ai+1，每两个整数之间用空格隔开（行尾没有空格）。</p>
-<p>第二行包含L个整数b1,b2,…,bL，表示第b1列和b1+1列之间、第b2列和b2+1列之间、…、第bL列和第bL+1列之间要开辟通道，其中bi&lt;bi+1，每两个整数之间用空格隔开（列尾没有空格）。</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4 5 1 2 3</span><br><span class="line">4 2 4 3</span><br><span class="line">2 3 3 3</span><br><span class="line">2 5 2 4</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/26/洛谷P1056/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/01/26/ML1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/26/ML1/" itemprop="url">Note of Machine Learning 1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-26T10:41:38+08:00">
-                2019-01-26
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:59:58+08:00">
-                2019-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/26/ML1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/ML1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="第1章-绪论"><a href="#第1章-绪论" class="headerlink" title="第1章　绪论"></a><center>第1章　绪论</center></h1><h2 id="1-1-引言"><a href="#1-1-引言" class="headerlink" title="1.1　引言"></a><center>1.1　引言</center></h2><p>机器学习是这样一门学科，它致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。在计算机系统中，”经验“通常以”数据“形式存在，因此，机器学习所研究的主要内容，是关于在计算机上从数据中产生”模型“(model)的算法，即”学习算法“(learning algorithm)。有了学习算法，我们把经验数据提供给它，它就能基于这些数据产生模型；在面对新的情况时，模型会给我们提供相应的判断。</p>
-<p><strong>[Mitchell,1997]给出了一个更形式化的定义：假设用P来评估计算机程序在某任务类T上的性能，若一个程序通过利用经验E在T中任务上获得了性能改善，则我们说关于T和P，该程序对E进行了学习。</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/26/ML1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/12/20/线索二叉树(Threaded BinaryTree)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/线索二叉树(Threaded BinaryTree)/" itemprop="url">Threaded Binary Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T00:18:53+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T16:03:56+08:00">
-                2019-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
-                    <span itemprop="name">Data Structure</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Structure/Binary-Tree/" itemprop="url" rel="index">
-                    <span itemprop="name">Binary Tree</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/20/线索二叉树(Threaded BinaryTree)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/线索二叉树(Threaded BinaryTree)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>线索二叉树的定义、实现、三种线索化方式以及其对应的遍历方式。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> &#123;</span><span class="comment">//线索二叉树的结点</span></span><br><span class="line">	<span class="keyword">int</span> data;<span class="comment">//数据域</span></span><br><span class="line">	BiThrNode *lchild, *rchild;<span class="comment">//左右孩子指针</span></span><br><span class="line">	BiThrNode *parent;</span><br><span class="line">	<span class="keyword">int</span> LTag = <span class="number">0</span>, RTag = <span class="number">0</span>;<span class="comment">//左右标志</span></span><br><span class="line">&#125;BiThrNode, *BiThrTree;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadBiTree</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	BiThrNode *bt;<span class="comment">//根结点</span></span><br><span class="line">	BiThrNode *pre;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">RCreate</span><span class="params">(BiThrNode *p, <span class="keyword">int</span> k, <span class="keyword">int</span> end)</span></span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	BiThrNode *Thrt;<span class="comment">//头结点</span></span><br><span class="line">	ThreadBiTree() &#123; bt = <span class="literal">NULL</span>; pre = <span class="literal">NULL</span>; Thrt = <span class="keyword">new</span> BiThrNode; &#125;<span class="comment">//构造函数，对二叉链表进行初始化</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(<span class="keyword">int</span> end)</span></span>;</span><br><span class="line">	<span class="function">BiThrNode *<span class="title">Getroot</span><span class="params">()</span></span>;<span class="comment">//二叉树不为空获取根结点指针，否则返回NULL</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">BiTreeDisplay</span><span class="params">(BiThrNode *bt, <span class="keyword">int</span> level)</span></span>;<span class="comment">//二叉树的树形显示算法</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreThreading</span><span class="params">(BiThrTree p)</span></span>;<span class="comment">//先序线索化递归函数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">PreOrderThreading</span><span class="params">(BiThrTree &amp;Thrt, BiThrTree T)</span></span>;<span class="comment">//先序遍历进行先序线索化</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">PreOrderTraverse_Thr</span><span class="params">(BiThrTree T)</span></span>;<span class="comment">//先序遍历线索二叉树的非递归算法</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree p)</span></span>;<span class="comment">//中序线索化递归函数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">InOrderThreading</span><span class="params">(BiThrTree &amp;Thrt, BiThrTree T)</span></span>;<span class="comment">//中序遍历进行中序线索化</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">InOrderTraverse_Thr</span><span class="params">(BiThrTree T)</span></span>;<span class="comment">//中序遍历线索二叉树的非递归算法</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostThreading</span><span class="params">(BiThrTree p)</span></span>;<span class="comment">//后序线索化递归函数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">PostOrderTraverse_Thr</span><span class="params">(BiThrTree T)</span></span>;<span class="comment">//后序遍历线索二叉树的非递归算法</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::RCreate(BiThrNode * p, <span class="keyword">int</span> k, <span class="keyword">int</span> end) &#123;</span><br><span class="line">	BiThrNode *q;</span><br><span class="line">	<span class="keyword">int</span> e;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; e;</span><br><span class="line">	<span class="keyword">if</span> (e != end) &#123;</span><br><span class="line">		q = <span class="keyword">new</span> BiThrNode;</span><br><span class="line">		q-&gt;data = e;</span><br><span class="line">		q-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">		q-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">		q-&gt;parent = p;</span><br><span class="line">		<span class="keyword">if</span> (k == <span class="number">1</span>) p-&gt;lchild = q;</span><br><span class="line">		<span class="keyword">if</span> (k == <span class="number">2</span>) p-&gt;rchild = q;</span><br><span class="line">		RCreate(q, <span class="number">1</span>, end);</span><br><span class="line">		RCreate(q, <span class="number">2</span>, end);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::CreateBiTree(<span class="keyword">int</span> end) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请按先序序列的顺序输入二叉树，0为空指针域标志："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	BiThrNode *p;</span><br><span class="line">	<span class="keyword">int</span> e;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; e;</span><br><span class="line">	<span class="keyword">if</span> (e == end) <span class="keyword">return</span>;</span><br><span class="line">	p = <span class="keyword">new</span> BiThrNode;</span><br><span class="line">	<span class="keyword">if</span> (!p) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"申请内存失败！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">	p-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">	bt = p;</span><br><span class="line">	RCreate(p, <span class="number">1</span>, end);</span><br><span class="line">	RCreate(p, <span class="number">2</span>, end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BiThrNode * ThreadBiTree::Getroot() &#123;</span><br><span class="line">	<span class="keyword">if</span> (bt != <span class="literal">NULL</span>) <span class="keyword">return</span> bt;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::BiTreeDisplay(BiThrNode * bt, <span class="keyword">int</span> level) &#123;</span><br><span class="line">	<span class="keyword">if</span> (bt) &#123;</span><br><span class="line">		BiTreeDisplay(bt-&gt;rchild, level + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) <span class="built_in">cout</span> &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; bt-&gt;data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		BiTreeDisplay(bt-&gt;lchild, level + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::PreThreading(BiThrTree p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;lchild) p-&gt;LTag = <span class="number">1</span>, p-&gt;lchild = pre;</span><br><span class="line">		<span class="keyword">if</span> (pre != <span class="literal">NULL</span> &amp;&amp; !pre-&gt;rchild) pre-&gt;RTag = <span class="number">1</span>, pre-&gt;rchild = p;</span><br><span class="line">		pre = p;</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;LTag == <span class="number">0</span>) PreThreading(p-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;RTag == <span class="number">0</span>) PreThreading(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ThreadBiTree::PreOrderThreading(BiThrTree &amp; Thrt, BiThrTree T) &#123;</span><br><span class="line">	Thrt-&gt;LTag = <span class="number">0</span>; Thrt-&gt;RTag = <span class="number">1</span>;</span><br><span class="line">	Thrt-&gt;rchild = Thrt;</span><br><span class="line">	<span class="keyword">if</span> (!T) Thrt-&gt;lchild = Thrt;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		Thrt-&gt;lchild = T; pre = Thrt;</span><br><span class="line">		PreThreading(T);</span><br><span class="line">		pre-&gt;rchild = Thrt; pre-&gt;RTag = <span class="number">1</span>;</span><br><span class="line">		Thrt-&gt;rchild = pre;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ThreadBiTree::PreOrderTraverse_Thr(BiThrTree T) &#123;</span><br><span class="line">	BiThrNode *p;</span><br><span class="line">	p = T-&gt;lchild;</span><br><span class="line">	<span class="keyword">while</span> (p != T) &#123;</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;lchild != <span class="literal">NULL</span> &amp;&amp; p-&gt;LTag == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;LTag == <span class="number">1</span>) p = p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::InThreading(BiThrTree p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p) &#123;</span><br><span class="line">		InThreading(p-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;lchild) p-&gt;LTag = <span class="number">1</span>, p-&gt;lchild = pre;</span><br><span class="line">		<span class="keyword">if</span> (!pre-&gt;rchild) pre-&gt;RTag = <span class="number">1</span>, pre-&gt;rchild = p;</span><br><span class="line">		pre = p;</span><br><span class="line">		InThreading(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ThreadBiTree::InOrderThreading(BiThrTree &amp; Thrt, BiThrTree T) &#123;</span><br><span class="line">	Thrt-&gt;LTag = <span class="number">0</span>; Thrt-&gt;RTag = <span class="number">1</span>;<span class="comment">//Thrt指向头结点</span></span><br><span class="line">	Thrt-&gt;rchild = Thrt;</span><br><span class="line">	<span class="keyword">if</span> (!T) Thrt-&gt;lchild = Thrt;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		Thrt-&gt;lchild = T; pre = Thrt;</span><br><span class="line">		InThreading(T);</span><br><span class="line">		pre-&gt;rchild = Thrt; pre-&gt;RTag = <span class="number">1</span>;</span><br><span class="line">		Thrt-&gt;rchild = pre;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ThreadBiTree::InOrderTraverse_Thr(BiThrTree T) &#123;</span><br><span class="line">	BiThrNode *p;</span><br><span class="line">	p = T-&gt;lchild;</span><br><span class="line">	<span class="keyword">while</span> (p != T) &#123;</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;LTag == <span class="number">0</span>) p = p-&gt;lchild;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;RTag == <span class="number">1</span> &amp;&amp; p-&gt;rchild != T) &#123;</span><br><span class="line">			p = p-&gt;rchild;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		p = p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadBiTree::PostThreading(BiThrTree p) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p) &#123;</span><br><span class="line">		PostThreading(p-&gt;lchild);</span><br><span class="line">		PostThreading(p-&gt;rchild);</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;lchild) p-&gt;LTag = <span class="number">1</span>, p-&gt;lchild = pre;</span><br><span class="line">		<span class="keyword">if</span> (pre &amp;&amp; !pre-&gt;rchild) pre-&gt;RTag = <span class="number">1</span>, pre-&gt;rchild = p;</span><br><span class="line">		pre = p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ThreadBiTree::PostOrderTraverse_Thr(BiThrTree T) &#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		BiThrTree p = T;</span><br><span class="line">		pre = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">while</span> (pre != T) &#123;</span><br><span class="line">			<span class="keyword">while</span> (p-&gt;LTag == <span class="number">0</span>) p = p-&gt;lchild;</span><br><span class="line">			<span class="keyword">while</span> (p&amp;&amp;p-&gt;RTag == <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">				pre = p;</span><br><span class="line">				p = p-&gt;rchild;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span> (pre != T &amp;&amp; p-&gt;rchild == pre) &#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; p-&gt;data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">				pre = p;</span><br><span class="line">				<span class="keyword">if</span> (pre != T)p = p-&gt;parent;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (p-&gt;RTag == <span class="number">0</span>)p = p-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ThreadBiTree TA;</span><br><span class="line">	TA.CreateBiTree(<span class="number">0</span>);</span><br><span class="line">	TA.BiTreeDisplay(TA.Getroot(), <span class="number">0</span>);</span><br><span class="line">	TA.PreOrderThreading(TA.Thrt, TA.Getroot());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"先序遍历先序线索二叉树："</span>;</span><br><span class="line">	TA.PreOrderTraverse_Thr(TA.Thrt);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	ThreadBiTree TB;</span><br><span class="line">	TB.CreateBiTree(<span class="number">0</span>);</span><br><span class="line">	TB.BiTreeDisplay(TB.Getroot(), <span class="number">0</span>);</span><br><span class="line">	TB.InOrderThreading(TB.Thrt, TB.Getroot());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"中序遍历中序线索二叉树："</span>;</span><br><span class="line">	TB.InOrderTraverse_Thr(TB.Thrt);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	ThreadBiTree TC;</span><br><span class="line">	TC.CreateBiTree(<span class="number">0</span>);</span><br><span class="line">	TC.BiTreeDisplay(TC.Getroot(), <span class="number">0</span>);</span><br><span class="line">	TC.PostThreading(TC.Getroot());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"后序遍历后序线索二叉树："</span>;</span><br><span class="line">	TC.PostOrderTraverse_Thr(TC.Getroot());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2675,7 +2794,7 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2686,7 +2805,7 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2697,7 +2816,7 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

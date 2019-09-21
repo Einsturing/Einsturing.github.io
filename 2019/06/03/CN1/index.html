@@ -147,17 +147,13 @@
 <meta property="og:description" content="计算机网络从20世纪60年代发展至今，是计算机技术与通信技术相结合的产物，其定义如下 定义　计算机网络是用通信设备和通信链路连接起来，使用网络协议进行数据通信，实现资源共享的计算机的集合。 计算机网络由硬件和软件组成，硬件为 通信子网：通信设备和通信介质，用来传输数据； 资源子网：计算机及其硬件，用来存储和处理数据。 软件为 一系列网络协议：保证数据通信正确进行。 计算机网络类型众多，如局域网、广">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-1.png">
-<meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-2.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-3.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-4.png">
-<meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-5.png">
-<meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-6.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-7.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-8.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-9.png">
-<meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-10.png">
 <meta property="og:image" content="http://einsturing.top/2019/06/03/CN1/g1-11.png">
-<meta property="og:updated_time" content="2019-06-13T08:48:24.898Z">
+<meta property="og:updated_time" content="2019-09-21T03:24:53.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第1章 计算机网络和因特网">
 <meta name="twitter:description" content="计算机网络从20世纪60年代发展至今，是计算机技术与通信技术相结合的产物，其定义如下 定义　计算机网络是用通信设备和通信链路连接起来，使用网络协议进行数据通信，实现资源共享的计算机的集合。 计算机网络由硬件和软件组成，硬件为 通信子网：通信设备和通信介质，用来传输数据； 资源子网：计算机及其硬件，用来存储和处理数据。 软件为 一系列网络协议：保证数据通信正确进行。 计算机网络类型众多，如局域网、广">
@@ -412,8 +408,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-13T16:48:24+08:00">
-                2019-06-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T11:24:53+08:00">
+                2019-09-21
               </time>
             
           </span>
@@ -539,31 +535,49 @@
 <p>通信链路(communication link)：<strong>连接不同设备的物理线路</strong>。类型有同轴电缆、双绞线、光纤、无线链路等。通信链路的数据指每秒传输多少位数据，单位bps；不同链路传输速率不同。</p>
 <p><img src="/2019/06/03/CN1/g1-1.png" alt></p>
 <center>图1-1：通信链路</center>
+通信设备：因特网中的通信设备是分组交换机(packet switch)，分**路由器**(Router)和**链路层交换机**(Switch)，功能为**接收、存储、转发分组**。从一条通信链路接收分组、存储排队处理后，从另一条链路转发分组。
 
-<p>通信设备：因特网中的通信设备是分组交换机(packet switch)，分<strong>路由器</strong>(Router)和<strong>链路层交换机</strong>(Switch)，功能为<strong>接收、存储、转发分组</strong>。从一条通信链路接收分组、存储排队处理后，从另一条链路转发分组。</p>
-<p>分组交换技术：发送主机将要发送的数据分成若干较小的<strong>块，添加控制信息形成分组</strong>(packet)，通过若干分组交换机的存储转发到达目的主机，再组装恢复原数据。一个分组从发送主机传输到接收主机，所经过的一系列<strong>通信链路和分组交换机</strong>称为路径。即使源和目的主机相同，每个分组所选<strong>路径可能不相同</strong>。且<strong>路径不专用，效率更高</strong>。</p>
-<p>因特网服务提供商(Internet Service Provider,ISP)：由多个分组交换机和通信链路组成的网络，并由某机构管理运营，主机需要通过某个ISP接入因特网。ISP为<strong>分层结构</strong>，<strong>低层ISP</strong>通过<strong>高层ISP</strong>互联，对<strong>用户</strong>和<strong>内容提供者</strong>提供<strong>不同类型</strong>的网络接入。每个ISP独立管理，但都运行TCP/IP协议族。</p>
-<p>协议(protocol)：<strong>保证网络通信正确进行的规则与约定</strong>，由硬件或软件程序实现，每个端系统和通信设备都要运行。因特网使用TCP(Transmission Control Protocol 传输控制协议)/IP(Internet Protocol 网际协议)协议族，含很多协议。每个协议有对应因特网标准，由IETF(Internet Engineering Task Force 因特网工程任务组)以RFC(Request For Comments 请求评论)文档形式发布。</p>
-<p><img src="/2019/06/03/CN1/g1-2.png" alt></p>
+分组交换技术：发送主机将要发送的数据分成若干较小的**块，添加控制信息形成分组**(packet)，通过若干分组交换机的存储转发到达目的主机，再组装恢复原数据。一个分组从发送主机传输到接收主机，所经过的一系列**通信链路和分组交换机**称为路径。即使源和目的主机相同，每个分组所选**路径可能不相同**。且**路径不专用，效率更高**。
+
+因特网服务提供商(Internet Service Provider,ISP)：由多个分组交换机和通信链路组成的网络，并由某机构管理运营，主机需要通过某个ISP接入因特网。ISP为**分层结构**，**低层ISP**通过**高层ISP**互联，对**用户**和**内容提供者**提供**不同类型**的网络接入。每个ISP独立管理，但都运行TCP/IP协议族。
+
+协议(protocol)：**保证网络通信正确进行的规则与约定**，由硬件或软件程序实现，每个端系统和通信设备都要运行。因特网使用TCP(Transmission Control Protocol 传输控制协议)/IP(Internet Protocol 网际协议)协议族，含很多协议。每个协议有对应因特网标准，由IETF(Internet Engineering Task Force 因特网工程任务组)以RFC(Request For Comments 请求评论)文档形式发布。
+
+![](CN1/g1-2.png)
+
 <center>图1-2：人类和网络对比(协议与规则)</center>
+网络协议：由设备的**硬件或软件执行**的写成程序。**因特网活动都要遵守协议**。例如邮件传输、远程登录、网页传输等。协议**定义了报文的格式、含义和传输频序，即语法、语义和语序**。不同协议完成不同的通信任务，如HTTP传输网页、SMTP传输电子邮件。
 
-<p>网络协议：由设备的<strong>硬件或软件执行</strong>的写成程序。<strong>因特网活动都要遵守协议</strong>。例如邮件传输、远程登录、网页传输等。协议<strong>定义了报文的格式、含义和传输频序，即语法、语义和语序</strong>。不同协议完成不同的通信任务，如HTTP传输网页、SMTP传输电子邮件。</p>
-<p>因特网为分布式应用程序提供两种通信服务，<strong>面向连接的可靠服务</strong>和<strong>无连接的不可靠的服务</strong>。</p>
-<p>面向连接服务：两个端系统先要通过“<strong>握手过程</strong>”建立连接，然后才发送数据。握手过程指<strong>互相发送“控制”信息，在两个端系统之间创建连接</strong>，双方做好接收信息的准备。面向连接服务有三大特性：可靠的数据传输、流量控制、拥塞控制。</p>
-<p>1）可靠的数据传输：端系统可以<strong>无差错、按序</strong>传递分组。对报文进行编号，当接收端<strong>收到分组时返回一个“确认”</strong>，如果<strong>发送端一段时间内未收到“确认”，重传该分组</strong>。</p>
-<p>2）流量控制：当接收方缓存已满，降低发送速率，避免数据丢失。</p>
-<p>3）拥塞控制：当网络出现拥塞时，降低特定发送端向网络发送分组的速率。</p>
-<p>TCP提供面向连接服务，实现以上三种特性。使用TCP的分布式应用程序如Telnet(远程注册)、SMTP(电子邮件)、FTP(文件传输)、HTTP(Web)等。</p>
-<p>无连接服务：两个主机通信前，<strong>不需要建立连接</strong>，可<strong>直接发送分组</strong>，效率更高。特点为<strong>不可靠</strong>，<strong>无流量控制和拥塞控制</strong>但<strong>工作效率高</strong>。</p>
-<p>UDP(User Datagram Protocol 用户数据报协议)提供无连接服务，相关分布式应用程序如网络管理系统、网络参数自动分配等。</p>
-<h2 id="1-2-网络边缘"><a href="#1-2-网络边缘" class="headerlink" title="1.2　网络边缘"></a><center>1.2　网络边缘</center></h2><p>网络分为两大部分，网络边缘(<strong>资源子网</strong>)如端系统和外围设备，分布式应用程序，网络核心(<strong>通信子网</strong>)如路由器、交换机，通信链路。</p>
+因特网为分布式应用程序提供两种通信服务，**面向连接的可靠服务**和**无连接的不可靠的服务**。
+
+面向连接服务：两个端系统先要通过“**握手过程**”建立连接，然后才发送数据。握手过程指**互相发送“控制”信息，在两个端系统之间创建连接**，双方做好接收信息的准备。面向连接服务有三大特性：可靠的数据传输、流量控制、拥塞控制。
+
+1）可靠的数据传输：端系统可以**无差错、按序**传递分组。对报文进行编号，当接收端**收到分组时返回一个“确认”**，如果**发送端一段时间内未收到“确认”，重传该分组**。
+
+2）流量控制：当接收方缓存已满，降低发送速率，避免数据丢失。
+
+3）拥塞控制：当网络出现拥塞时，降低特定发送端向网络发送分组的速率。
+
+TCP提供面向连接服务，实现以上三种特性。使用TCP的分布式应用程序如Telnet(远程注册)、SMTP(电子邮件)、FTP(文件传输)、HTTP(Web)等。
+
+无连接服务：两个主机通信前，**不需要建立连接**，可**直接发送分组**，效率更高。特点为**不可靠**，**无流量控制和拥塞控制**但**工作效率高**。
+
+UDP(User Datagram Protocol 用户数据报协议)提供无连接服务，相关分布式应用程序如网络管理系统、网络参数自动分配等。
+
+## <center>1.2　网络边缘</center>
+
+<p>网络分为两大部分，网络边缘(<strong>资源子网</strong>)如端系统和外围设备，分布式应用程序，网络核心(<strong>通信子网</strong>)如路由器、交换机，通信链路。</p>
 <p><img src="/2019/06/03/CN1/g1-3.png" alt></p>
 <center>图1-3：网络边缘和网络核心</center>
+端系统即主机，在**网络边缘**运行分布式应用程序，分为**客户机**(client)和**服务器**(server)。客户机通常是个人计算机与设备，运行客户端软件，请求服务。服务器通常是功能更强的计算机，运行服务器端原件，提供服务。端系统间的工作模式有**客户机/服务器(C/S)模式、对等(P2P)模式、混合模式**。
 
-<p>端系统即主机，在<strong>网络边缘</strong>运行分布式应用程序，分为<strong>客户机</strong>(client)和<strong>服务器</strong>(server)。客户机通常是个人计算机与设备，运行客户端软件，请求服务。服务器通常是功能更强的计算机，运行服务器端原件，提供服务。端系统间的工作模式有<strong>客户机/服务器(C/S)模式、对等(P2P)模式、混合模式</strong>。</p>
-<p>(C/S)模式：存在客户机和服务器，被因特网广泛采用，如电子邮件传输、Web网页传输、文件传输等。</p>
-<p>Peer to Peer(P2P)模式：很少或不适用专门的服务器。其特点为各端系统<strong>同时运行客户机和服务器程序</strong>，<strong>请求服务</strong>时是<strong>客户机</strong>，<strong>提供服务</strong>时是<strong>服务器</strong>，如BT(Bit Torrent比特洪流)下载。</p>
-<h2 id="1-3-网络核心"><a href="#1-3-网络核心" class="headerlink" title="1.3　网络核心"></a><center>1.3　网络核心</center></h2><p>网络核心由分组交换机和链路组成，用于数据传输。传输方式有<strong>电路交换</strong>和<strong>分组交换</strong>。</p>
+(C/S)模式：存在客户机和服务器，被因特网广泛采用，如电子邮件传输、Web网页传输、文件传输等。
+
+Peer to Peer(P2P)模式：很少或不适用专门的服务器。其特点为各端系统**同时运行客户机和服务器程序**，**请求服务**时是**客户机**，**提供服务**时是**服务器**，如BT(Bit Torrent比特洪流)下载。
+
+## <center>1.3　网络核心</center>
+
+<p>网络核心由分组交换机和链路组成，用于数据传输。传输方式有<strong>电路交换</strong>和<strong>分组交换</strong>。</p>
 <p>电路交换(circuit switching)：面向连接，<strong>提前预留</strong>通信路径上所需<strong>通信资源</strong>(缓存，链路带宽)，发送双方<strong>独占使用</strong>预留资源以<strong>恒定速率</strong>在同一物理连接上连续传送数据，如固定电话网。物理连接指固定路径。优点是保证恒定速率，通信质量好，缺点是创建电路、预留资源过程复杂，且静默期<strong>效率较低</strong>。发送方发送一个文件的时间为创建电路时间加文件传输时间。</p>
 <p>多路复用(multiplexing)：在一条通信链路上分别为不同连接传输数据。电路交换网的多路复用有频分多路复用FDM(frequenct-division multiplexing)，链路的频谱划分成若干<strong>频段</strong>，每个频段专用于一个连接，和时分多路复用TDM(time-division multiplexing)，链路的传输时间划分为若干固定时长的<strong>帧</strong>，帧再划分为固定数量的<strong>时隙</strong>，每一个时隙专用于一个连接的一块数据的传输。</p>
 <p>分组交换(packet switching)：可面向连接和无连接，<strong>不会预留资源</strong>，通信时<strong>按需共享使用</strong>资源，<strong>以分组的方式采用逻辑连接或无连接方式传送，可能要排队等待，速率不恒定</strong>，如因特网。逻辑连接指底层数据走不同路径，中上层通过采取措施，使得从应用程序看起来是同一路径过来的一样。分组交换的工作过程为，源端将报文<strong>划分为较小</strong>的<strong>分组</strong>(含控制信息)，<strong>每个分组</strong>独自通过一系列链路和分组交换机传送到达目的端，目的端<strong>组合并恢复原报文</strong>。<strong>共享使用链路，以最大速率传输</strong>。</p>
@@ -577,28 +591,43 @@
 <p>1）根据交换方式</p>
 <p><img src="/2019/06/03/CN1/g1-4.png" alt></p>
 <center>图1-4：网络交换方式</center>
+![](CN1/g1-5.png)
 
-<p><img src="/2019/06/03/CN1/g1-5.png" alt></p>
 <center>图1-5：四种交换方式</center>
+2）根据地理覆盖范围
 
-<p>2）根据地理覆盖范围</p>
-<p>局域网(Local Area Network,LAN)：覆盖范围较小，用户数少、配置容易、用户端速率较快。</p>
-<p>城域网(Metropolitan Area Network,MAN)：同一城市，不同地理范围的网络，覆盖范围在广域网和局域网之间，使用光纤连接。主干传输速率比LAN高。</p>
-<p>广域网(Wide Area Network,WAN)：也叫远程网，覆盖范围广，为不规则网状结构。主干线路速率高但用户端速率低。</p>
-<p>3）根据拓扑结构</p>
-<p>拓扑结构指网络的物理连接方式。</p>
-<p><img src="/2019/06/03/CN1/g1-6.png" alt></p>
+局域网(Local Area Network,LAN)：覆盖范围较小，用户数少、配置容易、用户端速率较快。
+
+城域网(Metropolitan Area Network,MAN)：同一城市，不同地理范围的网络，覆盖范围在广域网和局域网之间，使用光纤连接。主干传输速率比LAN高。
+
+广域网(Wide Area Network,WAN)：也叫远程网，覆盖范围广，为不规则网状结构。主干线路速率高但用户端速率低。
+
+3）根据拓扑结构
+
+拓扑结构指网络的物理连接方式。
+
+![](CN1/g1-6.png)
+
 <center>图1-6：网络的拓扑结构</center>
+总线：所有节点连接到**一条公共传输线**上，通过该总线传输信息(**双向**)。其结构简单、方便、易于扩充、成本都，但传输距离有限且实时性差，用于早期的以太网。
 
-<p>总线：所有节点连接到<strong>一条公共传输线</strong>上，通过该总线传输信息(<strong>双向</strong>)。其结构简单、方便、易于扩充、成本都，但传输距离有限且实时性差，用于早期的以太网。</p>
-<p>树形：由总线结构派生，易于扩展，但对“<strong>根</strong>”的依赖性大，如有线广播电视网。</p>
-<p>星形：以<strong>中央节点为中心</strong>，连接若干外围节点，如集线器或交换机。结构简单、连网方便、成本低，但中心节点依赖性大，用于小型局域网。</p>
-<p>环形：节点<strong>连接成一个闭合的环</strong>，信息<strong>单向传输</strong>。结构简单、路径选择方便，但可靠性差、管理复杂。用于早期局域网和城域网。</p>
-<p>网状/分布式：每个节点和其他任意节点<strong>至少有两条线路</strong>相连。可靠性高，但网络控制和软件比较复杂。</p>
-<p>4）根据使用范围</p>
-<p>公用网(Public Network)：面向大众，付费使用，如Internet。</p>
-<p>专用网(Private network)：单位内部使用，如军用、金融网络。</p>
-<h2 id="1-4-网络接入和物理媒体"><a href="#1-4-网络接入和物理媒体" class="headerlink" title="1.4 　网络接入和物理媒体"></a><center>1.4 　网络接入和物理媒体</center></h2><p>网络接入(network access)：将端系统连接到<strong>边缘路由器</strong>。接入方式有住宅接入(家庭用户)，公司接入(学校、单位)，无线接入(移动设备)。</p>
+树形：由总线结构派生，易于扩展，但对“**根**”的依赖性大，如有线广播电视网。
+
+星形：以**中央节点为中心**，连接若干外围节点，如集线器或交换机。结构简单、连网方便、成本低，但中心节点依赖性大，用于小型局域网。
+
+环形：节点**连接成一个闭合的环**，信息**单向传输**。结构简单、路径选择方便，但可靠性差、管理复杂。用于早期局域网和城域网。
+
+网状/分布式：每个节点和其他任意节点**至少有两条线路**相连。可靠性高，但网络控制和软件比较复杂。
+
+4）根据使用范围
+
+公用网(Public Network)：面向大众，付费使用，如Internet。
+
+专用网(Private network)：单位内部使用，如军用、金融网络。
+
+## <center>1.4 　网络接入和物理媒体</center>
+
+<p>网络接入(network access)：将端系统连接到<strong>边缘路由器</strong>。接入方式有住宅接入(家庭用户)，公司接入(学校、单位)，无线接入(移动设备)。</p>
 <p>边缘路由器(edge router)：端系统到网络的第一台路由器。</p>
 <p>住宅接入即将家庭的端系统(如PC)与边缘路由器相连接，可通过拨号调制解调器或使用新型宽带接入技术。</p>
 <p>1）通过拨号调制解调器：端系统通过模拟电话线和调制解调器与因特网服务提供商(ISP)的路由器相连。但上网速度慢，通信不稳定，不能同时上网和拨打固定电话。</p>
@@ -617,8 +646,9 @@
 <p>第三层ISP和接入ISP最靠近端系统，通过第二层ISP与因特网相连，是第二层的客户。</p>
 <p><img src="/2019/06/03/CN1/g1-7.png" alt></p>
 <center>图1-7：分组在因特网传输</center>
+## <center>1.6　分组交换网的时延、丢包与吞吐量</center>
 
-<h2 id="1-6-分组交换网的时延、丢包与吞吐量"><a href="#1-6-分组交换网的时延、丢包与吞吐量" class="headerlink" title="1.6　分组交换网的时延、丢包与吞吐量"></a><center>1.6　分组交换网的时延、丢包与吞吐量</center></h2><p>一段链路有四种时延：<strong>处理时延、排队时延、传输时延、传播时延</strong>。</p>
+<p>一段链路有四种时延：<strong>处理时延、排队时延、传输时延、传播时延</strong>。</p>
 <p><img src="/2019/06/03/CN1/g1-8.png" alt></p>
 <p>处理时延(processing delay)：<strong>检查比特差错，查路由表决定输出链路</strong>时的时延，通常是微秒级。</p>
 <p>排队时延(queuing delay)：<strong>分组在输出缓存上等待传输的排队时间</strong>，与<strong>正在排队</strong>的分组数量、到达分组的数量、到达该队列<strong>流量的强度</strong>和性质有关。可以是毫秒到微妙级。</p>
@@ -630,14 +660,18 @@
 <p>令$a=$平均分组到达速率(bps)，则流量强度$=La/R$。</p>
 <p><img src="/2019/06/03/CN1/g1-9.png" alt></p>
 <center>图1-9：平均排队时延与流量强度关系</center>
+通常，一条链路的输出缓存队列容量有限，当到达的分组发现队列已满，没有空间存储时，将被丢弃，此现象为分组丢失，即丢包。丢包可能由源主机进行重传。
 
-<p>通常，一条链路的输出缓存队列容量有限，当到达的分组发现队列已满，没有空间存储时，将被丢弃，此现象为分组丢失，即丢包。丢包可能由源主机进行重传。</p>
-<p><strong>分组从源到目的地的时延</strong>称为端到端时延。设源主机和目的主机之间有$N-1$个路由器，假设网络无拥塞(忽略排队时延)，路由器和源主机的处理时延是$d<em>{proc}$，路由器和源主机的输出速率是$R b/s$，则路由器和源主机的传输时延$d</em>{trans}=L/R$，每条链路的传播时延是$d<em>{prop}$，每个节点与后续链路时延为$d</em>{proc}+d<em>{trans}+d</em>{prop}$，端到端时延$d<em>{end-end}=N(d</em>{proc}+d<em>{trans}+d</em>{prop})$。</p>
-<p>吞吐量(throughput)：端到端吞吐量指通信中接收方接收数据的平均数据，分瞬时吞吐量和平均吞吐量。端到端吞吐量是瓶颈链路(bottleneck link)的传输速率。</p>
-<p><img src="/2019/06/03/CN1/g1-10.png" alt></p>
+**分组从源到目的地的时延**称为端到端时延。设源主机和目的主机之间有$N-1$个路由器，假设网络无拥塞(忽略排队时延)，路由器和源主机的处理时延是$d_{proc}$，路由器和源主机的输出速率是$R b/s$，则路由器和源主机的传输时延$d_{trans}=L/R$，每条链路的传播时延是$d_{prop}$，每个节点与后续链路时延为$d_{proc}+d_{trans}+d_{prop}$，端到端时延$d_{end-end}=N(d_{proc}+d_{trans}+d_{prop})$。
+
+吞吐量(throughput)：端到端吞吐量指通信中接收方接收数据的平均数据，分瞬时吞吐量和平均吞吐量。端到端吞吐量是瓶颈链路(bottleneck link)的传输速率。
+
+![](CN1/g1-10.png)
+
 <center>图1-10：端到端吞吐量</center>
+## <center>1.7　协议层次与服务模型</center>
 
-<h2 id="1-7-协议层次与服务模型"><a href="#1-7-协议层次与服务模型" class="headerlink" title="1.7　协议层次与服务模型"></a><center>1.7　协议层次与服务模型</center></h2><p>因特网采用<strong>分层的体系结构</strong>，每层实现相对独立的功能，每层利用下一层次所提供的服务。分层的优点在于能简化复杂系统的实现，且易于维护和更新。只要保持向上层提供的服务和向下层使用的服务不变，某层内部的变化不会影响其他层次。</p>
+<p>因特网采用<strong>分层的体系结构</strong>，每层实现相对独立的功能，每层利用下一层次所提供的服务。分层的优点在于能简化复杂系统的实现，且易于维护和更新。只要保持向上层提供的服务和向下层使用的服务不变，某层内部的变化不会影响其他层次。</p>
 <p>协议分层：每层都有一系列协议，协议通过软件、硬件实现，运行在不同设备中，称为协议栈(protocol stack)。OSI协议栈有七层；TCP/IP协议栈有五层。</p>
 <p>OSI/RM(Open System Interconnection/Reference Model 开放系统互连参考模型)如下</p>
 <div class="table-container">
@@ -864,7 +898,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -875,7 +909,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -886,7 +920,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -961,7 +995,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是因特网"><span class="nav-number">1.</span> <span class="nav-text">1.1　什么是因特网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-网络边缘"><span class="nav-number">2.</span> <span class="nav-text">1.2　网络边缘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-网络核心"><span class="nav-number">3.</span> <span class="nav-text">1.3　网络核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-网络接入和物理媒体"><span class="nav-number">4.</span> <span class="nav-text">1.4 　网络接入和物理媒体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-ISP和因特网主干"><span class="nav-number">5.</span> <span class="nav-text">1.5　ISP和因特网主干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-分组交换网的时延、丢包与吞吐量"><span class="nav-number">6.</span> <span class="nav-text">1.6　分组交换网的时延、丢包与吞吐量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-协议层次与服务模型"><span class="nav-number">7.</span> <span class="nav-text">1.7　协议层次与服务模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是因特网"><span class="nav-number">1.</span> <span class="nav-text">1.1　什么是因特网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-ISP和因特网主干"><span class="nav-number">2.</span> <span class="nav-text">1.5　ISP和因特网主干</span></a></li></ol></div>
             
 
           </div>

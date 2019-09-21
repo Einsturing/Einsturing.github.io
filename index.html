@@ -355,6 +355,1050 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/09/21/编原1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/编原1/" itemprop="url">第1章 引论</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T17:03:55+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T17:07:06+08:00">
+                2019-09-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Compilers-Principle/" itemprop="url" rel="index">
+                    <span itemprop="name">Compilers Principle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/21/编原1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/21/编原1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-1-什么是编译程序"><a href="#1-1-什么是编译程序" class="headerlink" title="1.1　什么是编译程序"></a><center>1.1　什么是编译程序</center></h2><p>编译程序又称编译器，是语言的翻译器，将高级语言的源程序翻译成低级语言的目标程序，使编程者不必考虑与机器有关的细节。</p>
+<p><img src="/2019/09/21/编原1/g1-1.png" alt></p>
+<h2 id="1-2-编译过程和编译程序的结构"><a href="#1-2-编译过程和编译程序的结构" class="headerlink" title="1.2　编译过程和编译程序的结构"></a><center>1.2　编译过程和编译程序的结构</center></h2><h3 id="1-2-1-编译过程概述"><a href="#1-2-1-编译过程概述" class="headerlink" title="1.2.1　编译过程概述"></a>1.2.1　编译过程概述</h3><p><img src="/2019/09/21/编原1/g1-2.png" alt></p>
+<p>词法分析的任务是从左到右读入源程序的每个字符，对构成源程序的字符流进行扫描和分解，从而识别出一个个单词(也叫单词符号或符号)。单词是具有独立意义的最小语法单位，如:标识符、保留字(关键字或基本字)、算符、界符、常数等。</p>
+<p>语法分析的任务是依据语言的语法规则，确定源程序的输入串是否构成一个语法上正确的程序。语法是由程序语言基本符号组成程序中各个语法成分的一组规则。一般语法规则是由单词符号构成语法成分的规则；词法规则是由基本符号构成的符号书写规则。</p>
+<p>语义分析的任务是审查源程序有无语义错误，为代码生成阶段收集类型信息。 主要功能：类型检查、报语义错误、类型转换等。语义是程序设计语言中按语法规则构成的各个语法成分的意义。静态语义是编译时刻即可确定的语法成分含义；动态语义是运行时刻才能确定的语法成分含义。</p>
+<p>中间代码生成的任务是在语法和语义分析之后，将源程序变成一种”内部表示形式“。</p>
+<p>中间代码：一种结构简单、含义明确的记号系统。</p>
+<p>特征：结构简单、含义明确;复杂性介于源语言和机器语言之间；容易生成；容易将它翻译成目标代码。</p>
+<p>四元式：(运算符，运算对象1，运算对象2，结果)</p>
+<p>代码优化的任务是对中间代码进行变换或改造，使之更为高效(时间、空间)。</p>
+<p>目标代码生成的任务是把中间代码变换成特定机器上的绝对指令代码或可重定位的机器指令代码或汇编指令代码。</p>
+<p>特点：与硬件系统结构和指令含义有关，涉及到硬件系统功能部件的运用、机器指令的选择、各种数据类型变量的存储空间分配以及寄存器和后缓寄存器的调度等；高级语言到低级语言转换是基于语义的等价变换，不是结构上的变换。</p>
+<p>表格管理的任务是用于保存源程序的各种信息。因为上述各阶段工作均需要查找、更新、构造表格。</p>
+<p>出错处理的任务是报告源程序中错误的性质、地点，将错误所造成的影响限制在尽可能小的范围。有些编译程序还可以自动纠错。一个程序是正确的，说明书写正确(合乎语法规则)，含义正确(合乎语义规则)。</p>
+<p>多数实用的编译程序都采用以上几个阶段的工作过程，有些编译程序没有“中间代码生成”和“代码优化”。</p>
+<h3 id="1-2-2-编译程序的结构"><a href="#1-2-2-编译程序的结构" class="headerlink" title="1.2.2　编译程序的结构"></a>1.2.2　编译程序的结构</h3><p><img src="/2019/09/21/编原1/g1-3.png" alt></p>
+<h3 id="1-2-3-编译阶段的组合"><a href="#1-2-3-编译阶段的组合" class="headerlink" title="1.2.3　编译阶段的组合"></a>1.2.3　编译阶段的组合</h3><p>前端：主要依赖于源语言而与目标机器无关的编译阶段。如：词法分析、语法分析、语义分析、中间代码生成、部分代码优化、与前端有关的出错处理工作和表格管理工作。</p>
+<p>后端：依赖于目标机而一般不依赖于源语言，只与中间代码有关的编译阶段。如：目标代码生成，以及相关出错处理和表格处理。</p>
+<p>遍(趟)：对源程序或其等价的中间语言程序从头到尾扫视并完成规定任务的过程。每一遍扫视可完成编译的一个阶段或多个阶段工作。</p>
+<p>多遍编译：占内存少，逻辑结构清晰，耗时长。</p>
+<p>一遍编译：占内存多，逻辑结构不清晰，耗时短。</p>
+<h2 id="1-3-解释程序和一些软件工具"><a href="#1-3-解释程序和一些软件工具" class="headerlink" title="1.3　解释程序和一些软件工具"></a><center>1.3　解释程序和一些软件工具</center></h2><h3 id="1-3-1-解释程序"><a href="#1-3-1-解释程序" class="headerlink" title="1.3.1　解释程序"></a>1.3.1　解释程序</h3><p>解释程序接受高级语言程序，并立即运行这个源程序。例如：BASIC语言解释程序，LISP解释程序，SQL解释程序，Java语言中的BYTECODE解释程序。</p>
+<p><img src="/2019/09/21/编原1/g1-4.png" alt></p>
+<p>编译与解释的根本区别：是否生成目标代码。</p>
+<p>解释程序的优点是可移植性较好；缺点是速度慢，空间开销大</p>
+<p><strong>有些语言既有编译程序，又有解释程序。</strong></p>
+<h3 id="1-3-2-处理源程序的软件工具"><a href="#1-3-2-处理源程序的软件工具" class="headerlink" title="1.3.2　处理源程序的软件工具"></a>1.3.2　处理源程序的软件工具</h3><p>语言的结构化编辑器</p>
+<p>– 正文编辑、修改</p>
+<p>– 对源程序正文进行分析（检查用户输入是否正确、自动提供关键字、检查括号的匹配情况）</p>
+<p>语言程序的调试工具</p>
+<p>– 了解程序执行的结果与编程人员的意图是否一致</p>
+<p>– 允许用户一行一行跟踪程序，查看变量值的变化</p>
+<p>程序格式化工具</p>
+<p>– 分析源程序，并使程序结构变得清晰可读（如缩排）</p>
+<p>语言程序测试工具</p>
+<p>– 静态分析器：不运行源程序，就可以发现其中潜藏的错误或异常。</p>
+<p>– 动态分析器：对源程序进行分析，把记录和显示程序执行轨迹的语句或函数插入源程序，将运行结果与期望结果进行比较和分析。</p>
+<p>程序理解工具</p>
+<p>– 对程序进行分析，确定模块间的调用关系，并画出控制流程图。</p>
+<p>高级语言之间的转换工具</p>
+<p>– 将一种高级语言程序转换成另一种高级语言程序</p>
+<h2 id="1-4-程序设计语言范型"><a href="#1-4-程序设计语言范型" class="headerlink" title="1.4　程序设计语言范型"></a><center>1.4　程序设计语言范型</center></h2><p>一、强制式语言(过程式语言、命令式语言)</p>
+<p>由一系列的语句组成，每个语句的执行引起若干存储单元中值的改变。如：C，Fortran，Pascal。</p>
+<p>二、函数式语言(应用式语言)</p>
+<p>从前面已有的函数出发构造出更复杂的函数。Function n(…Function 2(Function 1(data))…)。如：ML，LISP</p>
+<p>三、基于规则的语言(基于逻辑的语言)</p>
+<p>检查一定的使能条件，当它满足时，则执行适当的动作。条件$\rightarrow$动作。如：PROLOG</p>
+<p>四、面向对象语言</p>
+<p>提供抽象数据类型，支持封装性、继承性和多态性。如：Ada，C++，Java。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/09/21/组原1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/组原1/" itemprop="url">第1章 概论</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T11:20:12+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T11:24:59+08:00">
+                2019-09-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Composition-Principle/" itemprop="url" rel="index">
+                    <span itemprop="name">Composition Principle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/21/组原1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/21/组原1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-1-计算机的发展历史"><a href="#1-1-计算机的发展历史" class="headerlink" title="1.1　计算机的发展历史"></a><center>1.1　计算机的发展历史</center></h2><p>1946年2月15日第一台计算机ENIAC(Electronic Numerical Integrator and Computer)诞生，发展历程分硬件和软件。</p>
+<h3 id="1-1-1-更新换代的计算机硬件"><a href="#1-1-1-更新换代的计算机硬件" class="headerlink" title="1.1.1　更新换代的计算机硬件"></a>1.1.1　更新换代的计算机硬件</h3><p>计算机分为5个发展阶段。</p>
+<p>1.电子管时代(1946-1959年)</p>
+<p>2.晶体管时代(1959-1964年)</p>
+<p>3.中、小规模集成电路(MSI、SSI)时代(1964-1975年)</p>
+<p>4.超、大规模集成电路(VLSI、LSI)时代(1975-1990年)</p>
+<p>5.超级规模集成电路时代</p>
+<h3 id="1-1-2-日臻完善的计算机软件"><a href="#1-1-2-日臻完善的计算机软件" class="headerlink" title="1.1.2　日臻完善的计算机软件"></a>1.1.2　日臻完善的计算机软件</h3><p>计算机软件的发展与计算机硬件及技术的发展紧密相关。</p>
+<p>1.汇编语言阶段(20世纪50年代)</p>
+<p>2.程序批处理阶段(20世纪60年代)</p>
+<p>3.分时多用户阶段(20世纪70年代)</p>
+<p>4.分布式管理阶段(20世纪80年代)</p>
+<p>5.软件重用阶段(20世纪90年代)</p>
+<p>6.Web服务阶段(21世纪前10年)</p>
+<p>7.云计算阶段(2020年)</p>
+<h2 id="1-2-计算机系统的硬件组成"><a href="#1-2-计算机系统的硬件组成" class="headerlink" title="1.2　计算机系统的硬件组成"></a><center>1.2　计算机系统的硬件组成</center></h2><p>一个完整的计算机系统由硬件和软件系统组成。硬件系统指组成计算机的各种物理装置以及它们的设计与实现技术。软件系统泛指计算机系统中使用的各种程序和文件。</p>
+<h3 id="1-2-1-计算机的功能部件"><a href="#1-2-1-计算机的功能部件" class="headerlink" title="1.2.1　计算机的功能部件"></a>1.2.1　计算机的功能部件</h3><p>计算机的基本功能包括数据加工、保存、传送和操作控制，由相应的硬件承担有关工作。计算机的硬件由输入设备、输出设备、运算器、存储器和控制器组成。</p>
+<p><img src="/2019/09/21/组原1/g1-1.png" alt></p>
+<p>输入输出设备又称I/O设备，存储器分为主存储器和辅助存储器，CPU能够直接访问的存储器是主存。</p>
+<p><img src="/2019/09/21/组原1/g1-2.png" alt></p>
+<p>主存中存储体是存放二进制信息的主体；地址寄存器存放所要访问的存储单元的地址码，由它经地址译码找到被选的存储单元；数据存储器是主存与其他部件的接口，用于暂存从存储器中读出或向存储器中写入的信息；控制逻辑用于产生存储器操作所需的各种时序信号。主存实现了按地址进行访问。</p>
+<p>运算器是计算机的执行部件，完成算术逻辑运算和对数据的加工处理，其核心是算术逻辑部件ALU(Arithmetic and Logical Unit)。运算器设有若干寄存器用于暂存操作数据和中间结果，由于寄存器往往兼备多种用途，通常称为通用寄存器。</p>
+<p><img src="/2019/09/21/组原1/g1-3.png" alt></p>
+<p>控制器根据事先编好的程序，指挥控制整个计算机系统中的各部件进行工作。</p>
+<p>程序：就是解题步骤，解题步骤最终以指令序列形式来描述，指令序列事先存放在存储器中(存储程序)，执行程序实质是由控制器按着事先安排好的指令序列依次读出存储器中存放的程序指令，逐条解释、执行每一条指令，从而控制计算机各个部件有条不紊地自动工作(程序控制)。</p>
+<h3 id="1-2-2-冯诺依曼计算机"><a href="#1-2-2-冯诺依曼计算机" class="headerlink" title="1.2.2　冯诺依曼计算机"></a>1.2.2　冯诺依曼计算机</h3><p>美国数学家冯诺依曼于1946年提出存储程序概念，奠定了现代计算机的结构基础。</p>
+<p>冯氏计算机要素为：五大部件运算器、控制器、存储器、输入设备、输出设备；存储程序，程序控制；使用二进制编码表示指令和数据。</p>
+<p>运算器和控制器统称为CPU，CPU与主存统称为计算机主机，输入设备、输出设备、外存储器统称I/O设备。</p>
+<p>指令是程序的基本单位，程序是若干指令的有序集合，指令和数据以二进制代码存于存储器中，均可按地址访问。指令由操作码和地址码组成，操作码表示操作性质地址码表示操作数在存储器中的位置。</p>
+<p>早期的冯诺依曼计算机结构以运算器为中心。</p>
+<p><img src="/2019/09/21/组原1/g1-4.png" alt></p>
+<p>现代计算器组织结构逐步转变为以存储器为中心。</p>
+<p><img src="/2019/09/21/组原1/g1-5.png" alt></p>
+<h2 id="1-3-计算机的软件系统"><a href="#1-3-计算机的软件系统" class="headerlink" title="1.3　计算机的软件系统"></a><center>1.3　计算机的软件系统</center></h2><p>软件在计算机系统中起着指挥和管理的作用，是计算机用户和硬件的接口界面，是计算机系统结构设计的主要依据。软件分为系统软件和应用软件。</p>
+<h3 id="1-3-1-系统软件"><a href="#1-3-1-系统软件" class="headerlink" title="1.3.1　系统软件"></a>1.3.1　系统软件</h3><p>系统软件是一组保证计算机系统高效、正确运行的基础软件，包括操作系统、语言处理系统、数据库管理系统、分布式软件系统、网络软件系统、各种服务程序。其中操作系统负责管理(硬、软件资源)与抽象(隐藏细节，方便使用)，语言处理系统分为编译与解释。</p>
+<h3 id="1-3-2-应用软件"><a href="#1-3-2-应用软件" class="headerlink" title="1.3.2　应用软件"></a>1.3.2　应用软件</h3><p>指用户为解决某个应用领域中的各类问题而编制的程序。</p>
+<h2 id="1-4-计算机系统的组织结构"><a href="#1-4-计算机系统的组织结构" class="headerlink" title="1.4　计算机系统的组织结构"></a><center>1.4　计算机系统的组织结构</center></h2><h3 id="1-4-1-硬件与软件的关系"><a href="#1-4-1-硬件与软件的关系" class="headerlink" title="1.4.1　硬件与软件的关系"></a>1.4.1　硬件与软件的关系</h3><p>硬件是计算机系统的物质基础，软件是计算机系统的灵魂。对某一具体功能来说，可以用硬件实现，也可以用软件实现，硬件、软件在逻辑功能上等效。</p>
+<p>固件是载有在用户环境中不能加以改变的程序及数据的器件，将复杂且常用的程序写入只读存储器就构成了固件。固件从功能上看是软件，从形态上看是硬件，如PC中主板BIOS、显卡BIOS，网卡BOOT ROM。</p>
+<h3 id="1-4-2-计算机系统的多级层次结构"><a href="#1-4-2-计算机系统的多级层次结构" class="headerlink" title="1.4.2　计算机系统的多级层次结构"></a>1.4.2　计算机系统的多级层次结构</h3><p>根据机器之间的有机关系，可以将计算机系统分为多级层次结构，目的是分清各级层次结构彼此间的界面，明确各自的功能，以便构成合理、高效的计算机系统。</p>
+<p><img src="/2019/09/21/组原1/g1-6.png" alt></p>
+<p>虚机器建立在实机器的基础上，利用软件技术扩充实机器的功能。机器语言层和操作系统层是虚、实机器的分界面，软、硬件功能的分配，决定了虚、实机器的界面。</p>
+<h3 id="1-4-3-计算机硬件系统的组织"><a href="#1-4-3-计算机硬件系统的组织" class="headerlink" title="1.4.3　计算机硬件系统的组织"></a>1.4.3　计算机硬件系统的组织</h3><p>计算机硬件系统的组织问题是把5大基本部件互连起来构成计算机的硬件系统。</p>
+<p>总线是一组可为多个功能部件的公共信息传送线路，可分为CPU内部总线、部件内总线、系统总线、外总线。</p>
+<p>采用总线结构可以大大减少系统中的信息传输线数，减轻发送部件的负载。可以简化硬件结构，灵活地修改与扩充系统，但是会牺牲性能。</p>
+<p>总线的连接方式有单总线结构、双总线结构(又分以CPU为中心的双总线结构和面向主存的双总线结构)、三总线结构。</p>
+<p><img src="/2019/09/21/组原1/g1-7.png" alt></p>
+<p><img src="/2019/09/21/组原1/g1-8.png" alt></p>
+<p><img src="/2019/09/21/组原1/g1-9.png" alt></p>
+<p>单总线结构优点是可将I/O与存储器同等对待，统一进行编址，控制简单，易于扩充，易于标准化生产；缺点是可能成为系统性能瓶颈。</p>
+<p>三总线结构在面向主存的双总线结构的基础上，增加I/O总线，使得CPU与主存、主存与I/O之间均具备独立的信息传输道路。</p>
+<p>通道是一种具有处理机功能的专门用来管理I/O操作的控制部件，将管理外设的任务从CPU上接管过来(可编程-通道程序)。</p>
+<p><img src="/2019/09/21/组原1/g1-10.png" alt></p>
+<h2 id="1-5-计算机的工作特点和性能指标"><a href="#1-5-计算机的工作特点和性能指标" class="headerlink" title="1.5　计算机的工作特点和性能指标"></a><center>1.5　计算机的工作特点和性能指标</center></h2><h3 id="1-5-1-计算机的工作特点"><a href="#1-5-1-计算机的工作特点" class="headerlink" title="1.5.1　计算机的工作特点"></a>1.5.1　计算机的工作特点</h3><p>计算机的工作特点有：能自动连续地工作、运算速度快、运算精度高、具有很强的存储能力和逻辑判断能力、通用性强。</p>
+<h3 id="1-5-2-计算机的性能指标"><a href="#1-5-2-计算机的性能指标" class="headerlink" title="1.5.2　计算机的性能指标"></a>1.5.2　计算机的性能指标</h3><p>计算机的性能指标有：基本字长、主存容量、运算速度、所配置的外部设备及其性能指标、系统软件的配置。</p>
+<p>基本字长是指参与运算的数的基本位数，是信息处理单位。字长标志着计算机系统的处理数据的范围和运算精度，呈正相关。</p>
+<p>主存储器所能存储的最大信息量称为主存容量，计算机的处理能力很大程度取决于主存容量的大小，更取决于存储层次设计的合理性。</p>
+<p>由于计算机执行不同的操作所需的时间可能不同，因而对运算速度的描述通常采用不同方法。大、中型机常使用每秒平均执行的指令条数(IPS)作为运算速度单位，如MIPS(每秒百万条指令)、MFLOPS(每秒百万次浮点运算)。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&MIPS=\frac{指令条数}{执行时间}\times10^{-6}\\
+&MFLOPS=\frac{浮点运算次数}{执行时间}\times10^-6\\
+&MFLOPS\approx3\sim4MIPS\\
+\end{aligned}</script><p>主时钟频率某种意义上与执行速度成正比，但主频并不能代表执行速度。相同的ISA、微架构、实现下，主频提升意味着执行速度加快，主频与功耗成正比。</p>
+<h2 id="1-6-计算机的分类与应用"><a href="#1-6-计算机的分类与应用" class="headerlink" title="1.6　计算机的分类与应用"></a><center>1.6　计算机的分类与应用</center></h2><h3 id="1-6-1-计算机的分类"><a href="#1-6-1-计算机的分类" class="headerlink" title="1.6.1　计算机的分类"></a>1.6.1　计算机的分类</h3><p>计算机常见的分类方法有：按处理的信息形式分、按计算机字长分、按计算机应用范围分、按计算规模分。</p>
+<p>按处理的信息形式分为电子数字计算机和电子模拟计算机；按应用范围分为专用机和通用机。</p>
+<h3 id="1-6-2-计算机的应用"><a href="#1-6-2-计算机的应用" class="headerlink" title="1.6.2　计算机的应用"></a>1.6.2　计算机的应用</h3><p>计算机的应用可以划分为：科学计算、数据处理、现代控制、辅助设计、人工智能、网络应用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/07/05/高数2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/05/高数2/" itemprop="url">高数笔记-导数与微分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T15:10:54+08:00">
+                2019-07-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-06T17:51:12+08:00">
+                2019-07-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Advanced-Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Advanced Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/05/高数2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/高数2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  633
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h4><p><strong>定义　设函数$y=f(x)$在点$x_0$的某一邻域内有定义，在点$x_0$处给自变量$x$以增量$\Delta x$(点$x_0+\Delta x$仍在该邻域内)，相应地，函数y有增量$\Delta y=f(x_0+\Delta x)-f(x_0)$。如果当$\Delta x\rightarrow0$时比值$\frac{\Delta y}{\Delta x}$的极限</strong></p>
+<script type="math/tex; mode=display">
+\lim_{\Delta x\rightarrow0}\frac{\Delta y}{\Delta x}=\lim_{\Delta x\rightarrow0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}</script><p><strong>存在，则称此极限值为函数$y=f(x)$在点$x_0$处的导数，记作</strong></p>
+<script type="math/tex; mode=display">
+f'(x_0),y'|_{x=x_0},\frac{dy}{dx}|_{x=x_0},\frac{df(x)}{dx}|_{x=x_0}</script><p><strong>，并称函数$y=f(x)$在点$x_0$处可导，如果极限不存在，则不可导。</strong></p>
+<p><strong>定理　设函数$y=f(x)$在$x_0$处可导，则$y=f(x)$必在$x_0$处连续。</strong></p>
+<p>连续不一定可导。</p>
+<h4 id="基本初等函数导数公式"><a href="#基本初等函数导数公式" class="headerlink" title="基本初等函数导数公式"></a>基本初等函数导数公式</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&(C')=0;\\
+&(x^\mu)'=\mu x^{\mu-1};\\
+&(a^x)'=a^x\ln a;\\
+&(e^x)'=e^x;\\
+&(\log_a|x|)'=\frac{1}{x\ln a};\\
+&(\ln|x|)'=\frac{1}{x};\\
+&(\sin x)'=\cos x;\\
+&(\cos x)'=-\sin x;\\
+&(\tan x)'=\sec^2 x;\\
+&(\cot x)'=-\csc^2 x;\\
+&(\sec x)'=\sec x\tan x;\\
+&(\csc x)'=-\csc x\cot x;\\
+&(\arcsin x)'=\frac{1}{\sqrt{1-x^2}};\\
+&(\arccos x)'=\frac{-1}{\sqrt{1-x^2}};\\
+&(\arctan x)'=\frac{1}{1+x^2};\\
+&(arc\cot x)'=\frac{-1}{1+x^2};\\
+&(shx)'=chx;\\
+&(chx)'=shx;\\
+&(arcshx)'=\frac{1}{\sqrt{x^2+1}};\\
+&(arcchx)'=\frac{1}{\sqrt{x^2-1}};\\
+&(arcthx)'=\frac{1}{1-x^2};
+\end{aligned}</script><h4 id="隐函数"><a href="#隐函数" class="headerlink" title="隐函数"></a>隐函数</h4><p>设有方程$F(x,y)=0$，如果对某个区间$I$内的$x$，总存在一个函数$y=y(x)$，使得$F(x,y(x))\equiv0$，则称$y=y(x)$是由方程确定的隐函数。</p>
+<p>隐函数求导法则：视方程$F(x,y)=0$中的$y$为$x$函数$y=y(x)$，于是可看成关于$x$恒等式$F(x,y(x))\equiv0$，利用复合函数的求导法则对方程两边求导，解出$y’$即可。</p>
+<h4 id="参数方程求导"><a href="#参数方程求导" class="headerlink" title="参数方程求导"></a>参数方程求导</h4><p>给定参数方程$\left{\begin{array}{rcl}x=\varphi(t)\y=\psi(t)\end{array}\right.$，则$\frac{dy}{dx}=\frac{\psi’(t)}{\varphi’(t)}(\varphi’(t)\neq0),\frac{d^2y}{dx^2}=\frac{\psi’’(t)\varphi’(t)-\psi’(t)\varphi’’(t)}{[\varphi’(t)]^3}(\varphi’(t)\neq0)$。</p>
+<h4 id="常用高阶导数"><a href="#常用高阶导数" class="headerlink" title="常用高阶导数"></a>常用高阶导数</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&(x^\mu)^{(n)}=\mu(\mu-1)(\mu-2)\cdots(\mu-n+1)x^{\mu-n}\\
+&(\frac{1}{x})^{(n)}=(x^{-1})^{(n)}=\frac{(-1)^nn!}{x^{n+1}}\\
+&(e^{ax})^{(n)}=a^ne^x\\
+&(\sin ax)^{(n)}=a^n\sin(ax+\frac{n\pi}{2})\\
+&(\cos ax)^{(n)}=a^n\cos(ax+\frac{n\pi}{2})\\
+&[\ln(1+x)]^{(n)}=\frac{(-1)^{n-1}\cdot(n-1)!}{(1+x)^n}
+\end{aligned}</script><h4 id="莱布尼茨公式"><a href="#莱布尼茨公式" class="headerlink" title="莱布尼茨公式"></a>莱布尼茨公式</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&y^{(n)}=(u\cdot v)^{(n)}=\sum_{k=0}^nC_n^ku^{(n-k)}v^{(k)}\\
+&[u(x)\pm v(x)]^{(n)}=u^{(n)}(x)\pm v^{(n)}(x)\\
+&[k\cdot u(x)]^{(n)}=k\cdot u^{(n)}(x)(k为常数)
+\end{aligned}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/07/02/高数1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/高数1/" itemprop="url">高数笔记-函数、极限、连续</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T15:59:19+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T15:09:53+08:00">
+                2019-07-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Advanced-Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Advanced Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/02/高数1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/02/高数1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="双曲函数"><a href="#双曲函数" class="headerlink" title="双曲函数"></a>双曲函数</h4><script type="math/tex; mode=display">
+双曲正弦:shx=\frac{e^x-e^{-x}}{2},D:(-\infin,+\infin),奇函数\\
+双曲余弦:chx=\frac{e^x+e^{-x}}{2},D:(-\infin,+\infin),偶函数\\
+双曲正切:thx=\frac{shx}{chx}=\frac{e^x-e^{-x}}{e^x+e^{-x}},D:(-\infin,+\infin),奇函数\\
+双曲余切:cthx=\frac{chx}{shx}=\frac{e^x+e^{-x}}{e^x-e^{-x}},D:(-\infin,+\infin),偶函数\\
+反双曲正弦:arshx=\ln(x+\sqrt{x^2+1}),D:(-\infin,+\infin),奇函数\\
+反双曲余弦:archx=\ln(x+\sqrt{x^2-1}),D:[1,+\infin).\\
+反双曲正切:arthx=\frac{1}{2}\ln\frac{1+x}{1-x},D:(-1,+1),奇函数\\</script><p>双曲函数常用公式</p>
+<script type="math/tex; mode=display">
+sh(x\pm y)=shxshy\pm chxchy;\\
+ch(x\pm y)=chxchy\pm shxxhy;\\
+ch^2x-sh^2x=1;\\
+sh2x=2shxchs;\\
+ch2x=ch^2x+sh^2x.</script><h4 id="数列极限"><a href="#数列极限" class="headerlink" title="数列极限"></a>数列极限</h4><p><strong>定义　如果对于任意给定的整数$\epsilon$(不论它多么小)，总存在正整数$N$，使得对于$n&gt;N$时的一切$x<em>n$，不等式$|x_n-a|&lt;\epsilon$都成立，那么就称常数$a$是数列$x_n$的极限，或者称数列$x_n$收敛于$a$，记为$\lim</em>{n\rightarrow\infin}=a$，或$x_n\rightarrow a(n\rightarrow\infin)$。如果数列没有极限，就说数列是发散的。</strong></p>
+<h4 id="函数极限"><a href="#函数极限" class="headerlink" title="函数极限"></a>函数极限</h4><p><strong>定义　设函数$f(x)$在区间$|x|&gt;a$有定义，$A$为定常数，如果对任意给定的正数$\epsilon$(无论它多么小)，总存在正数$X(&gt;a)$，使当$|x|&gt;X$时，恒有$|f(x)-A|&lt;\epsilon$，则称$A$为函数$f(x)$在$x$趋向于无穷大时的极限，记作$\lim_{x\rightarrow\infin}f(x)=A$或$f(x)\rightarrow A(x\rightarrow+\infin)$。</strong></p>
+<p><strong>定义　设函数$f(x)$在$x<em>0$某个去心邻域内有定义，$A$为常数，如果对于任意给定的正数$\epsilon$(不论它多么小)，总存在正数$\delta$，使得对适合不等式$0&lt;|x-x_0|&lt;\delta$的一切$x$，对应的函数值$f(x)$都满足不等式$|f(x)-A|&lt;\epsilon$，那么常数$A$就叫函数$f(x)$在$x\rightarrow x_0$时的极限，记作$\lim</em>{x\rightarrow x_0}f(x)=A$或$f(x)\rightarrow A$(当$x\rightarrow x_0$)。</strong></p>
+<h4 id="无穷小量"><a href="#无穷小量" class="headerlink" title="无穷小量"></a>无穷小量</h4><p><strong>定义 如果函数$f(x)$在自变量的某个趋向过程下以零为极限，则称$f(x)$为该趋向过程的无穷小量。</strong></p>
+<p><strong>定理　在同一过程中，两个无穷小的和、差仍是无穷小。</strong></p>
+<p><strong>定理　在自变量的同一趋向过程下，有界变量与无穷小的乘积是无穷小。</strong></p>
+<p><strong>定理　在自变量的同一趋向过程下，无穷小$\alpha(x)$与极限不等于零的函数$f(x)$的商仍为无穷小。</strong></p>
+<p><strong>定理　<script type="math/tex">limf(x)=A\Leftrightarrow f(x)=A+\alpha(x)</script>，其中<script type="math/tex">lim\alpha(x)=0</script>。</strong></p>
+<h4 id="无穷大量"><a href="#无穷大量" class="headerlink" title="无穷大量"></a>无穷大量</h4><p><strong>定义　在自变量的某个趋向过程中，如果对于任意给定的正数$M$(不论它多么大)，总存在一个时刻，自此以后，恒有$|f(x)|&gt;M$，则称函数$f(x)$是这个趋向过程下的无穷大量，简称为无穷大，记为$limf(x)=\infin$。</strong></p>
+<p><strong>定理　在同一过程中，无穷大的倒数为无穷小；恒不为零的无穷小的倒数为无穷大。</strong></p>
+<h4 id="夹逼准则"><a href="#夹逼准则" class="headerlink" title="夹逼准则"></a>夹逼准则</h4><p><strong>定理　设：(1)存在$\eta&gt;0$，使当$0&lt;|x-x<em>0|&lt;\eta$时，有$g(x)\leq f(x)\leq h(x)$；(2)$\lim</em>{x\rightarrow x<em>0}g(x)=A,\lim</em>{x\rightarrow x<em>0}h(x)=A$。那么当$x\rightarrow x_0$时，$f(x)$的极限存在，且$\lim</em>{x\rightarrow x_0}f(x)=A$。</strong></p>
+<p><strong>定理　如果数列$x<em>n,y_n,z_n$满足下列条件：(1)$y_n\leq x_n\leq z_n(n&gt;N)$；(2)$\lim</em>{n\rightarrow\infin}y<em>n=a,\lim</em>{n\rightarrow\infin}z<em>n=a$。那么数列$x_n$的极限存在，且$\lim</em>{n\rightarrow\infin}x_n=a$。</strong></p>
+<h4 id="重要极限"><a href="#重要极限" class="headerlink" title="重要极限"></a>重要极限</h4><script type="math/tex; mode=display">
+\lim_{x\rightarrow0}\frac{\sin x}{x}=1\\
+\lim_{x\rightarrow0}\frac{\tan x}{x}=1\\
+\lim_{x\rightarrow0}\frac{1-\cos x}{x^2}=\frac{1}{2}\\
+\lim_{x\rightarrow0}\frac{\arcsin x}{x}=1\\
+\lim_{x\rightarrow0}\frac{\arctan x}{x}=1\\
+\lim_{x\rightarrow\infin}(1+\frac{1}{x})^x=e\\
+\lim_{t\rightarrow0}(1+t)^{\frac{1}{t}}=e\\
+\lim_{x\rightarrow0}\frac{\ln(1+x)}{x}=1\\
+\lim_{x\rightarrow0}\frac{e^x-1}{x}=1</script><h4 id="无穷小的比较"><a href="#无穷小的比较" class="headerlink" title="无穷小的比较"></a>无穷小的比较</h4><p><strong>定义　设$\alpha,\beta$是同一过程中的两个无穷小，且$\alpha\neq0$。</strong></p>
+<p><strong>(1)如果$\lim\frac{\beta}{\alpha}=0$，则称$\beta$是比$\alpha$高阶的无穷小，记作$\beta=o(\alpha)$。</strong></p>
+<p><strong>(2)如果$\lim\frac{\beta}{\alpha}=\infin$，则称$\beta$是比$\alpha$低阶的无穷小。</strong></p>
+<p><strong>(3)如果$\lim\frac{\beta}{\alpha}=C(C\neq0)$，则称$\beta$与$\alpha$是同阶的无穷小。</strong></p>
+<p><strong>特别的，如果$\lim\frac{\beta}{\alpha}=1$，则称$\beta$与$\alpha$是等价的无穷小，记作$\alpha\sim\beta$。</strong></p>
+<p>当$x\rightarrow0$时常用的等价无穷小：</p>
+<script type="math/tex; mode=display">
+\sin x\sim x\\
+\tan x\sim x\\
+1-\cos x\sim\frac{1}{2}x^2\\
+\arcsin x\sim x\\
+\arctan x\sim x\\
+\ln(1+x)\sim x\\
+e^x-1\sim x\\
+(1+x)^\mu-1\sim \mu x\\
+\sqrt[n]{1+x}-1\sim\frac{x}{n}</script><p><strong>定义　如果$\lim\frac{\beta}{\alpha^k}=C(C\neq0,k&gt;0)$，就说$\beta$是关于$\alpha$的$k$阶的无穷小。</strong></p>
+<p><strong>定理　设$\alpha\sim\alpha’,\beta\sim\beta’$且$\lim\frac{\beta’}{\alpha’}$存在，则$\lim\frac{\beta}{\alpha}=\lim\frac{\beta’}{\alpha}=\lim\frac{\beta}{\alpha’}=\lim\frac{\beta’}{\alpha’}$。</strong></p>
+<p>不能滥用，对于代数和中各无穷不能分别替换。</p>
+<p><strong>定理　设$\alpha,\beta$是同一趋向过程下的两个无穷小，则$\alpha\sim\beta$的充要条件是$\alpha-\beta=o(\beta)$或$a-\beta=o(\alpha)$。</strong></p>
+<h4 id="连续函数"><a href="#连续函数" class="headerlink" title="连续函数"></a>连续函数</h4><p><strong>定义　设函数$f(x)$在$U<em>\delta(x_0)$内有定义，如果当自变量的增量$\Delta x$趋向于零时，对应的函数的增量$\Delta y$也趋向于零，即$\lim</em>{\Delta x\rightarrow0}\Delta y=0$或$\lim_{\Delta x\rightarrow0}[f(x_0+\Delta x)-f(x_0)]=0$，那么就称函数$f(x)$在点$x_0$连续，$x_0$称为$f(x)$的连续点。</strong></p>
+<p><strong>定义　设函数$f(x)$在$U<em>\delta(x_0)$内有定义，如果函数$f(x)$当$x\rightarrow x_0$时的极限存在，且等于它在点$x_0$处的函数值$f(x_0)$，即$\lim</em>{x\rightarrow x_0}f(x)=f(x_0)$，那么就称函数$f(x)$在$x_0$点连续。</strong></p>
+<p>如果$f(x)$在点$x_0$处左、右极限都存在，但$f(x_0-0)\neq f(x_0+0)$，则称点$x_0$为函数$f(x)$的跳跃间断点。</p>
+<p>如果$f(x)$在点$x<em>0$处的极限存在，但$\lim</em>{x\rightarrow x_0}f(x)=A\neq f(x_0)$，或$f(x)$在点$x_0$处无定义，则称点$x_0$为函数$f(x)$的可去间断点。</p>
+<p>可去间断点和跳跃间断点统称为第一类间断点，左右极限都存在。</p>
+<p>如果函数$f(x)$在$x_0$某个去心邻域内有定义，且当$x\rightarrow x_0$时，$f(x)$左、右极限至少有一个不存在，则称$x_0$为$f(x)$第二类间断点，分无穷间断点和振荡间断点。</p>
+<p><strong>定理　单调的连续函数必有单调的连续反函数。</strong></p>
+<p><strong>定理(零点定理)　设函数$f(x)$在闭区间$[a,b]$上连续，且$f(a)$与$f(b)$异号(即$f(a)\cdot f(b)$&lt;0)，那么在开区间$(a,b)$内至少有函数$f(x)$的一个零点，即至少有一点$\xi(a&lt;\xi&lt;b)$，使$f(\xi)=0$。</strong></p>
+<p><strong>定理(介值定理)　设函数$f(x)$在闭区间$[a,b]$上连续，且在这区间的端点取不同的函数值$f(a)=A$及$f(b)=B$，那么对于$A$与$B$之间的任意一个数$C$，在开区间$(a,b)$内至少有一点$\xi$，使得$f(\xi)=C$。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/06/12/CN5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1249,8 +2293,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-13T16:48:24+08:00">
-                2019-06-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T11:24:53+08:00">
+                2019-09-21
               </time>
             
           </span>
@@ -1623,846 +2667,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/04/11/100天ML-11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/11/100天ML-11/" itemprop="url">100-Days-Of-ML-Code Day11 K近邻法(K-NN)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T12:14:41+08:00">
-                2019-04-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T13:12:55+08:00">
-                2019-04-11
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/11/100天ML-11/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/11/100天ML-11/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  621
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="k近邻法-k-NN-第11天"><a href="#k近邻法-k-NN-第11天" class="headerlink" title="k近邻法(k-NN)|第11天"></a><center>k近邻法(k-NN)|第11天</center></h1><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p><img src="/2019/04/11/100天ML-11/Day 7.jpg" alt></p>
-<h2 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h2><p><img src="/2019/04/11/100天ML-11/data.png" alt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/11/100天ML-11/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/31/ML5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/ML5/" itemprop="url">Note of Machine Learning 5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T15:48:03+08:00">
-                2019-03-31
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T13:14:52+08:00">
-                2019-04-11
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/31/ML5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/31/ML5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  5.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  20
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="第5章-神经网络"><a href="#第5章-神经网络" class="headerlink" title="第5章　神经网络"></a><center>第5章　神经网络</center></h2><h2 id="5-1-神经元模型"><a href="#5-1-神经元模型" class="headerlink" title="5.1　神经元模型"></a><center>5.1　神经元模型</center></h2><p>神经网络(neural networks)是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所作出的交互反应。</p>
-<p>神经网络中最基本的成分是神经元(neuron)模型。如果某神经元的电位超过了一个”阈值”(threshold)，那么它就会被激活。上述情形可以抽象为图5.1所示的简单模型，即”M-P神经元模型”。在这个模型中，神经元接收到来自n个其他神经元传递过来的输入信号，这些输入信号通过带权重的连接(connection)进行传递，神经元接收到的总输入值将与神经元的阈值进行比较，然后通过”激活函数”(activation function)处理以产生神经元的输出。</p>
-<p><img src="/2019/03/31/ML5/g5.1.png" alt></p>
-<p>理想的激活函数是图5.2(a)所示的阶跃函数，将输入值映射为输出值”0”(神经元抑制)或”1”(神经元兴奋)。然而碍于其性质，实际常用如图5.2(b)的Sigmoid函数作为激活函数也称为”挤压函数”(squashing function)。</p>
-<p><img src="/2019/03/31/ML5/g5.2.png" alt></p>
-<p>事实上，可以将一个神经网络视为包含了许多参数的数学模型，这个模型是若干个函数，例如$y_i=f(\sum_iw_ix_i-\theta_j)$相互(嵌套)代入而得。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/31/ML5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/23/Poj3461/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/23/Poj3461/" itemprop="url">Poj3461 Oulipo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T21:08:22+08:00">
-                2019-03-23
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-25T11:22:22+08:00">
-                2019-04-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/String/" itemprop="url" rel="index">
-                    <span itemprop="name">String</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/String/KMP/" itemprop="url" rel="index">
-                    <span itemprop="name">KMP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/23/Poj3461/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/23/Poj3461/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The French author Georges Perec (1936–1982) once wrote a book, La disparition, without the letter ‘e’. He was a member of the Oulipo group. A quote from the book:</p>
-<blockquote>
-<p>Tout avait Pair normal, mais tout s’affirmait faux. Tout avait Fair normal, d’abord, puis surgissait l’inhumain, l’affolant. Il aurait voulu savoir où s’articulait l’association qui l’unissait au roman : stir son tapis, assaillant à tout instant son imagination, l’intuition d’un tabou, la vision d’un mal obscur, d’un quoi vacant, d’un non-dit : la vision, l’avision d’un oubli commandant tout, où s’abolissait la raison : tout avait l’air normal mais…</p>
-</blockquote>
-<p>Perec would probably have scored high (or rather, low) in the following contest. People are asked to write a perhaps even meaningful text on some subject with as few occurrences of a given “word” as possible. Our task is to provide the jury with a program that counts these occurrences, in order to obtain a ranking of the competitors. These competitors often write very long texts with nonsense meaning; a sequence of 500,000 consecutive ‘T’ s is not unusual. And they never use spaces.So we want to quickly find out how often a word, i.e., a given string, occurs in a text. More formally: given the alphabet {‘A’, ‘B’, ‘C’, …, ‘Z’} and two finite strings over that alphabet, a word W and a text T, count the number of occurrences of W in T. All the consecutive characters of W must exactly match consecutive characters of T. Occurrences may overlap.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line of the input file contains a single number: the number of test cases to follow. Each test case has the following format:</p>
-<ul>
-<li>One line with the word <em>W</em>, a string over {<code>&#39;A&#39;</code>, <code>&#39;B&#39;</code>, <code>&#39;C&#39;</code>, …, <code>&#39;Z&#39;</code>}, with 1 ≤ |<em>W</em>| ≤ 10,000 (here |<em>W</em>| denotes the length of the string <em>W</em>).</li>
-<li>One line with the text <em>T</em>, a string over {<code>&#39;A&#39;</code>, <code>&#39;B&#39;</code>, <code>&#39;C&#39;</code>, …, <code>&#39;Z&#39;</code>}, with |<em>W</em>| ≤ |<em>T</em>| ≤ 1,000,000.</li>
-</ul>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For every test case in the input file, the output should contain a single number, on a single line: the number of occurrences of the word <em>W</em> in the text <em>T</em>.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">BAPC</span><br><span class="line">BAPC</span><br><span class="line">AZA</span><br><span class="line">AZAZAZA</span><br><span class="line">VERDI</span><br><span class="line">AVERDXIVYERDIAN</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/23/Poj3461/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/03/21/ML4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/21/ML4/" itemprop="url">Note of Machine Learning 4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T14:28:23+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T13:15:35+08:00">
-                2019-04-11
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/21/ML4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/21/ML4/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="第4章-决策树"><a href="#第4章-决策树" class="headerlink" title="第4章　决策树"></a><center>第4章　决策树</center></h1><h2 id="4-1-基本流程"><a href="#4-1-基本流程" class="headerlink" title="4.1　基本流程"></a><center>4.1　基本流程</center></h2><p>决策树(decision tree)是基于树结构进行决策的一种常见机器学习方法。</p>
-<p><img src="/2019/03/21/ML4/dt.png" alt></p>
-<p>决策过程的最终结论对应了所希望的判定结果；决策过程中提出的每个判定问题都是对某个属性的”测试”；每个测试或是导出结论，或是导出进一步的判定问题，其考虑范围是在上次决策结果的限定范围之内。</p>
-<p>一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶节点；叶结点对应于决策结果，其他每个结点对应于一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分到子结点中；根结点包含样本全集。从根结点到每个叶结点的路径对应了一个判定测试序列。决策树学习的目的是为了产生一棵泛化能力强的决策树，基本流程遵循”分治”(divide-and-conquer)策略。</p>
-<p><img src="/2019/03/21/ML4/dac.png" alt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/21/ML4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2515,7 +2719,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2526,7 +2730,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2537,7 +2741,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
