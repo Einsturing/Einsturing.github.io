@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,计算机组成原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2.1　进位计数制与数制转换任何$R$进制数$N$均可表示为  \begin{aligned} (N_R)&amp;=x_{n-1}x_{n-2}\cdots x_1x_0.x_{-1}x_{-2}\cdots x_{-(m-1)}x_{-m}\\ &amp;=\Sigma_{i=-m}^{n-1}x_iR^i\\ &amp;=x_{n-1}R^{n-1}+x_{n-2}R^{n-2}+\cdots+x_0R^0+x_{">
+<meta name="keywords" content="笔记,计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第2章 计算机中数据信息的表示">
+<meta property="og:url" content="http://einsturing.top/2019/09/25/组原2/index.html">
+<meta property="og:site_name" content="Einsturing">
+<meta property="og:description" content="2.1　进位计数制与数制转换任何$R$进制数$N$均可表示为  \begin{aligned} (N_R)&amp;=x_{n-1}x_{n-2}\cdots x_1x_0.x_{-1}x_{-2}\cdots x_{-(m-1)}x_{-m}\\ &amp;=\Sigma_{i=-m}^{n-1}x_iR^i\\ &amp;=x_{n-1}R^{n-1}+x_{n-2}R^{n-2}+\cdots+x_0R^0+x_{">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-1.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-2.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-3.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-4.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-5.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-6.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-7.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-8.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-9.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-10.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-11.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-12.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/25/组原2/g2-13.png">
+<meta property="og:updated_time" content="2019-10-09T13:02:35.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第2章 计算机中数据信息的表示">
+<meta name="twitter:description" content="2.1　进位计数制与数制转换任何$R$进制数$N$均可表示为  \begin{aligned} (N_R)&amp;=x_{n-1}x_{n-2}\cdots x_1x_0.x_{-1}x_{-2}\cdots x_{-(m-1)}x_{-m}\\ &amp;=\Sigma_{i=-m}^{n-1}x_iR^i\\ &amp;=x_{n-1}R^{n-1}+x_{n-2}R^{n-2}+\cdots+x_0R^0+x_{">
+<meta name="twitter:image" content="http://einsturing.top/2019/09/25/组原2/g2-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://einsturing.top/2019/09/25/组原2/">
+
+
+
+
+
+  <title>第2章 计算机中数据信息的表示 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Einsturing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仅余我与暮色平分此世界</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/09/25/组原2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第2章 计算机中数据信息的表示</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T18:30:00+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-09T21:02:35+08:00">
+                2019-10-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Composition-Principle/" itemprop="url" rel="index">
+                    <span itemprop="name">Composition Principle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/25/组原2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/25/组原2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  773
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2-1-进位计数制与数制转换"><a href="#2-1-进位计数制与数制转换" class="headerlink" title="2.1　进位计数制与数制转换"></a><center>2.1　进位计数制与数制转换</center></h2><p>任何$R$进制数$N$均可表示为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(N_R)&=x_{n-1}x_{n-2}\cdots x_1x_0.x_{-1}x_{-2}\cdots x_{-(m-1)}x_{-m}\\
+&=\Sigma_{i=-m}^{n-1}x_iR^i\\
+&=x_{n-1}R^{n-1}+x_{n-2}R^{n-2}+\cdots+x_0R^0+x_{-1}R^{-1}+\cdots+x_{-(m-1)}R^{-(m-1)}+x_{-m}R^{-m}
+\end{aligned}</script><p>$R$：$R$进制的基数，表示数列中各位数字$x_i(-m\leq i\leq n-1)$的取值范围是$0\sim R-1$，并且计数规则是“逢$R$进一”。</p>
+<p>$R^i$：位权值，$x_i R^i$表示$x_i$在数列中所代表的实际数值。</p>
+<p>任何进位计数制都具有两个基本因素：基值和位权值。</p>
+<p>计算机中常用进位计数制有二进制、八进制、十进制、十六进制。</p>
+<p>任意进制数转换为十进制数，只需按权相加。</p>
+<p>十进制数转换为任意进制数，整数部分除基取余，小数部分乘基取整。</p>
+<p>计算机中的数据表示是能够由计算机硬件直接识别的数据类型，如定点数、浮点数、长度、存放格式等。硬件直接识别指某种数据类型可用计算机硬件直接表示出来，并能用计算机指令直接调用。</p>
+<p>数据表示需要注意取值范围、精度、类型。</p>
+<a id="more"></a>
+<h2 id="2-2-带符号数的表示"><a href="#2-2-带符号数的表示" class="headerlink" title="2.2　带符号数的表示"></a><center>2.2　带符号数的表示</center></h2><h3 id="2-2-1-机器数与真值"><a href="#2-2-1-机器数与真值" class="headerlink" title="2.2.1　机器数与真值"></a>2.2.1　机器数与真值</h3><p>由于计算机中的硬件电路只能直接表示和处理二进制数，所以需要研究带符号数的符号和小数点在计算机中如何表示。</p>
+<p>采用二进制表示形式的连同数符一起代码化了的数据，在计算机中统称为机器数或机器码。机器数是数在计算机中的二进制表示形式。</p>
+<p>与机器数对应的用正、负号加绝对值表示的实际数值(实数)称为真值。</p>
+<p>数的符号的二进制代码化中，“0”代表+，“1”代表-，且放在数据的最高位，小数点本身是隐含的，不占用存储空间。每个机器数数据所占的二进制位数受机器硬件规模的限制，与机器字长(word size)有关，超过机器字长的数值要舍去。</p>
+<p>字长是运算器执行一次数据运算可以同时处理的二进制位的位数(通常为字节的整数倍)，定义该机器的内部data size的基准。</p>
+<p>机器数表示的“实数”数值是不连续的。8位二进制无符号数可以表示0~255，8位二进制带符号数可以表示-127~127，其中10000000表示-0，00000000表示+0。</p>
+<p>计算机在执行指令时，指令所处理的数据类型由指令操作码决定。</p>
+<h3 id="2-2-2-原码表示"><a href="#2-2-2-原码表示" class="headerlink" title="2.2.2　原码表示"></a>2.2.2　原码表示</h3><p>1.原码的定义</p>
+<p>原码表示指保持原有的数值部分的形式不变，只将符号用二进制代码表示。</p>
+<p>纯小数原码的定义：</p>
+<script type="math/tex; mode=display">
+[x]_原=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　　　　　　0\leq x<1\\
+&1-x=1+|x|　　　　　-1<x\leq0
+\end{aligned}
+\right.</script><p>纯整数原码的定义：</p>
+<script type="math/tex; mode=display">
+[x]_原=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　　　　　　　　　　　0\leq x<2^{n-1}\\
+&2^{n-1}-x=2^{n-1}+|x|　　　　　-2^{n-1}<x\leq0
+\end{aligned}
+\right.</script><p>式中$n$为字长，数值部分只能占用$n-1$位二进制位。</p>
+<p>2.原码中“0”的表示</p>
+<p>原码中“0”有两种表示(即+0和-0)</p>
+<p>纯小数原码</p>
+<p>$[+0]_原=0.00\dots0$</p>
+<p>$[-0]_原=1.00\dots0$</p>
+<p>纯整数原码</p>
+<p>$[+0]_原=00\dots0$</p>
+<p>$[-0]_原=10\dots0$</p>
+<p>原码表示导致加减运算复杂。</p>
+<p>3.原码的表数范围</p>
+<p>对于纯小数，n位原码的表示范围：</p>
+<p>$-0.111\dots11(n位)\sim+0.111\dots11(n位)$，即$-(1-2^{-(n-1)})\sim(1-2^{-(n-1)})$，纯小数n位原码中有一位是符号，n-1位数值位。</p>
+<p>对于纯整数，n位原码的表示范围：</p>
+<p>$-0111\dots11(n位)\sim+0111\dots11(n位)$，即$-(2^{n-1}-1)\sim(2^{n-1}-1)$，纯整数n位原码中有一位是符号，n-1位数值位。</p>
+<p>因为原码中“0”有两种表示方式，所以n位的原码共可表示$2^n-1$个数。</p>
+<p>4.原码的移位规则</p>
+<p>原码移位时，符号位不变，数值部分左移或右移，移出的空位填“0”。左移时不要将有效位移出，否则将会溢出(overflow)。</p>
+<p>5.原码的特点</p>
+<p>(1)原码表示直观易懂，与真值的转换容易。</p>
+<p>(2)原码表示中0有两种表示形式，带来不便。</p>
+<p>(3)通常0的原码用+0表示，若计算中出现了-0，需要用硬件将-0变为+0。</p>
+<p>(4)原码表示的加减法运算复杂，进行相加运算时，首先判别符号，同号做加法，异号做减法；进行相减运算时，不仅要判别符号，还要判别绝对值大小，用绝对值大的减小的，取绝对值大的数符号为结果符号。</p>
+<h3 id="2-2-3-补码表示"><a href="#2-2-3-补码表示" class="headerlink" title="2.2.3　补码表示"></a>2.2.3　补码表示</h3><p>引入补码的目的是为了解决原码表示在加减运算时的不便。</p>
+<p>1.模的概念</p>
+<p>代数学同余概念</p>
+<p>若整数$Z、Y、K$满足关系：$Z=nK+Y$($n$为整数)，则称整数$Z$与整数$Y$对模$K$是同余的，记为$Z\equiv Y(mod K)$。</p>
+<p>假设计算机字长为$n$，则存在模$K=2^n$。</p>
+<p>假设存在模$M$，则有$[x]<em>补=M+x(modM)$，当$x\geq0$时，$M+x$大于$M$，把$M$丢掉，所以$[x]</em>补=x$，即正数的补数等于其本身；当$x&lt;0$时，$[x]_补=M+x=M-|x|$，所以负数的补数等于模与该数绝对值之差。</p>
+<p>2.补码的定义</p>
+<p>在计算机中把补数称为补码，对于纯小数表示，通常取模$M=2$，对于纯整数表示，通常取模$M=2^n$($n$为字长)。</p>
+<p>纯小数的补码定义</p>
+<script type="math/tex; mode=display">
+[x]_补=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　0\leq x<1\\
+&2+x　　　　　-1\leq x<0
+\end{aligned}
+\right.(Mod2)</script><p>纯整数的补码定义</p>
+<script type="math/tex; mode=display">
+[x]_补=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　　　0\leq x<2^{n-1}\\
+&2^n+x　　　　　-2^{n-1}\leq x<0
+\end{aligned}
+\right.(Mod2^n)</script><p>3.特殊数的补码表示</p>
+<p>补码中“0”的表示是唯一的</p>
+<p>$[+0]<em>补=[-0]</em>补=0.00\dots0$(纯小数)</p>
+<p>$[+0]<em>补=[-0]</em>补=00\dots0$(纯整数)</p>
+<p>补码表示的最小数可以表示到-1或$-2^{n-1}$</p>
+<p>对于纯小数，$[-1]_补=2+(-1)=1.00\dots0(mod2)$</p>
+<p>对于纯整数，$[-2^{n-1}]_补=2^n+(-2^{n-1})=100\dots0(mod2)$</p>
+<p>对于补码而言，符号位处的数值，既有符号含义，也有数值含义。</p>
+<p>对于n位补码，其表数范围为：</p>
+<p>纯小数$-1\sim1-2^{-(n-1)}$共$2^n$个数</p>
+<p>纯整数$-2^{n-1}\sim2^{n-1}-1$共$2^n$个数</p>
+<p>4.补码的简便求法</p>
+<p>若$x\geq0$，则$[x]<em>补=x$，符号位为0；若$x\leq0$，则将$x$的绝对值各位取反，然后再最低位加上1，符号位等于1，即得到$[x]</em>补$，或者用字长的宽度写出$x$的绝对值，然后逐位取反，末尾加1。</p>
+<p>5.补码的几何性质</p>
+<p><img src="/2019/09/25/组原2/g2-1.png" alt></p>
+<p>正数的补码就是其本身，负数的补码表示的实质是把负数映像到正值区域，因此加上一个负数或减去一个正数可以用加上另一个数(补码)来代替。从表示符号的角度看，符号位的值代表了数的正确符号，0表示整数，1表示负数。从映像值来看，符号位的值是映像值的一个数位，因此在补码运算中，符号位与数值位一样参加运算。补码的几何性质说明了补码运算的基础，原码运算时符号位不能参加运算。</p>
+<p>6.补码的几个关系</p>
+<p>(1)补码与原码的关系</p>
+<p>若$x\geq0$，则$[x]<em>补=[x]</em>原$；若$x&lt;0$，则将除符号位以外的$[x]<em>原$各位取反(符号位不变)，然后在最低位上加1，即得到$[x]</em>补$。反之，将除符号位以外的$[x]<em>补$的各位取反(符号位不变)，然后在最低位上加1，即得到$[x]</em>原$。补码中特殊数-1(纯小数)和$-2^n$(纯整数)的表示，在原码中没有对应表示。</p>
+<p>(2)补码与机器负数的关系</p>
+<p>在补码运算中称$[x]<em>补$为机器正数，$[-x]</em>补$为机器负数；将$[x]<em>补$的各位(含符号位)取反，然后在最低位上加1，即可得到$[-x]</em>补$，反之亦然，或$[-x]<em>补=0-[x]</em>补$，反之亦然。求$[-x]<em>补$，也称为对$[x]</em>补$的求补。</p>
+<p>(3)补码的移位规则</p>
+<p>补码的右移规则：符号位不变，数值位各位向右移位，高位移空位置补与符号位相同的代码。</p>
+<p>补码的左移规则：连同符号位同时左移，低位移空位置补0，如果移位后符号位与移位前符号位不一致，说明溢出。</p>
+<p>7.补码的模</p>
+<p>补码总是对确定的模而言，如果运算结果超过了模，则模将自动丢失，有可能产生溢出。</p>
+<p>补码运算过程中，模不能丢失。</p>
+<p>因为整数补码的模不同，所以不能将不同位数的补码直接进行运算。如需进行运算，需要进行符号扩展(即使用较大的模)。</p>
+<h3 id="2-2-4-反码表示"><a href="#2-2-4-反码表示" class="headerlink" title="2.2.4　反码表示"></a>2.2.4　反码表示</h3><p>反码实质上是一种特殊的补码，其特殊之处在于反码的模比补码的模小一个最低位上的1。</p>
+<p>1.反码的定义</p>
+<p>纯小数反码的定义</p>
+<script type="math/tex; mode=display">
+[x]_反=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　　　　　　　0\leq x<1\\
+&(2-2^{-(n-1)})+x　　　　　-1< x\leq0
+\end{aligned}
+\right.(Mod(2-2^{-(n-1)})</script><p>纯整数反码的定义</p>
+<script type="math/tex; mode=display">
+[x]_反=
+\left\{
+\begin{aligned}
+&x　　　　　　　　　　　　　　0\leq x<2^{n-1}\\
+&(2^n-1)+x　　　　　-2^{n-1}<x\leq0
+\end{aligned}
+\right.(Mod(2^n-1))</script><p>2.反码的求法</p>
+<p>若$x\geq0$，则$[x]_反=x$，符号位为0</p>
+<p>若$x&lt;0$，则将$x$的各位取反，符号位等于1，即得到$[x]_反$。</p>
+<p>3.反码中“0”的表示</p>
+<p>纯小数反码：$[+0]<em>反=0.00\dots0$；$[-0]</em>反=1.11\dots1$</p>
+<p>纯整数反码：$[+0]<em>反=00\dots0$；$[-0]</em>反=11\dots1$</p>
+<p>4.反码的表数范围</p>
+<p>与原码相同，纯小数反码中不能表示“-1”，纯整数反码中不能表示“$-2^{n-1}$”</p>
+<p>5.反码与原码的关系</p>
+<p>若$x\geq0$，则$[x]<em>反=[x]</em>原$；若$x&lt;0$，则将除符号位以外的$[x]<em>原$各位取反，得到$[x]</em>反$，反之亦然。</p>
+<h3 id="2-2-5-移码表示"><a href="#2-2-5-移码表示" class="headerlink" title="2.2.5　移码表示"></a>2.2.5　移码表示</h3><p>移码也称为增码、余码，主要用于表示浮点数的阶码。</p>
+<p>1.移码的定义</p>
+<p>纯小数移码的定义$[x]<em>移=1+x　-1\leq x&lt;1$；纯整数移码的定义$[x]</em>移=2^{n-1}+x　-2^{n-1}\leq x&lt;2^{n-1}$($n$为表示移码的二进制位的位数，$2^{n-1}$称为“偏值”(bias))</p>
+<p>移码的几何性质：移码表示的实质是把真值映像到一个正数域，因此移码的大小可直观地反映真值的大小。不管正数还是负数，用移码表示时，都可以按无符号数比较大小。</p>
+<p><img src="/2019/09/25/组原2/g2-2.png" alt></p>
+<p>移码中“0”的表示是唯一的，$[+0]_移=10\dots0$(纯整数)，移码的表数范围与补码一致，纯整数移码表示的最小数可以表示到$-2^{n-1}$。</p>
+<p>2.移码与补码的关系</p>
+<p>整数补码的数值部分不变，符号取反，即得整数移码，反之亦然，即：</p>
+<p>$x\geq0$时，$[x]<em>移=[x]</em>补+2^{n-1}$；$x&lt;0$时，$[x]<em>移=[x]</em>补-2^{n-1}$</p>
+<p>3.移码的特点</p>
+<p>(1)设$[x]<em>移=x_0x_1x_2\dots x</em>{n-1}$，符号位$x_0$表示真值$x$的正负：$x_0=1,x$为正；$x_0=0,x$为负。</p>
+<p>(2)真值0的移码表示只有一种形式。</p>
+<p>(3)移码与补码的表示范围相同，纯小数的移码可以表示到“-1”，$[-1]<em>移=0.0\dots0$；纯整数的移码可以表示到“$-2^{n-1}$”，$[-2^{n-1}]</em>移=00\dots0$，$n$为字长。</p>
+<p>(4)真值大时，对应的移码也大；真值小时，对应的移码也小。当$[x]_移=0$时，$x$为编码所能够表示的最小值。</p>
+<p>移码的符号位无数值含义，但可以直接参与到“减法(比较数值大小)”运算中，可以通过是否产生退(借)位，直接获得两个移码数之间的大小信息。</p>
+<p>4.移数值(偏值(bias))为$K$的移码</p>
+<p>根据移码的几何性质，可以将移码的定义进行扩展，得到特殊的移码为：移码=$K+$实际数值。$K$是约定的移数值(偏值(bias))。</p>
+<p><img src="/2019/09/25/组原2/g2-3.png" alt></p>
+<h2 id="2-3-数的定点表示与浮点表示"><a href="#2-3-数的定点表示与浮点表示" class="headerlink" title="2.3　数的定点表示与浮点表示"></a><center>2.3　数的定点表示与浮点表示</center></h2><p>任何一个数均可表示为：$(N)_R=\pm S\times R^{\pm e}$，$R$为基值，计算机中常用的$R$可取2、8、16等；$S$为尾数，代表数$N$的有效数字，计算机中一般表示为纯小数；$e$为阶码，代表数$N$的小数点的实际位置，一般表示为纯整数。</p>
+<h3 id="2-3-1-定点表示"><a href="#2-3-1-定点表示" class="headerlink" title="2.3.1　定点表示"></a>2.3.1　定点表示</h3><p>定点表示：约定计算机中所有数据的小数点位置均是相同的而且是固定不变的，是一种阶码$e$的取值范围固定不变的机器数表示。</p>
+<p>当采用定点表示时，$(N)_R=\pm S\times R^{\pm e}$中$e$的取值固定不变，$e=0$，有$R^{\pm e}=1$，即$(N)_R=\pm S$，含义是只需要在计算机内描述位数$S$，不需要描述阶码$e$。</p>
+<p>定点数有定点小数和定点整数两种表示方法。</p>
+<p>机器(软件)确定后，$e$就确定了，不能更改，也不能两者并存，最后通过确定的$e$来调整。</p>
+<p>1.定点小数</p>
+<p>$e=0$，表示纯小数，约定小数点在符号位与最高数值位之间，格式为</p>
+<p><img src="/2019/09/25/组原2/g2-4.png" alt></p>
+<p>2.定点整数</p>
+<p>$e=n$，表示纯整数，约定小数点在最低有效数值位之后，格式为</p>
+<p><img src="/2019/09/25/组原2/g2-5.png" alt></p>
+<p>3.定点数的分辨率</p>
+<p>定点数在数轴上的分布是不连续的，定点数的分辨率是指相邻两个定点数之间的最小间隔。字长为$n$的定点小数的分辨率为$2^{-(n-1)}$，字长为$n$的定点整数的分辨率为1。</p>
+<p>4.定点机的特点</p>
+<p>硬件上只考虑定点小数或定点整数运算的计算机称为定点机，定点机的优点是运算简单，硬件结构比较简单。定点机存在的问题是：所能表示的数据范围小；使用不方便，运算精度较低；存储单元利用率低。</p>
+<p>定点表示计算简单，硬件实现容易，但数据表示范围小，很难兼顾数值范围和精度的要求，不适合科学计算。</p>
+<h3 id="2-3-2-浮点表示"><a href="#2-3-2-浮点表示" class="headerlink" title="2.3.2　浮点表示"></a>2.3.2　浮点表示</h3><p>浮点表示：指各个数的小数点位置不是固定不变的，而是可以浮动的。即$(N)_R=\pm S\times R^{\pm e}$中$e$的值是可变的。由于$e$的值可变，因此在机器中必须将$e$表示出来。</p>
+<p>1.浮点表示的数据格式</p>
+<p>浮点数由阶码和尾数两部分组成。阶码表示数的小数点实际位置，尾数表示数的有效数字。尾数的基数$R$是设计者约定的，用隐含方法表示，通常取$R=2$，也可以采用4、8、16进制。阶码均采用2为基数。浮点数的表示格式中，包括1位数符、用$n$位纯小数表示的尾数部分、1位阶符和用$m$位纯整数表示的阶码部分。</p>
+<p><img src="/2019/09/25/组原2/g2-6.png" alt></p>
+<p>浮点数有两种表示格式</p>
+<p><img src="/2019/09/25/组原2/g2-7.png" alt></p>
+<p>在实际机器中，通常都采用后一种表示格式。阶码采用纯整数，尾数采用纯小数。</p>
+<p>2.浮点数的规格化</p>
+<p>数据采用浮点表示时，存在两个问题：如何尽可能多地保留有效数字(设计浮点数格式时尽可能为尾数提供较多的二进制位数)，如何保证浮点数表示的唯一(小数点后第一位必须为有效数字，称规格化表示法)。</p>
+<p>浮点数采用规格化表示方法的目的是：提高运算精度，充分利用尾数的有效数位，尽可能占满位数，以保留更多的有效数字；保证浮点数表示的唯一性。为达到上述目的，需要尽可能去掉尾数中的前置“0”，即尽量使小数点后第一位为“1”。对于二进制数，就是要满足$\frac{1}{2}\leq|S|&lt;1$。</p>
+<p>规格化数的定义</p>
+<p>采用原码表示法表示尾数的规格化数：若$[S]<em>原=S_f.S_1S_2\dots S</em>{n-1}$，则满足$\frac{1}{2}\leq|S|&lt;1$的数为规格化数，对于$[S]<em>原=S_f.S_1S_2\dots S</em>{n-1}$，其规格化标志是$S<em>1=1$，即$[S]</em>原=0.1xx\dots x$或$[S]_原=1.1xx\dots x$。</p>
+<p>采用补码表示法表示尾数的规格化数：若$[S]<em>补=S_f.S_1S_2\dots S</em>{n-1}$，则满足$-1\leq S&lt;-\frac{1}{2}$和$\frac{1}{2}\leq S&lt;1$的数为规格化数。对于$[S]<em>补=S_f.S_1S_2\dots S</em>{n-1}$，其规格化标志是$S<em>f\oplus S_1=1$，即$[S]</em>补=0.1xx\dots x$或$[S]_补=1.0xx\dots x$。补码表示的规格化数中，$-\frac{1}{2}$不是规格化数，而-1是规格化数。</p>
+<p>3.浮点数的表示范围</p>
+<p>要求浮点数的表示范围，实质是求出浮点数所能表示的最小负数、最大负数、最小正数和最大正数这四个典型数据。</p>
+<p><img src="/2019/09/25/组原2/g2-8.png" alt></p>
+<p>在浮点数表示中，尾数的位数决定了数据表示的精度，增加尾数的位数可增加有效数字位数，即提高数据表示精度。阶码的位数决定了数据表示的范围，增加阶码的位数，可扩大数据表示的范围。</p>
+<p>为了得到较高的精度和较大的数据表示范围，很多机器中都设置单精度浮点数(float)和双精度浮点数(double)等不同的浮点数格式。单精度浮点数就是用一个字长表示一个浮点数，双精度浮点数是用二个字长表示一个浮点数。</p>
+<p>4.IEEE754浮点数标准</p>
+<p>每个浮点数均由三部分组成：符号位$S$，指数部分$E$和尾数部分$M$。</p>
+<p>浮点数可采用以下四种基本格式</p>
+<p>(1)单精度格式(32位)：E=8位，M=23位</p>
+<p>(2)扩展单精度格式：E$\geq$11位，M=31位</p>
+<p>(3)双精度格式(64位)：E=11位，M=52位</p>
+<p>(4)扩展双精度格式(32位)：E$\geq$15位，M$\geq$63位</p>
+<p>32位单精度浮点数表示格式为</p>
+<p><img src="/2019/09/25/组原2/g2-9.png" alt></p>
+<p>正常浮点数$N$的数值为$N=(-1)^S\times1.M\times2^{E-127}$</p>
+<p>S为数符，0表示+，1表示-；E为指数即阶码部分，其中包括1位阶符和7位数值，采用移127码，移码值为127，即阶码=127+实际数值；规定阶码的取值范围为1~254，阶码值255和0用于表示特殊数值；M共23位，由于尾数采用规格化表示，所以小数点左部有一位隐含位为1，从而使尾数的实际有效位为24位，即尾数的有效值为1.M，尾数采用原码表示。</p>
+<h2 id="2-4-非数值型数据的表示"><a href="#2-4-非数值型数据的表示" class="headerlink" title="2.4　非数值型数据的表示"></a><center>2.4　非数值型数据的表示</center></h2><p>非数值型数据指逻辑数、字符、字符串、文字及某些专用符号等的二进制代码，这些二进制代码并不表示数值，所以称为非数值型数据或符号数据。</p>
+<h3 id="2-4-1-逻辑数——二进制串"><a href="#2-4-1-逻辑数——二进制串" class="headerlink" title="2.4.1　逻辑数——二进制串"></a>2.4.1　逻辑数——二进制串</h3><p>逻辑数用于代表命题的是与非等逻辑关系，用二进制串表示，特点是：没有符号问题，各位相互独立，没有位权和进位问题；不代表值的大小，仅代表逻辑关系；只能参加逻辑运算，按位进行。</p>
+<h3 id="2-4-2-字符与字符串"><a href="#2-4-2-字符与字符串" class="headerlink" title="2.4.2　字符与字符串"></a>2.4.2　字符与字符串</h3><p>1.字符编码</p>
+<p>英文字符编码ASCII(American Standard Code for Information Interchange,美国国家信息交换标准字符码)码，是用七位二进制表示一个字符，包括10个数字(0-9)，52个英文大小写字母(A-Z,a-z)，33个专用字符(,%#)，33个控制字符(NUL、LF、CR、DEL)共128个字符。</p>
+<p>ASCII字符编码的符号排列为$b_6b_5b_4b_3b_2b_1b_0$，其中$b_6b_5b_4$为高位部分，$b_3b_2b_1b_0$为低位部分。</p>
+<p><img src="/2019/09/25/组原2/g2-10.png" alt></p>
+<p>英文字符编码EBCDIC(Extended Binary Coded Decimal Interchange Code,扩展二-十进制交换码)码，在IBM公司常用，使用8位二进制表示一个字符，兼容ASCII字符集。</p>
+<p>2.字符串数据(string)</p>
+<p>字符串指连续的一串字符，通常一个字符串使用内存中多个连续的(字节)存储单元进行存放。</p>
+<h3 id="2-4-3-汉字信息的表示"><a href="#2-4-3-汉字信息的表示" class="headerlink" title="2.4.3　汉字信息的表示"></a>2.4.3　汉字信息的表示</h3><p>为使计算机能够处理各种汉字信息，必须对汉字进行编码。汉字在计算机中表示比较特殊，涉及输入、存储、处理输出等方面的问题，编码有很多类型。</p>
+<p><img src="/2019/09/25/组原2/g2-11.png" alt></p>
+<p>GB2312-80、ISO/IEC2022-1994、GBK、GB18030-2005、ISO/IEC10646等。</p>
+<p>UTF-8：1-4字节，中文3字节；UTF-EBCDIC：类似UTF-8，但不是Unicode真实标准，只为兼容性考虑；UTF-16、UCS-2：2字节、3字节；UTF-32、UCS-4：4字节。</p>
+<p>汉字字形码用于记录汉字的外形，是汉字的输出形式，又称子模，主要用于汉字的显示和打印。汉字字形有点阵法(点阵码)和矢量法(矢量码)两种记录方法。</p>
+<h2 id="2-5-十进制数串的表示"><a href="#2-5-十进制数串的表示" class="headerlink" title="2.5　十进制数串的表示"></a><center>2.5　十进制数串的表示</center></h2><p>为了满足某些应用领域的需要，要求某些计算机内部能直接对十进制数进行运算和处理，为此要求对十进制数字进行二进制编码，且能够便于处理。</p>
+<p>(1)采用ASCII码对应的数字编码。(2)采用十进制数字对应的4位二进制数编码(8421BCD，2421BCD，余3)。</p>
+<p>1.字符串形式(用于显示、打印等)</p>
+<p>将十进制数串以字符串形式表示，即一个字节表示一个十进制数位的字符编码或符号编码。在主存中，一个十进制数串需占用多个连续的字节，为了指明一个十进制数串，需要指明该数串在主存中的起始地址和串的长度，根据数串中符号所处位置，又分为前分隔数字串和后嵌入数字串两种表示形式。</p>
+<p>(1)前分隔数字串：符号位占用单独一个字节，放在数字位之前，即数串最前面的字节中。正号用+表示，即ASCII 2BH，负号用-表示，即ASCII 2DH。(2)后嵌入数字串：符号位不单独占用一个字节，嵌入到最低一位数字里面，若符号为正，则不变，若符号为负，则最低位加40H。</p>
+<p>2.压缩的十进制数串</p>
+<p>用一个字节存放两个十进制数位，其值用BCD码表示，符号位占半个字节，存放在最低位之后。1100表示+，1101表示-。数字个数和符号为之和必须为偶数，否则最高位前补0。</p>
+<h2 id="2-6-数据的长度与存储方式"><a href="#2-6-数据的长度与存储方式" class="headerlink" title="2.6　数据的长度与存储方式"></a><center>2.6　数据的长度与存储方式</center></h2><p>不同类型数据的二进制长度各不相同，因此计算机存储数据时，必须按照规定的顺序组织存储。</p>
+<h3 id="2-6-1-数据的长度"><a href="#2-6-1-数据的长度" class="headerlink" title="2.6.1　数据的长度"></a>2.6.1　数据的长度</h3><p>1.位、字节、字和字长</p>
+<p>在计算机系统中，一位二进制数据0或1称为一个位或一个比特(bit，简写b)，是存储、传输和处理信息的最小单位。</p>
+<p>计算机系统中西文字符通常采用8个二进制位表示，因此将8个bit称为一个字节(Byte，简写为B)。字节是最常用的二进制计量单位。</p>
+<p>字是指计算机系统中可以在同一时间内被同时处理的一组二进制数，字在计算机中通常作为一个整体被存取、传输和处理。不同ISA对字宽度定义不同。</p>
+<h3 id="2-6-2-数据的存储方式"><a href="#2-6-2-数据的存储方式" class="headerlink" title="2.6.2　数据的存储方式"></a>2.6.2　数据的存储方式</h3><p>在计算机中存储数据时，二进制的0/1串从低位到高位可以有不同的存放顺序，需要规定数据的最高位和最低位，以便避免歧义。</p>
+<p>最高有效位(MSB，Most Significant Bit)：数据的最高位；最低有效位(LSB，Least Significant Bit)：数据的最低位。</p>
+<p>计算机在访问多字节数据时，对每个数据只会给出一个地址，然后按规定顺序访问数据的各个字节。通常将最小的地址作为该数据的地址。</p>
+<p>大端排序方式(big endian)：数据的最高有效字节MSB存放在低地址单元中，最低有效字节LSB存放在高地址单元中；小端排序方式(little endian)：数据的最高有效字节MSB存放在高地址单元中，最低有效字节LSB存放在低地址单元中。</p>
+<h2 id="2-7-数据校验码"><a href="#2-7-数据校验码" class="headerlink" title="2.7　数据校验码"></a><center>2.7　数据校验码</center></h2><p>数据校验码：具有检测某些错误或带有自动纠正错误能力的数据编码方式。常用的数据校验码有奇偶校验码、海明校验码、循环校验码等。</p>
+<p>实现原理：在正常编码中加入冗余位，当合法数据编码出现某些错误时，称为非法编码，因此就可以通过检测编码是否合法来达到自动发现、定位乃至改正错误的目的。在数据校验码的设计中，需要根据编码的码距合理地安排非法编码的数量和编码规则。</p>
+<h3 id="2-7-1-码距与数据校验码"><a href="#2-7-1-码距与数据校验码" class="headerlink" title="2.7.1　码距与数据校验码"></a>2.7.1　码距与数据校验码</h3><p>通常把一组编码中任何两个编码之间代码不同的位数称为这两个编码的距离，也称海明距离。</p>
+<p>码距指一组编码中任何两个编码之间最小的距离。</p>
+<p>校验码通常是在正常编码的基础上按特定规则增加一些附加的校验位形成的编码，即通过增大编码的码距来实现检查和纠正错误的能力。合理地增加校验位、增大码距，就能提高校验码发现错误的能力。</p>
+<p>校验位越多，码距越大，编码的检错和纠错能力越强。</p>
+<p>记码距为$d$，码距与校验码的检错和纠错能力的关系是：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&d\geq e+1　可发现e位错误\\
+&d\geq2t+1　可纠正t位错误\\
+&d\geq e+t+1　且e>t，可发现e位错误并能纠正t位错误
+\end{aligned}</script><h3 id="2-7-2-奇偶校验码"><a href="#2-7-2-奇偶校验码" class="headerlink" title="2.7.2　奇偶校验码"></a>2.7.2　奇偶校验码</h3><p>1.奇偶校验码的编码方法</p>
+<p>在n位有效信息位上增加一个二进制位作为校验位P，构成n+1位的奇偶校验码。</p>
+<p>奇校验Odd：校验位P的取值(0或1)使n+1位的奇偶校验码中1的个数为奇数。</p>
+<p>偶校验Even：校验位P的取值(0或1)使n+1位的奇偶校验码中1的个数为偶数。</p>
+<p>校验位的位置在有效信息位的最高位之前或者在最低位之后。</p>
+<p>2.奇偶校验码的校验</p>
+<p>若接到一个奇校验码中1的个数为偶数，或接到一个偶校验码中1的个数为奇数，则表示有一位出错。</p>
+<p>3.奇偶校验码的校错能力</p>
+<p>只能发现奇数位个错误，无法发现偶数位个错误，即使发现错误也无法确定出错位置，因而无法自动纠错。</p>
+<h3 id="2-7-3-海明校验码"><a href="#2-7-3-海明校验码" class="headerlink" title="2.7.3　海明校验码"></a>2.7.3　海明校验码</h3><p>海明校验码的实质是在奇偶校验的基础上，增加校验位的位数，构成多组奇偶校验，以便发现错误并自动纠正错误。</p>
+<p>设有效信息位的位数为n，校验位的位数为k，构成n+k位编码。因为校验码个数为k，则有$2^k$个编码，其中一组编码用来指出没有错误，其余$2^k-1$个组编码用于指出错误发生在哪一位，但也可能是校验位本身错误，故有$n+k\leq2^k-1$。</p>
+<p>1.有效信息位与校验位的关系</p>
+<p><img src="/2019/09/25/组原2/g2-12.png" alt></p>
+<p>2.海明校验码的编码方法</p>
+<p>(1)n位有效信息选择k个校验位，构成n+k位的海明校验码。若校验码位号从左向右(或从右向左)按从1到n+k排列，则校验位的位号分别为$2^i,i=0,1,2,\dots,k-1$，有效信息位按原排列次序安排在其它位号中。</p>
+<p>(2)k个校验位构成k组奇偶校验，每个有效信息位都被2个或2个以上的校验位校验，被校验的位号等于校验它的校验位位号之和。</p>
+<p>(3)统计参与每组奇偶校验的位号，按奇偶校验原理，由已知的有效信息按奇或偶校验求出各个校验位，进而形成海明校验码。</p>
+<p>3.海明校验码的校验</p>
+<p>校验时，k个校验位进行k组奇偶校验，校验结果形成k位的指误字$E<em>KE</em>{k-1}\dots E_2E_1$。若某组校验结果正确，指误字相应位为0；若校验结果错误，指误字相应位为1。指误字代码所对应的十进制值就是出错位的位号，将该位取反，错误码即得到自动纠正。</p>
+<p>指误字指示出错的前提是代码中只存在一个错，若有多个错，可能查不出来。只有在只存在一个错的前提下，海明校验码才能实现检一纠一错。</p>
+<p>4.扩展的海明校验码</p>
+<p>为了满足检二纠一的要求，可将检一纠一海明校验码进行奇偶校验。扩展海明校验码就是在检一纠一海明校验码上增加一个奇偶校验位$P_0$</p>
+<h3 id="2-7-4-循环冗余校验码"><a href="#2-7-4-循环冗余校验码" class="headerlink" title="2.7.4　循环冗余校验码"></a>2.7.4　循环冗余校验码</h3><p>循环冗余校验码(Cyclic Redundancy Check)简称为CRC码，是一种具有很强检错纠错能力的校验码，通过除法运算来建立有效信息和校验位之间的约定关系。</p>
+<p>1.CRC码的编码思想</p>
+<p>对于多项式$M(x)$和$G(x)$有：</p>
+<script type="math/tex; mode=display">
+\frac{M(x)}{G(x)}=Q(x)+\frac{R(x)}{G(x)}\rightarrow M(x)-R(x)=Q(x)\times G(x)</script><p>如果对于一个$M(x)$，事先按某一$G(x)$求得$Q(x)$和$R(x)$，传送时，把$M(x)-R(x)$作为含校验码的编码传送，当收到该编码后，接收端仍用原约定的多项式$G(x)$去除接收到的编码，若能整除，即余数为0，则表示接收到的编码正确；若不能整除，即余数不为0，则表明有错，并可根据余数值确定出错位号(位置)，进行自动纠正。</p>
+<p>2.模2运算</p>
+<p>模2运算是不考虑进位和借位的二进制运算，按异或规则实现。</p>
+<p>3.CRC码的编码方法</p>
+<p>(1)把待编的n位有效信息表示为多项式$M(x)$，$M(x)=C<em>{n-1}x^{n-1}+C</em>{n-2}x^{n-2}+\dots+C_1X^1+C_0$，$C_i=0$或$1$对应$M$中第$i$位的信息。选择一个$k+1$位约定多项式$G(x)$作为约定除数(又称生成多项式)。</p>
+<p>(2)把$M(x)$左移k位，得到$M(x)\cdot X^k$，然后按模2除法，用$M(x)\cdot X^k$除以$G(x)$得到k位余数$R(x)$，即</p>
+<script type="math/tex; mode=display">
+\frac{M(x)\cdot X^k}{G(x)}=Q(x)+\frac{R(x)}{G(x)}</script><p>(3)将$M(x)\cdot X^k$与余数$R(x)$作模2相加，即形成循环冗余校验码。</p>
+<p>4.CRC码的校验</p>
+<p>把接收到的CRC码用原约定的生成多项式$G(x)$作模2除，若除得余数为0，表示没有错误；若除得余数不为0，表示有一位出错。根据余数值可确定出错的位置。</p>
+<p>5.循环冗余校验码的生成多项式</p>
+<p>生成多项式应满足下列要求：</p>
+<p>(1)任何一位发生错误都应使余数不为0；</p>
+<p>(2)不同位发生错误应当使余数不同；</p>
+<p>(3)对余数作模2除法，应能使余数循环。</p>
+<p>选择不同的生成多项式，CRC码的码距不同，因而检错、校错能力也不同，出错模式也不同。</p>
+<p>常用的生成多项式</p>
+<p><img src="/2019/09/25/组原2/g2-13.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Einsturing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://einsturing.top/2019/09/25/组原2/" title="第2章 计算机中数据信息的表示">http://einsturing.top/2019/09/25/组原2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/计算机组成原理/" rel="tag"><i class="fa fa-tag"></i> 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/24/编原3/" rel="next" title="第3章 词法分析">
+                <i class="fa fa-chevron-left"></i> 第3章 词法分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/08/编原4/" rel="prev" title="第4章 自顶向下语法分析方法">
+                第4章 自顶向下语法分析方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/圣诞凶.jpg" alt="Einsturing">
+            
+              <p class="site-author-name" itemprop="name">Einsturing</p>
+              <p class="site-description motion-element" itemprop="description">Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Einsturing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/11725722/#/" target="_blank" title="BiliBili">
+                      
+                        <i class="fa fa-fw fa-bold"></i>BiliBili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xlor.cn/" title="XLor" target="_blank">XLor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://houwenda.github.io/" title="louduan" target="_blank">louduan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ltfnjust.club/" title="LTF" target="_blank">LTF</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.miracle-io.xyz/" title="Banana" target="_blank">Banana</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-进位计数制与数制转换"><span class="nav-number">1.</span> <span class="nav-text">2.1　进位计数制与数制转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-带符号数的表示"><span class="nav-number">2.</span> <span class="nav-text">2.2　带符号数的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-机器数与真值"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1　机器数与真值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-原码表示"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2　原码表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-补码表示"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3　补码表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-反码表示"><span class="nav-number">2.4.</span> <span class="nav-text">2.2.4　反码表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-移码表示"><span class="nav-number">2.5.</span> <span class="nav-text">2.2.5　移码表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-数的定点表示与浮点表示"><span class="nav-number">3.</span> <span class="nav-text">2.3　数的定点表示与浮点表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-定点表示"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1　定点表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点表示"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2　浮点表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-非数值型数据的表示"><span class="nav-number">4.</span> <span class="nav-text">2.4　非数值型数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-逻辑数——二进制串"><span class="nav-number">4.1.</span> <span class="nav-text">2.4.1　逻辑数——二进制串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-字符与字符串"><span class="nav-number">4.2.</span> <span class="nav-text">2.4.2　字符与字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-汉字信息的表示"><span class="nav-number">4.3.</span> <span class="nav-text">2.4.3　汉字信息的表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-十进制数串的表示"><span class="nav-number">5.</span> <span class="nav-text">2.5　十进制数串的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-数据的长度与存储方式"><span class="nav-number">6.</span> <span class="nav-text">2.6　数据的长度与存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-数据的长度"><span class="nav-number">6.1.</span> <span class="nav-text">2.6.1　数据的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-数据的存储方式"><span class="nav-number">6.2.</span> <span class="nav-text">2.6.2　数据的存储方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-数据校验码"><span class="nav-number">7.</span> <span class="nav-text">2.7　数据校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1-码距与数据校验码"><span class="nav-number">7.1.</span> <span class="nav-text">2.7.1　码距与数据校验码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2-奇偶校验码"><span class="nav-number">7.2.</span> <span class="nav-text">2.7.2　奇偶校验码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-3-海明校验码"><span class="nav-number">7.3.</span> <span class="nav-text">2.7.3　海明校验码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-4-循环冗余校验码"><span class="nav-number">7.4.</span> <span class="nav-text">2.7.4　循环冗余校验码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Einsturing</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UueUj58tOhhprnrbs0RwUluG-gzGzoHsz',
+        appKey: 'j2OlRwPqQvWaPdO5NH4toWkq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

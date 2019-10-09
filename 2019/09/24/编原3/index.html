@@ -138,18 +138,21 @@
 
 
 
-<meta name="description" content="Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑">
+<meta name="description" content="3.1　词法分析程序的设计词法分析(lexical analysis)功能：逐个读入源程序字符，输出“单词符号”，供语法分析使用。还有滤掉空格，跳过注释、换行符，追踪换行标志，复制出错源程序，宏展开等功能。 3.1.1　词法分析程序和语法分析程序的接口方式方式一(常用)：词法分析程序扫描整个待编译的程序，输出中间文件二元式(单词种类，值)，作为语法分析程序的输入。优点是整个编译结构简洁、清晰、条理">
 <meta name="keywords" content="笔记,编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第3章词法分析">
+<meta property="og:title" content="第3章 词法分析">
 <meta property="og:url" content="http://einsturing.top/2019/09/24/编原3/index.html">
 <meta property="og:site_name" content="Einsturing">
-<meta property="og:description" content="Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑">
+<meta property="og:description" content="3.1　词法分析程序的设计词法分析(lexical analysis)功能：逐个读入源程序字符，输出“单词符号”，供语法分析使用。还有滤掉空格，跳过注释、换行符，追踪换行标志，复制出错源程序，宏展开等功能。 3.1.1　词法分析程序和语法分析程序的接口方式方式一(常用)：词法分析程序扫描整个待编译的程序，输出中间文件二元式(单词种类，值)，作为语法分析程序的输入。优点是整个编译结构简洁、清晰、条理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T09:47:24.358Z">
+<meta property="og:image" content="http://einsturing.top/2019/09/24/编原3/g3-1.png">
+<meta property="og:image" content="http://einsturing.top/2019/09/24/编原3/g3-2.png">
+<meta property="og:updated_time" content="2019-10-09T13:03:08.169Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第3章词法分析">
-<meta name="twitter:description" content="Einsturing菜鸡个人网站，写一些菜鸡东西，大家见笑">
+<meta name="twitter:title" content="第3章 词法分析">
+<meta name="twitter:description" content="3.1　词法分析程序的设计词法分析(lexical analysis)功能：逐个读入源程序字符，输出“单词符号”，供语法分析使用。还有滤掉空格，跳过注释、换行符，追踪换行标志，复制出错源程序，宏展开等功能。 3.1.1　词法分析程序和语法分析程序的接口方式方式一(常用)：词法分析程序扫描整个待编译的程序，输出中间文件二元式(单词种类，值)，作为语法分析程序的输入。优点是整个编译结构简洁、清晰、条理">
+<meta name="twitter:image" content="http://einsturing.top/2019/09/24/编原3/g3-1.png">
 
 
 
@@ -185,7 +188,7 @@
 
 
 
-  <title>第3章词法分析 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>第3章 词法分析 | Einsturing</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -372,7 +375,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第3章词法分析</h1>
+          <h1 class="post-title" itemprop="name headline">第3章 词法分析</h1>
         
 
         <div class="post-meta">
@@ -400,8 +403,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-24T17:47:24+08:00">
-                2019-09-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-09T21:03:08+08:00">
+                2019-10-09
               </time>
             
           </span>
@@ -476,7 +479,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  3.2k
                 </span>
               
 
@@ -492,7 +495,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -513,7 +516,152 @@
       
 
       
-        
+        <h2 id="3-1-词法分析程序的设计"><a href="#3-1-词法分析程序的设计" class="headerlink" title="3.1　词法分析程序的设计"></a><center>3.1　词法分析程序的设计</center></h2><p>词法分析(lexical analysis)功能：逐个读入源程序字符，输出“单词符号”，供语法分析使用。还有滤掉空格，跳过注释、换行符，追踪换行标志，复制出错源程序，宏展开等功能。</p>
+<h3 id="3-1-1-词法分析程序和语法分析程序的接口方式"><a href="#3-1-1-词法分析程序和语法分析程序的接口方式" class="headerlink" title="3.1.1　词法分析程序和语法分析程序的接口方式"></a>3.1.1　词法分析程序和语法分析程序的接口方式</h3><p>方式一(常用)：词法分析程序扫描整个待编译的程序，输出中间文件二元式(单词种类，值)，作为语法分析程序的输入。优点是整个编译结构简洁、清晰、条理化，可移植性好。</p>
+<p>方式二：语法分析程序调用词法分析程序，返回一个单词。</p>
+<h3 id="3-1-2-词法分析程序的输出"><a href="#3-1-2-词法分析程序的输出" class="headerlink" title="3.1.2　词法分析程序的输出"></a>3.1.2　词法分析程序的输出</h3><p>在识别出单词同时验证其词法正确性后，词法分析程序将结果以单词符号的形式发送至语法分析程序以回应其请求。单词符号一般分为以下5类。</p>
+<p>基本字(关键字)：begin, end, if, while</p>
+<p>标识符：各种名称，如常量名、变量名、过程名</p>
+<p>常数(量)：25, 3.1415, TRUE, “ABC”等</p>
+<p>运算符：如 + - * / &lt; &lt;=等</p>
+<p>界符：逗号，分号，括号等</p>
+<p>词法分析程序所输出的单词符号可以采用以下二元式表示：(单词种别，单词自身的值)</p>
+<h3 id="3-1-3-将词法分析工作分离的考虑"><a href="#3-1-3-将词法分析工作分离的考虑" class="headerlink" title="3.1.3　将词法分析工作分离的考虑"></a>3.1.3　将词法分析工作分离的考虑</h3><p>把编译过程的分析工作划分成词法分析和语法分析两个阶段，主要考虑因素如下：使整个编译程序的结构更简洁、清晰和条理化；编译程序的效率会改进；增强编译程序的可移植性。</p>
+<h3 id="3-1-4-词法分析程序中如何识别单词"><a href="#3-1-4-词法分析程序中如何识别单词" class="headerlink" title="3.1.4　词法分析程序中如何识别单词"></a>3.1.4　词法分析程序中如何识别单词</h3><p>描述一个语言的词法规则，通常需要借助形式化或半形式化的描述工具。常见的用于词法规则描述的工具有状态转换图、扩展巴克斯范式(EBNF)、有限状态自动机、正规表达式以及正规文法等。</p>
+<a id="more"></a>
+<h2 id="3-2-单词的形式化描述工具"><a href="#3-2-单词的形式化描述工具" class="headerlink" title="3.2　单词的形式化描述工具"></a><center>3.2　单词的形式化描述工具</center></h2><h3 id="3-2-1-正规文法"><a href="#3-2-1-正规文法" class="headerlink" title="3.2.1　正规文法"></a>3.2.1　正规文法</h3><p>正规文法也称正则文法，3型文法。</p>
+<p>文法的每个产生式的形式都为：</p>
+<p>A$\rightarrow aB$或$A\rightarrow a$(右线性)</p>
+<p>$A\rightarrow Ba$或$A\rightarrow a$(左线性)</p>
+<p>其中$A,B\in V_N,a\in V_T^*$。例如</p>
+<p>标识符的正规文法：(若$i$表示任一字母，$d$表示任一数字)</p>
+<p>&lt;标识符&gt;$\rightarrow i|i$&lt;字母数字&gt;</p>
+<p>&lt;字母数字&gt;$\rightarrow i|d|i$&lt;字母数字&gt;$|d$&lt;字母数字&gt;</p>
+<p>无符号整数的正规文法：&lt;无符号整数&gt;$\rightarrow d|d$&lt;无符号整数&gt;</p>
+<p>运算符的正规文法：</p>
+<p>&lt;运算符&gt;$\rightarrow +|-|*|/|=|&lt;$&lt;等号&gt;$| &gt;$&lt;等号&gt;$\dots \dots$ </p>
+<p>&lt;等号&gt;$\rightarrow =$</p>
+<p>界符的正规文法：&lt;界符&gt;$\rightarrow , | ; | ( | ) |\dots\dots$</p>
+<h3 id="3-2-2-正规式"><a href="#3-2-2-正规式" class="headerlink" title="3.2.2　正规式"></a>3.2.2　正规式</h3><p>正规式(regular expression)也称正则表达式，是描述单词符号串的工具。</p>
+<p>设字母表$\Sigma={a,\dots,z,A,\dots,Z,0,\dots,9}$</p>
+<p>辅助字母表$\Sigma’={\empty,\epsilon,|,\cdot,*,(,)}$</p>
+<p>”$*$“表示”闭包”，即任意有限次的自重复连接</p>
+<p>“$\cdot$”表示“连接”，有时可以省略</p>
+<p>“|”表示“或”</p>
+<p>优先顺序为“()”、“*”、“$\cdot$”、“|”</p>
+<p>“*”、“$\cdot$”和“|”都是左结合的</p>
+<p>正规式为$\empty,\epsilon,\Sigma,(e),e_1|e_2,e_1\cdot e_2,e^*$中的符号，其中$e$表示任一正规式。</p>
+<p>若两个正规式$e_1$和$e_2$所表示的正规集相同，则说$e_1$和$e_2$等价，记作$e_1=e_2$。</p>
+<p>设$r,s,t$为正规式，则有：</p>
+<p>$r|s=s|r$“或”的交换律</p>
+<p>$r|(s|t)=(r|s)|t$“或”的可结合律</p>
+<p>$(rs)t=r(st)$“连接”的可结合律</p>
+<p>$r(s|t)=rs|rt,(s|t)r=sr|tr$分配律 </p>
+<p>$\epsilon r=r,r\epsilon=r$ $\epsilon$是“连接”的恒等元素</p>
+<p>$r|r=r$“或“的抽取律</p>
+<p>程序中的单词符号都能用正规式表示$e=&lt;字母&gt;(&lt;字母&gt;|&lt;数字&gt;)^*$</p>
+<h3 id="3-2-3-正规文法和正规式的等价性"><a href="#3-2-3-正规文法和正规式的等价性" class="headerlink" title="3.2.3　正规文法和正规式的等价性"></a>3.2.3　正规文法和正规式的等价性</h3><p>一个正规语言可以有正规文法定义，也可以由正规式定义。</p>
+<p>1.将正规式转换成正规文法</p>
+<p>将$\Sigma$上的一个正规式$r$转换成文法$G=(V_N,V_T,S,P)$。令$V_T=\Sigma$，确定产生式和$V_N$的元素用如下办法：</p>
+<p>选择一个非终结符$S$生成类似产生式的形式：$S\rightarrow r$，并将$S$定为$G$的识别符号。为表述方便，将$S\rightarrow r$称作正规式产生式，因为在$\rightarrow$的右部中含有“.”、“*”或“|”等正规式符号，不是$V$中的符号。</p>
+<p>若$x$和$y$都是正规式，对形如$A\rightarrow xy$的正规式产生式，重写成$A\rightarrow xB,B\rightarrow y$两个产生式，其中$B$是新选择的非终结符，即$B\in V_N$。</p>
+<p>对形如$A\rightarrow x^*y$的正规式产生式，重写为</p>
+<p>$A\rightarrow xB$</p>
+<p>$A\rightarrow y$</p>
+<p>$B\rightarrow xB$</p>
+<p>$B\rightarrow y$</p>
+<p>其中$B$为一个新的非终结符。</p>
+<p>对形如$A\rightarrow x|y$的正规式产生式，重写为</p>
+<p>$A\rightarrow x$</p>
+<p>$A\rightarrow y$</p>
+<p>不断利用上述规则做变换，直到每个产生式都符合正规文法的形式。</p>
+<p>2.将正规文法转换为正规式</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>文法产生式</th>
+<th>正规式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>规则1</td>
+<td>$A\rightarrow xB$  $B\rightarrow y$</td>
+<td>$A=xy$</td>
+</tr>
+<tr>
+<td>规则2</td>
+<td>$A\rightarrow xA</td>
+<td>y$</td>
+<td>$A=x^*y$</td>
+</tr>
+<tr>
+<td>规则3</td>
+<td>$A\rightarrow x$ $A\rightarrow y$</td>
+<td>$A=x</td>
+<td>y$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-3-有穷自动机"><a href="#3-3-有穷自动机" class="headerlink" title="3.3　有穷自动机"></a><center>3.3　有穷自动机</center></h2><p>有穷自动机(FA,Finite Automata)是一个识别装置，用于识别“所有句子”，引入目的是为词法分析程序的自动构造寻找特殊的方法和工具。分为确定的和不确定的。</p>
+<h3 id="3-3-1-确定的有穷自动机-DFA"><a href="#3-3-1-确定的有穷自动机-DFA" class="headerlink" title="3.3.1　确定的有穷自动机(DFA)"></a>3.3.1　确定的有穷自动机(DFA)</h3><p>一个确定的有穷自动机$M$是一个五元组</p>
+<p>$M=(K,\Sigma,f,S,Z)$</p>
+<p>$K$：有穷的状态集</p>
+<p>$\Sigma$：有穷的字母表(即输入字符的集合)</p>
+<p>$f$：转换函数$K\times\Sigma\rightarrow K$上的映像</p>
+<p>$S$：初态(唯一)</p>
+<p>$Z$：终态集(不唯一)</p>
+<p>DFA的直观表示：</p>
+<p>1.状态转换图：每个状态用结点表示；若$f(K_i,a)=K_j$，则$k_i\rightarrow^ak_j$；初态用“$\Rightarrow$” 或 “$-$”标出，终态用双圈或“$+$”标出。</p>
+<p>2.矩阵：行表示状态，列表示输入符号，矩阵元素表示相应状态和输入符号将转换成的新状态，可以用“$\Rightarrow$”标明初态，否则第一行即是初态，相应终态行在表的右端标以1，非终态标以0。</p>
+<p>若$t\in\Sigma^*$，且存在$f(S,t)=\dots=P,P\in$终态集，则$t$为该DFA可以接受的句子。即：从初态$S$到某终态结点$P$的道路上，所有弧上的标记符连接而成字符串$t$，$t$为该DFA可以接受的句子。DFA $M$能够接受的句子的全体记为$L(M)$。</p>
+<p>$f:K\times\Sigma\rightarrow K$是一个单值函数，即对任何状态$K$，当输入字符$a$时，下一状态唯一。</p>
+<h3 id="3-3-2-不确定的有穷自动机-NFA"><a href="#3-3-2-不确定的有穷自动机-NFA" class="headerlink" title="3.3.2　不确定的有穷自动机(NFA)"></a>3.3.2　不确定的有穷自动机(NFA)</h3><p>一个不确定的有穷自动机$M$是一个五元组</p>
+<p>$M=(K,\Sigma,f,S,Z)$</p>
+<p>$K$：有穷的状态集</p>
+<p>$\Sigma$：有穷的字母表(即输入字符的集合)</p>
+<p>$f$：转换函数$K\times\Sigma^*\rightarrow K^+$上的映像($K^+$表示$K$的子集)</p>
+<p>$S$：初态(不唯一)</p>
+<p>$Z$：终态集(不唯一)</p>
+<p>NFA的直观表示：</p>
+<p>1.状态转换图：每个状态用结点表示；若$f(K_i,a)=K_j$，则$k_i\rightarrow^ak_j$；初态用“$\Rightarrow$” 或 “$-$”标出，终态用双圈或“$+$”标出。</p>
+<p>2.矩阵：行表示状态，列表示输入符号，矩阵元素表示相应状态和输入符号将转换成的新状态，可以用“$\Rightarrow$”标明初态，否则第一行即是初态，相应终态行在表的右端标以1，非终态标以0。</p>
+<p>若$t\in\Sigma^*$，且存在$f(S,t)=\dots=P,P\in$终态集，则$t$为该DFA可以接受的句子。即：从初态$S$到某终态结点$P$的道路上，所有弧上的标记符连接而成字符串$t$，$t$为该NFA可以接受的句子。NFA $M’$能够接受的句子的全体记为$L(M’)$。对于每个NFA $M’$，存在一个DFA $M$，使得$L(M’)=L(M)$。</p>
+<p>$\epsilon$可以被NFA $M’$接受的两种情况：$M’$的某结点既是初态，又是终态；存在一条从初态到终态的$\epsilon$道路。</p>
+<p>对于状态$K$，当输入字符$a$时，下一状态不一定唯一。</p>
+<p>对每个NFA $M’$，一定存在一个DFA $M$，使得$L(M’)=L(M)$，即：对每个NFA $M$，存在着与之等价的DFA $M’$​。与某一NFA等价的DFA不唯一。</p>
+<h3 id="3-3-3-NFA转换为等价的DFA"><a href="#3-3-3-NFA转换为等价的DFA" class="headerlink" title="3.3.3　NFA转换为等价的DFA"></a>3.3.3　NFA转换为等价的DFA</h3><p>1.基本运算</p>
+<p>状态集合$I$的$\epsilon$闭包：表示为$\epsilon-closure(I)$。状态集$I$中的任何状态$S$经任意条$\epsilon$弧而能到达的状态的集合。状态集$I$的任何状态$S$都属于$\epsilon-closure(I)$。</p>
+<p>状态集合$I$的$a$弧转换：表示为$mova(I,a)$。定义为状态集合$J$，其中$J$是所有那些可从$I$的某一状态经过一条$a$弧而到达的状态的全体。</p>
+<p>2.转换的主要思想</p>
+<p>DFA的一个状态可能对应NFA的一个或一组状态。</p>
+<p>DFA同样记录在NFA上读入某个$V_T$后可能到达的所有状态。</p>
+<p>3.子集法</p>
+<p>NFA $N=(K,\Sigma,f,K_0,K_t)$构造DFA $M=(S,\Sigma,d,S_0,S_t)$，使得$L(M)=L(N)$：</p>
+<p>(1)$M$的状态集$S$由$K$的一些子集组成</p>
+<p>(2)$M$和$N$的输入字母表相同</p>
+<p>(3)转换函数$d$是这样定义的：$d([S_1,\dots,S_j],a)=\epsilon-closure(move([S_1,\dots,S_j],a))$</p>
+<p>(4)$S_0=\epsilon-closure(K_0)$为$M$的开始状态</p>
+<p>(5)$S_t={[S_i,S_k,\dots,S_e]$，其中$[S_i,S_k,\dots,S_e]\in S$且${S_i,S_k,\dots,S_e}\cap K_t\neq\empty}$。</p>
+<p>构造NFA $N$的状态$K$的子集的算法：</p>
+<p>假定所构造的子集族为$C=(T_1,T_2,\dots,T_i)$，其中$T_1,T_2,\dots,T_i$为状态的子集。</p>
+<p>a. 开始，令$\epsilon-closure(K_0)$为$C$中唯一成员，并且它是未被标记的。</p>
+<p>b. While(C中存在尚未被标记的子集T) do<br>{    标记T；<br>    for(每个输入字母a) do<br>    {    U:= $\epsilon$-closure(move(T,a))；<br>        if（U不在C中）  then<br>        {    将U作为未标记的子集加在C中；}<br>    }<br>}</p>
+<h3 id="3-3-4-确定有穷自动机的化简"><a href="#3-3-4-确定有穷自动机的化简" class="headerlink" title="3.3.4　确定有穷自动机的化简"></a>3.3.4　确定有穷自动机的化简</h3><p>DFA的化简也称最小化DFA，指没有多余状态，没有两个状态是互相等价的DFA。</p>
+<p>多余状态：从开始状态出发，任何输入串也不能到达的状态。处理：消除多余状态</p>
+<p>两个状态s和t等价，满足：一致性，同是终态或同时非终态；蔓延性，从s出发读入某个$a(a\in\Sigma)$和从t出发读入某个a到达的状态等价。处理：合并等价状态(使用“分割法”)</p>
+<h2 id="3-4-正规式和有穷自动机的等价性"><a href="#3-4-正规式和有穷自动机的等价性" class="headerlink" title="3.4　正规式和有穷自动机的等价性　"></a><center>3.4　正规式和有穷自动机的等价性</center>　</h2><p>对于$\Sigma$上的NFA M，可以构造一个$\Sigma$上的正规式$R$，使得$L(R)=L(M)$。</p>
+<p>对于$\Sigma$上的正规式$R$，可以构造一个$\Sigma$上的NFA M，使得$L(M)=L(R)$。</p>
+<p>$FA\rightarrow$正规式：在FA M的状态图上加两个状态结点x和y，从x结点出发，用$\epsilon$弧连接x结点到所有初态结点，从M的所有终态结点用$\epsilon$弧连接到y结点，此时x为初态，y为终态。利用消结规则，逐步消去M’中的所有结点，直至只剩下x和y，最后x和y结点间的弧上的标记则为所求的正规式R。</p>
+<p>正规式$\rightarrow FA$：将正规式分解成一系列子表达式，对于每个子表达式，用如下规则构造FA。</p>
+<p><img src="/2019/09/24/编原3/g3-1.png" alt></p>
+<h2 id="3-5-正规文法和有穷自动机的等价性"><a href="#3-5-正规文法和有穷自动机的等价性" class="headerlink" title="3.5　正规文法和有穷自动机的等价性"></a><center>3.5　正规文法和有穷自动机的等价性</center></h2><p>正规文法$\rightarrow FA$：输入字符集与正规文法的$V_T$相同，状态集与正规文法中的$V_N$相同。左线性正规文法的转换规则：增加一个初态结点，开始符号对应的结点作为终态；对形如$A\rightarrow t$的规则，引一条从初始状态到$A$的弧，标记为$t$；对形如$A\rightarrow Bt$的规则，引一条从$B$到$A$的弧，标记为$t$。右线性正规文法的转换规则：增加一个终态结点，开始符号对应的结点作为初态；对形如$A\rightarrow t$的规则，引一条从$A$到终态结点的弧，标记为$t$；对形如$A\rightarrow tB$的规则，引一条从$A$到$B$的弧，标记为$t$。($t$为$V_T$或$\epsilon$)。</p>
+<p>$FA\rightarrow$正规文法：与$f(A,a)=B$对应的产生式为$A\rightarrow aB$，对终态结点$Z$，增加产生式$Z\rightarrow\epsilon$，NFA的初态对应文法的开始符号，NFA的输入字符集对应文法的$V_T$。</p>
+<p><img src="/2019/09/24/编原3/g3-2.png" alt></p>
+
       
     </div>
     
@@ -533,7 +681,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://einsturing.top/2019/09/24/编原3/" title="第3章词法分析">http://einsturing.top/2019/09/24/编原3/</a>
+    <a href="http://einsturing.top/2019/09/24/编原3/" title="第3章 词法分析">http://einsturing.top/2019/09/24/编原3/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -572,6 +720,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/25/组原2/" rel="prev" title="第2章 计算机中数据信息的表示">
+                第2章 计算机中数据信息的表示 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -626,8 +778,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -644,7 +805,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -731,6 +892,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-词法分析程序的设计"><span class="nav-number">1.</span> <span class="nav-text">3.1　词法分析程序的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-词法分析程序和语法分析程序的接口方式"><span class="nav-number">1.1.</span> <span class="nav-text">3.1.1　词法分析程序和语法分析程序的接口方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-词法分析程序的输出"><span class="nav-number">1.2.</span> <span class="nav-text">3.1.2　词法分析程序的输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-将词法分析工作分离的考虑"><span class="nav-number">1.3.</span> <span class="nav-text">3.1.3　将词法分析工作分离的考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-词法分析程序中如何识别单词"><span class="nav-number">1.4.</span> <span class="nav-text">3.1.4　词法分析程序中如何识别单词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-单词的形式化描述工具"><span class="nav-number">2.</span> <span class="nav-text">3.2　单词的形式化描述工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-正规文法"><span class="nav-number">2.1.</span> <span class="nav-text">3.2.1　正规文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-正规式"><span class="nav-number">2.2.</span> <span class="nav-text">3.2.2　正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-正规文法和正规式的等价性"><span class="nav-number">2.3.</span> <span class="nav-text">3.2.3　正规文法和正规式的等价性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-有穷自动机"><span class="nav-number">3.</span> <span class="nav-text">3.3　有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-确定的有穷自动机-DFA"><span class="nav-number">3.1.</span> <span class="nav-text">3.3.1　确定的有穷自动机(DFA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-不确定的有穷自动机-NFA"><span class="nav-number">3.2.</span> <span class="nav-text">3.3.2　不确定的有穷自动机(NFA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-NFA转换为等价的DFA"><span class="nav-number">3.3.</span> <span class="nav-text">3.3.3　NFA转换为等价的DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-4-确定有穷自动机的化简"><span class="nav-number">3.4.</span> <span class="nav-text">3.3.4　确定有穷自动机的化简</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-正规式和有穷自动机的等价性"><span class="nav-number">4.</span> <span class="nav-text">3.4　正规式和有穷自动机的等价性　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-正规文法和有穷自动机的等价性"><span class="nav-number">5.</span> <span class="nav-text">3.5　正规文法和有穷自动机的等价性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1280,7 +1457,42 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1298,21 +1510,6 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
   
 
 
