@@ -355,6 +355,236 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/14/线性代数4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Einsturing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/圣诞凶.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Einsturing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/14/线性代数4/" itemprop="url">第4章 向量组的线性相关性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-14T12:36:59+08:00">
+                2019-02-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T15:27:07+08:00">
+                2019-02-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/" itemprop="url" rel="index">
+                    <span itemprop="name">Basics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basics/Linear-Algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear Algebra</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/14/线性代数4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/14/线性代数4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="§1-向量组及其线性组合"><a href="#§1-向量组及其线性组合" class="headerlink" title="§1　向量组及其线性组合"></a><center>§1　向量组及其线性组合</center></h2><p><strong>定义1</strong>　n个有次序的数$a_1,a_2,\dots,a_n$所组成的数组称为n维向量，这n个数称为该向量的n个分量，第i个数$a_i$称为第i个分量。</p>
+<p><strong>定义2</strong>　给定向量组$A:a_1,a_2,\dots,a_m,$对于任何一组实数$k_1,k_2,\dots,k_m,$表达式</p>
+<script type="math/tex; mode=display">
+k_1a_1+k_2a_2+\dots+k_ma_m</script><p>称为向量组$A$的一个线性组合，$k_1,k_2,\dots,k_m$称为这个线性组合的系数。</p>
+<p>给定向量组$A:a_1,a_2,\dots,a_m​$和向量$b​$，如果存在一组数$\lambda_1,\lambda_2,\dots,\lambda_m,​$使</p>
+<script type="math/tex; mode=display">
+b=\lambda_1a_1+\lambda_2a_2+\dots+\lambda_ma_m</script><p>则向量$b$是向量组$A$的线性组合，称向量$b$能由向量组$A$线性表示。</p>
+<p><strong>定理1　向量$b​$能由向量组$A:a_1,a_2,\dots,a_m​$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\dots,a_m)​$的秩等于矩阵$B=(a_1,a_2\dots,a_m,b)​$的秩。</strong></p>
+<p><strong>定义3</strong>　设有两个向量组$A:a_1,a_2,\dots,a_m​$及$B:b_1,b_2,\dots,b_l,​$若$B​$组中的每个向量都能由向量组$A​$线性表示，则称向量组$B​$能由向量组$A​$线性表示。若向量组$A​$与向量组$B​$都互相线性表示，则称这两个向量组等价。</p>
+<p><strong>定理2　向量组$B:b_1,b_2,\dots,b_l​$能由向量组$A:a_1,a_2,\dots,a_m​$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\dots,a_m)​$的秩等于矩阵$(A,B)=(a_1,\dots,a_m,b_1,\dots,b_l)​$的秩，即$R(A)=R(A,B)​$。</strong></p>
+<p><strong>推论　向量组$A:a_1,a_2,\dots,a_m​$与向量组$B:b_1,b_2,\dots,b_l​$等价的充分必要条件是</strong></p>
+<script type="math/tex; mode=display">
+R(A)=R(B)=R(A,B)</script><p><strong>其中$A$和$B$是向量组$A$和$B$所构成的矩阵。</strong></p>
+<p><strong>定理3　设向量组$B:b_1,b_2,\dots,b_l​$能由向量组$A:a_1,a_2,\dots,a_m​$线性表示，则$R(b_1,b_2,\dots,b_l)\leq R(a_1,a_2,\dots,a_m)​$。</strong></p>
+<h2 id="§2-向量组的线性相关性"><a href="#§2-向量组的线性相关性" class="headerlink" title="§2　向量组的线性相关性"></a><center>§2　向量组的线性相关性</center></h2><p><strong>定义4</strong>　给定向量组$A:a_1,a_2,\dots,a_m,$如果存在不全为零的数$k_1,k_2,\dots,k_m,$使</p>
+<script type="math/tex; mode=display">
+k_1a_1+k_2a_2+\dots+k_ma_m=0</script><p>则称向量组$A$是线性相关的，否则称它线性无关。</p>
+<p><strong>定理4　向量组$A:a_1,a_2,\dots,a_m​$线性相关的充分必要条件是它所构成的矩阵$A=(a_1,a_2,\dots,a_m)​$的秩小于向量个数m；向量组$A​$线性无关的充分必要条件是$R(A)=m​$。</strong></p>
+<p><strong>定理5　(1)若向量组$A:a<em>1,a_2,\dots,a_m​$线性相关，则向量组$B:a_1,a_2,\dots,a_m,a</em>{m+1}​$也线性相关。反之，若向量组$B​$线性无关，则向量组$A​$也线性无关。</strong></p>
+<p><strong>(2)m个n维向量组成的向量组，当维数n小于向量个数m时一定线性相关。特别地n+1个n维向量一定线性相关。</strong></p>
+<p><strong>(3)设向量组$A:a_1,a_2,\dots,a_m$线性无关，而向量组$B:a_1,a_2,\dots,a_m,b$线性相关，则向量$b$必能由向量组$A$线性表示，且表示式是惟一的。</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/14/线性代数4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://einsturing.top/2019/02/13/背包模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2338,231 +2568,6 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://einsturing.top/2018/12/17/Poj3903/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Einsturing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/圣诞凶.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Einsturing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/17/Poj3903/" itemprop="url">Poj3903 Stock Exchange</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T22:31:30+08:00">
-                2018-12-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T16:03:01+08:00">
-                2019-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Dynamic Programming</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/Dynamic-Programming/Linear-Dynamic-Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Linear Dynamic Programming</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/17/Poj3903/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/17/Poj3903/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  227
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The world financial crisis is quite a subject. Some people are more relaxed while others are quite anxious. John is one of them. He is very concerned about the evolution of the stock exchange. He follows stock prices every day looking for rising trends. Given a sequence of numbers p1, p2,…,pn representing stock prices, a rising trend is a subsequence pi1 &lt; pi2 &lt; … &lt; pik, with i1 &lt; i2 &lt; … &lt; ik. John’s problem is to find very quickly the longest rising trend.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Each data set in the file stands for a particular set of stock prices. A data set starts with the length L (L ≤ 100000) of the sequence of numbers, followed by the numbers (a number fits a long integer).  White spaces can occur freely in the input. The input data are correct and terminate with an end of file.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>The program prints the length of the longest rising trend. For each set of data the program prints the result to the standard output from the beginning of a line.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">6 </span><br><span class="line">5 2 1 4 5 3 </span><br><span class="line">3  </span><br><span class="line">1 1 1 </span><br><span class="line">4 </span><br><span class="line">4 3 2 1</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 </span><br><span class="line">1 </span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/17/Poj3903/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2615,7 +2620,7 @@ A=diag(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>线性变换与矩阵一�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
